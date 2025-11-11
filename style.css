@@ -1,0 +1,899 @@
+﻿/*
+    SENA Prom 2026 - Video Game Website Styles
+    Diseño: Fusión de Fantasía LUMINOSA (Rapunzel) y Oscura (Hora de Aventura)
+    ========================================== 
+*/
+
+/* CSS Reset y Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* COLORES PERSONALIZADOS PARA LA INVERSIÓN 
+       ------------------------------------
+       --primary: AHORA ES DORADO (Rapunzel)
+       --accent-west: AHORA ES MORADO (Caos)
+    */
+    
+    /* Colores Primarios (ACCIÓN Y MARCA - AHORA DORADO) */
+    --primary: #FFD700;           /* DORADO BRILLANTE (Marca y Botones Principales) */
+    --primary-light: #FFEB3B;     /* Amarillo Claro (Hover) */
+    --primary-dark: #CCA300;      /* Dorado Oscuro */
+    
+    /* Colores de Acento (Temáticos - AHORA MORADO/CAOS) */
+    --accent-west: #5E35B1;       /* Morado Profundo (Acento de Caos) */
+    --accent-east: #9575CD;       /* Morado Claro (Acento Secundario) */
+    
+    /* Colores Neutros (Base y Superficies - Siguen Oscuros) */
+    --bg-page: #0D0B14;           /* Fondo de la página (Muy Oscuro) */
+    --bg-surface: #1A1625;        /* Fondo de las Tarjetas/Menú (Oscuro) */
+    --border-subtle: #3C3650;     /* Bordes sutiles */
+    --text-primary: #F2F2F2;      /* Texto principal (Blanco/Claro) */
+    --text-secondary: #C5CAE9;    /* Texto secundario (Gris Lavanda) */
+    --text-disabled: #5F597A;     /* Texto deshabilitado */
+    
+    /* Colores Semánticos */
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --error: #F44336;
+    
+    /* Tipografía, Espaciado, Bordes, etc. */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-xxl: 96px;
+    --space-xxxl: 128px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    --shadow-md: 0px 8px 24px rgba(255, 215, 0, 0.15); /* Sombra ajustada a Dorado */
+    --shadow-lg: 0px 12px 32px rgba(255, 215, 0, 0.25); /* Sombra ajustada a Dorado */
+    --shadow-hover: 0px 12px 32px rgba(255, 215, 0, 0.25); /* Sombra ajustada a Dorado */
+    --transition-fast: 0.15s ease-out;
+    --transition-normal: 0.25s ease-out;
+    --transition-slow: 0.3s ease-out;
+    --transition-bounce: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-page);
+    overflow-x: hidden;
+}
+
+/* Canvas para partículas */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* Utilidades */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.section {
+    padding: var(--space-xxl) 0;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    /* Título principal con degradado Dorado / Morado */
+    background: linear-gradient(45deg, var(--primary), var(--accent-west));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==========================================
+    NAVEGACIÓN
+    ========================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 22, 37, 0.95); 
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+    z-index: 1000;
+    transition: var(--transition-normal);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.nav-logo .logo-text {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary); /* Logo AHORA Dorado */
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary); /* Hover AHORA Dorado */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary); /* Subrayado AHORA Dorado */
+    transition: var(--transition-normal);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    transition: var(--transition-normal);
+}
+
+/* ==========================================
+    HERO SECTION
+    ========================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xxxl) 0;
+    background: radial-gradient(circle at 50% 50%, var(--bg-surface) 0%, var(--bg-page) 70%); 
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+    /* Título Hero con gradiente Dorado / Morado */
+    background: linear-gradient(45deg, var(--primary), var(--accent-west)); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.hero-description {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+/* Botones */
+.btn {
+    padding: var(--space-sm) var(--space-lg);
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--primary); /* Botón principal AHORA Dorado */
+    color: var(--bg-page); /* Texto del botón oscuro para contraste */
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); 
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary); /* Texto secundario AHORA Dorado */
+    border: 2px solid var(--primary); /* Borde secundario AHORA Dorado */
+}
+
+.btn-secondary:hover {
+    background: var(--primary); /* Fondo hover AHORA Dorado */
+    color: var(--bg-page);
+    transform: scale(1.05) translateY(-2px);
+}
+
+/* Hero Visual */
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.floating-island {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.island-main {
+    width: 300px;
+    height: 200px;
+    /* Degradado del objeto visual con Dorado / Morado */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-west) 100%); 
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.island-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    filter: blur(10px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ==========================================
+    TARJETAS Y COMPONENTES
+    ========================================== */
+
+/* Story Grid */
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.story-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-align: center;
+    transition: var(--transition-slow);
+    box-shadow: var(--shadow-md);
+}
+
+.story-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary); /* Borde de hover AHORA Dorado */
+}
+
+.story-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-md);
+    color: var(--primary); /* Iconos AHORA Dorados */
+}
+
+.story-card h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+    color: var(--primary); /* Títulos de tarjetas AHORA Dorados */
+}
+
+.story-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Sectors Grid */
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-lg);
+}
+
+.sector-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.sector-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.sector-card.west:hover {
+    border-color: var(--primary); /* Borde de hover Dorado (Rapunzel) */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Sombra ajustada a Dorado */
+}
+
+.sector-card.east:hover {
+    border-color: var(--accent-west); /* Borde de hover Morado (Caos) */
+    box-shadow: 0 0 15px rgba(94, 53, 177, 0.3);
+}
+
+.sector-header h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--accent-west); /* Por defecto, el título sigue siendo Morado */
+}
+
+.sector-card.west .sector-header h3 {
+    color: var(--primary); /* Título de la zona "West" (Luz) AHORA Dorado */
+}
+
+.sector-card.east .sector-header h3 {
+    color: var(--accent-west); /* Título de la zona "East" (Caos) AHORA Morado */
+}
+
+.sector-subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: var(--space-md);
+}
+
+.sector-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.sector-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.tag {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+}
+
+.sector-objectives h4 {
+    color: var(--primary); /* Título de objetivos AHORA Dorado */
+    margin-bottom: var(--space-xs);
+}
+
+/* Coming Soon Badge AHORA MORADO */
+.coming-soon-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: var(--accent-west);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Characters Grid */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.character-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition-slow);
+    box-shadow: var(--shadow-md);
+}
+
+.character-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary); /* Borde de Hover AHORA Dorado */
+}
+
+.character-image {
+    height: 200px;
+    /* Fondo del personaje con degradado Dorado / Morado */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-west) 100%); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.character-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--bg-page);
+    border: 3px solid var(--primary); /* Borde de Avatar AHORA Dorado */
+    position: relative;
+}
+
+/* Avatares específicos - Colores mixtos para variedad */
+.character-avatar.protagonist {
+    background: linear-gradient(45deg, var(--primary), #81C784); /* Dorado + Verde */
+}
+
+.character-avatar.kai {
+    background: linear-gradient(45deg, var(--primary), #FF8A65); /* Dorado + Naranja */
+}
+
+.character-avatar.sofia {
+    background: linear-gradient(45deg, var(--primary), #F06292); /* Dorado + Rosa */
+}
+
+.character-avatar.flame {
+    background: linear-gradient(45deg, var(--primary), #FF5722); /* Dorado + Rojo */
+}
+
+.character-avatar.bmo {
+    background: linear-gradient(45deg, var(--primary), #64B5F6); /* Dorado + Azul */
+}
+
+.character-avatar.protagonist::before {
+    content: "🧭";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+.character-avatar.kai::before {
+    content: "🎸";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+.character-avatar.sofia::before {
+    content: "👩";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+.character-avatar.flame::before {
+    content: "🔥";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+.character-avatar.bmo::before {
+    content: "🤖";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+.character-image:hover .character-avatar {
+    transform: scale(1.1);
+    transition: var(--transition-normal);
+}
+
+.character-info {
+    padding: var(--space-md);
+}
+
+.character-info h3 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--primary); /* Título del personaje AHORA Dorado */
+}
+
+.character-role {
+    color: var(--accent-west); /* Rol del personaje AHORA Morado */
+    font-size: 14px;
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+}
+
+.character-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Game System Grid */
+.game-system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+}
+
+.system-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    text-align: center;
+    transition: var(--transition-slow);
+    box-shadow: var(--shadow-md);
+}
+
+.system-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary); /* Borde de hover Dorado */
+}
+
+.system-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-md);
+    color: var(--primary); /* Iconos de sistema AHORA Dorados */
+}
+
+.system-card h3 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: var(--primary); /* Títulos de sistema AHORA Dorados */
+}
+
+.system-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==========================================
+    DESARROLLO SECTION
+    ========================================== */
+
+.development {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.development-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.development-stats {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--bg-page); 
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--primary); /* Número AHORA Dorado */
+    margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.development-info h3 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary); 
+}
+
+.development-info p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.tech-item {
+    background: var(--primary); /* Tags AHORA Dorados */
+    color: var(--bg-page); /* Texto del tag en el color de fondo oscuro */
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ==========================================
+    FOOTER
+    ========================================== */
+
+.footer {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    padding: var(--space-xl) 0 var(--space-md);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.footer-section h3,
+.footer-section h4 {
+    font-family: var(--font-heading);
+    color: var(--primary); /* Títulos de Footer AHORA Dorados */
+    margin-bottom: var(--space-sm);
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-disabled);
+}
+
+/* ==========================================
+    RESPONSIVE DESIGN
+    ========================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 40px;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .development-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        --space-xxxl: 64px;
+        --space-xxl: 64px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-xxl) 0;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .sectors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .characters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-system-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .floating-island {
+        display: none;
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: var(--space-sm);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Animaciones adicionales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.story-card,
+.sector-card,
+.character-card,
+.system-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary); /* Scrollbar AHORA Dorado */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
