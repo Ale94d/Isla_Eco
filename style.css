@@ -550,7 +550,7 @@ body {
 }
 
 .character-avatar.sofia::before {
-    content: "👩";
+    content: "🧚";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -576,6 +576,23 @@ body {
     font-size: 32px;
 }
 
+.character-avatar.smull::before {
+    content: "🦋";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+.character-avatar.arvell::before {
+    content: "🐦";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
 .character-image:hover .character-avatar {
     transform: scale(1.1);
     transition: var(--transition-normal);
