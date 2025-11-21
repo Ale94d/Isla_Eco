@@ -575,6 +575,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 32px;
 }
+
 .character-avatar.smull::before {
     content: "🦋";
     position: absolute;
@@ -582,7 +583,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 32px;
-}.character-avatar.arvell::before {
+
+}
+.character-avatar.arvell::before {
     content: "🐦";
     position: absolute;
     top: 50%;
@@ -590,6 +593,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 32px;
 }
+
 .character-image:hover .character-avatar {
     transform: scale(1.1);
     transition: var(--transition-normal);
