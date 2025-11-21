@@ -13,24 +13,24 @@
 
 :root {
     /* COLORES PERSONALIZADOS PARA LA INVERSIÓN 
-       ------------------------------------
-       --primary: AHORA ES DORADO (Rapunzel)
-       --accent-west: AHORA ES MORADO (Caos)
+        ------------------------------------
+        --primary: AHORA ES DORADO (Rapunzel)
+        --accent-west: AHORA ES MORADO (Caos)
     */
     
     /* Colores Primarios (ACCIÓN Y MARCA - AHORA DORADO) */
-    --primary: #FFD700;           /* DORADO BRILLANTE (Marca y Botones Principales) */
-    --primary-light: #FFEB3B;     /* Amarillo Claro (Hover) */
-    --primary-dark: #CCA300;      /* Dorado Oscuro */
+    --primary: #FFD700;       /* DORADO BRILLANTE (Marca y Botones Principales) */
+    --primary-light: #FFEB3B;    /* Amarillo Claro (Hover) */
+    --primary-dark: #CCA300;     /* Dorado Oscuro */
     
     /* Colores de Acento (Temáticos - AHORA MORADO/CAOS) */
-    --accent-west: #5E35B1;       /* Morado Profundo (Acento de Caos) */
-    --accent-east: #9575CD;       /* Morado Claro (Acento Secundario) */
+    --accent-west: #5E35B1;      /* Morado Profundo (Acento de Caos) */
+    --accent-east: #9575CD;      /* Morado Claro (Acento Secundario) */
     
     /* Colores Neutros (Base y Superficies - Siguen Oscuros) */
-    --bg-page: #0D0B14;           /* Fondo de la página (Muy Oscuro) */
+    --bg-page: #0D0B14;          /* Fondo de la página (Muy Oscuro) */
     --bg-surface: #1A1625;        /* Fondo de las Tarjetas/Menú (Oscuro) */
-    --border-subtle: #3C3650;     /* Bordes sutiles */
+    --border-subtle: #3C3650;    /* Bordes sutiles */
     --text-primary: #F2F2F2;      /* Texto principal (Blanco/Claro) */
     --text-secondary: #C5CAE9;    /* Texto secundario (Gris Lavanda) */
     --text-disabled: #5F597A;     /* Texto deshabilitado */
@@ -531,6 +531,18 @@ body {
     background: linear-gradient(45deg, var(--primary), #64B5F6); /* Dorado + Azul */
 }
 
+/* ESTILOS CORREGIDOS para Smull y Arvell */
+.character-avatar.smull {
+    background: linear-gradient(45deg, var(--primary), #FFEB3B); /* Dorado + Amarillo Brillante */
+    border: 3px solid var(--primary-light);
+}
+
+.character-avatar.arvell {
+    background: linear-gradient(45deg, var(--primary), #81C784); /* Dorado + Verde */
+    border: 3px solid var(--primary-light);
+}
+
+/* Emojis (pseudo-elementos ::before) */
 .character-avatar.protagonist::before {
     content: "🧭";
     position: absolute;
