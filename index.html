@@ -1,324 +1,264 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isla Eco | SENA Prom 2026</title>
-<meta name="description" content="Únete a la aventura surrealista de SENA Prom 2026. Un juego de aventura 3D donde naufragas en una isla con dos ecosistemas fantásticos llenos de misterios y desafíos.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENA Prom 2026 | El Último Sol</title>
+    
+    <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzdENTdDMiIvPgo8cGF0aCBkPSJNMTYgOEM4LjY4NjQ5IDggMiAxNC42ODY1IDIgMjBTOC42ODY0OSAzMiAxNiAzMlMzMCwyNS4zMTM1IDMwIDIwUzIzLjMxMzUgOCAxNiA4WiIgZmlsbD0id2hpdGUiLz4KPHBhdGg+ ">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-        <canvas id="particles-canvas"></canvas>
 
-        <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Isla Eco</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#historia" class="nav-link">Historia</a></li>
-                <li><a href="#Regiones" class="nav-link">Regiones</a></li>
-                <li><a href="#personajes" class="nav-link">Personajes</a></li>
-                <li><a href="#registro" class="nav-link">Registro</a></li>
-                <li><a href="#sistema" class="nav-link">Sistema</a></li>
-            </ul>
-                        <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <canvas id="particles-canvas"></canvas>
 
-        <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Isla Eco</h1>
-            <p class="hero-subtitle">Una aventura surrealista te espera</p>
-            <p class="hero-description">Únete a un viajero en su épica travesía por una isla llena de misterios, donde dos ecosistemas fantásticos desafían las leyes de la realidad.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToSection('historia')">Descubrir la Isla</button>
-                <button class="btn btn-secondary" onclick="playTrailer()">Ver Tráiler</button>
-            </div>
-        </div>
-                <div class="hero-visual">
-            <div class="floating-island">
-                <div class="island-shadow"></div>
-                <div class="island-main"></div>
-            </div>
-        </div>
-    </section>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">EL ÚLTIMO SOL</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#historia" class="nav-link">Historia</a></li>
+                <li><a href="#mundos" class="nav-link">Mundos</a></li>
+                <li><a href="#personajes" class="nav-link">Personajes</a></li>
+                <li><a href="#sistema" class="nav-link">Sistema de Juego</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
----
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">El Último Sol: <br> Ascenso y Caos</h1>
+                    <p class="hero-subtitle">Una Aventura que Fusiona la Luz y la Oscuridad</p>
+                    <p class="hero-description">
+                        Únete a Rapunzel en una búsqueda épica a través de un mundo devastado por el Caos. Navega entre los reinos de la Luz, llenos de esperanza dorada, y las tierras corruptas por la magia oscura de la Nocheosfera.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#mundos" class="btn btn-primary">Explorar Mundos <i class="fa-solid fa-flask"></i></a>
+                        <a href="#personajes" class="btn btn-secondary">Conocer Héroes <i class="fa-solid fa-user-group"></i></a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-island">
+                        <div class="island-shadow"></div>
+                        <div class="island-main"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="historia" class="section">
+            <div class="container">
+                <h2 class="section-title">El Legado de la Luz y la Sombra</h2>
+                <div class="story-grid">
+                    <div class="story-card">
+                        <div class="story-icon"><i class="fa-solid fa-sun"></i></div>
+                        <h3>El Brillo Dorado</h3>
+                        <p>Recupera la Flor Dorada para restaurar el orden y la esperanza. Tus poderes de Luz son la clave.</p>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-icon"><i class="fa-solid fa-moon"></i></div>
+                        <h3>Ecos de la Nocheosfera</h3>
+                        <p>Enfréntate a las criaturas del Caos. La oscuridad se intensifica con cada paso en las tierras corruptas.</p>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                        <h3>Fusión de Géneros</h3>
+                        <p>Combina mecánicas de exploración y RPG de fantasía con elementos de plataformas y decisiones morales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section id="historia" class="section">
-        <div class="container">
-            <h2 class="section-title">La Historia</h2>
-            <div class="story-grid">
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">⛵</div>
-                    <h3>El Viajero</h3>
-                    <p>Tras un evento cataclísmico ocurrido en alta mar a bordo de su yate, El Viajero se encuentra repentinamente transportado y solo en una isla misteriosa. Este momento no es solo un accidente, sino la apertura de un portal que lo ha elegido para el equilibrio entre el Caos y la Armonía.</p>
-                </div>
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">🏝️</div>
-                    <h3>Los Dos Mundos</h3>
-                    <p>La isla oculta un profundo secreto manifestado en dos ecosistemas fantásticos y opuestos: el **Sector Oeste**, dominado por la Fuerza Caótica y la lógica surrealista, y el **Sector Este**, gobernado por la Fuerza Armónica y la magia de la belleza y el orden.</p>
-                </div>
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">👥</div>
-                    <h3>Nuevos Compañeros</h3>
-                    <p>El protagonista es recibido por Kai y Sofía, quienes le ofrecen vivir en uno de las dos regiones, cada uno con sus propias reglas y misterios.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="mundos" class="section">
+            <div class="container">
+                <h2 class="section-title">Reinos de Aethel y Caos</h2>
+                <div class="sectors-grid">
+                    <div class="sector-card west">
+                        <div class="coming-soon-badge">PRÓXIMAMENTE</div>
+                        <div class="sector-header">
+                            <h3>El Jardín del Sol (West)</h3>
+                            <div class="sector-subtitle">Reino de Luz y Pureza</div>
+                        </div>
+                        <div class="sector-content">
+                            <p>El hogar de Rapunzel. Un reino vibrante, pero cuyo brillo comienza a desvanecerse. Explora la Torre y las Ciénagas de la Luz.</p>
+                            <div class="sector-features">
+                                <span class="tag">#Exploración</span>
+                                <span class="tag">#Puzzles</span>
+                                <span class="tag">#Crecimiento</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sector-card east">
+                        <div class="sector-header">
+                            <h3>La Nocheosfera (East)</h3>
+                            <div class="sector-subtitle">Zona de Oscuridad y Riesgo</div>
+                        </div>
+                        <div class="sector-content">
+                            <p>Tierras invadidas por el Rey Helado y sus aliados. Requiere táctica y cautela para sobrevivir a sus desafíos oscuros.</p>
+                            <div class="sector-features">
+                                <span class="tag">#Combate</span>
+                                <span class="tag">#Supervivencia</span>
+                                <span class="tag">#Táctico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
----
+        <section id="personajes" class="section">
+            <div class="container">
+                <h2 class="section-title">Los Héroes de la Promesa</h2>
+                <div class="characters-grid">
+                    
+                    <div class="character-card">
+                        <div class="character-image">
+                            <div class="character-avatar protagonist"></div>
+                        </div>
+                        <div class="character-info">
+                            <h3>Rapunzel</h3>
+                            <div class="character-role">La Elegida, Portadora de la Luz</div>
+                            <p class="character-description">El corazón de la aventura. Usa el pelo dorado como arma y sanación.</p>
+                        </div>
+                    </div>
 
-        <section id="Regiones" class="section">
-        <div class="container">
-            <h2 class="section-title">Los Ecosistemas</h2>
-            <div class="sectors-grid">
-                <div class="sector-card west animate-hidden">
-                    <div class="sector-header">
-                        <h3>Isla Eco - Región Oeste</h3>
-                        <span class="sector-subtitle">Jardín de los Ecos</span>
-                    </div>
-                    <div class="sector-content">
-                        <p>Dominado por la **Fuerza Caótica** y la lógica surrealista, esta región es el hogar de Kai, el guardián principal. Sus paisajes incluyen la inestable Colina Invertida y el misterioso Santuario de Cristal.</p>
-                        <div class="sector-features">
-                            <span class="tag">Puzles de Lógica Ilógica</span>
-                            <span class="tag">Físicas Alteradas</span>
-                            <span class="tag">Realidad Desafiada</span>
-                        </div>
-                        <div class="sector-objectives">
-                            <h4>Misión Principal:</h4>
-                            <p>Desarrollar la voluntad para influir en el caos y obtener el **Fragmento de Gema del Caos** en el Santuario de Cristal.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="sector-card east coming-soon animate-hidden">
-                    <div class="sector-header">
-                        <h3>Isla Eco - Región Este</h3>
-                        <span class="sector-subtitle">Realm Mágico</span>
-                    </div>
-                    <div class="sector-content">
-                        <p>Inspirado en la fantasía mágica, este sector está siendo desarrollado. Será la región de la **Fuerza Armónica**, la magia y la belleza.</p>
-                        <div class="coming-soon-badge">Próximamente</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="character-card">
+                        <div class="character-image">
+                            <div class="character-avatar kai"></div>
+                        </div>
+                        <div class="character-info">
+                            <h3>Kai</h3>
+                            <div class="character-role">El Caballero Desafinado</div>
+                            <p class="character-description">Un músico errante que lucha con su guitarra. Ayuda a Rapunzel por honor.</p>
+                        </div>
+                    </div>
 
----
+                    <div class="character-card">
+                        <div class="character-image">
+                            <div class="character-avatar smull"></div>
+                        </div>
+                        <div class="character-info">
+                            <h3>Smull</h3>
+                            <div class="character-role">La Mariposa Sabia</div>
+                            <p class="character-description">Un ser elemental que guía a los héroes a través de los portales mágicos.</p>
+                        </div>
+                    </div>
 
-        <section id="personajes" class="section">
-        <div class="container">
-            <h2 class="section-title">Personajes Principales</h2>
-            <div class="characters-grid">
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar protagonist"></div>
-                    </div>
-                    <div class="character-info">
-                        <h3>El Viajero</h3>
-                        <p class="character-role">Protagonista Principal</p>
-                        <p class="character-description">El Viajero, un héroe sin nombre que debe adaptarse a un mundo lleno de surrealismo y desafíos, comienza un viaje de supervivencia que lo llevará a descubrir los secretos de ambos ecosistemas.</p>
-                    </div>
-                </div>
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar kai"></div>
-                    </div>
-                    <div class="character-info">
-                        <h3>Kai</h3>
-                        <p class="character-role">Guardián del Jardín de los Ecos</p>
-                        <p class="character-description">Kai, el guardián principal del Sector Oeste, actúa como el guía inicial para El Viajero. Su carisma y profundo conocimiento de la Fuerza Caótica lo posicionan como un mentor esencial y único.</p>
-                    </div>
-                </div>
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar sofia"></div>
-                    </div>
-                    <div class="character-info">
-                        <h3>Lysandra</h3>
-                        <p class="character-role">Guardián de Alboria Luminis</p>
-                    </div>
-                    <p class="character-description">Es la encarnación del Manantial de Linfa Viva. Su misión es liderar la purificación y sellar la corrupción que amenaza la zona</p>
-                </div>
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar flame"></div>
-                    </div>
-                    <div class="character-info">
-                        <h3>Flamius</h3>
-                    </div>
-                    <p class="character-description">Un personaje de energía caótica cuya participación es clave en los desafíos y la progresión del región Oeste. Su naturaleza volátil añade dinamismo a la jugabilidad.</p>
-                </div>
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar bmo"></div>
-                    </div>
-                    <div class="character-info">
-                        <h3>Byte</h3>
-                    </div>
-                    <p class="character-description">Una máquina juguetona que habita el región Oeste. Su presencia aporta un toque de tecnología esencial en este mundo surrealista y facilita varios desafíos de la zona.</p>
-                </div>
-                
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar smull"></div> 
-                    </div>
-                    <div class="character-info">
-                        <h3>Smull</h3>
-                    </div>
-                    <p class="character-description">Criatura etérea y espíritu guía. Introduce la magia y los misterios de la Fuerza Armónica.</p>
-                </div>
+                    <div class="character-card">
+                        <div class="character-image">
+                            <div class="character-avatar arvell"></div>
+                        </div>
+                        <div class="character-info">
+                            <h3>Arvell</h3>
+                            <div class="character-role">El Vigilante Silencioso</div>
+                            <p class="character-description">Un ex-guardaespaldas del Sol, ahora un explorador con habilidades aéreas.</p>
+                        </div>
+                    </div>
 
-                <div class="character-card animate-hidden">
-                    <div class="character-image">
-                        <div class="character-avatar arvell"></div>
-                    </div>
-                    <div class="character-info">
-                        <h3>Arvell</h3>
-                    </div>
-                    <p class="character-description">Un pajarito inteligente que sirve como mensajero entre las zonas de la isla. Arvell proporciona pistas cruciales para resolver los puzles y sortear los desafíos del mundo.</p>
-                </div>
+                </div>
+            </div>
+        </section>
 
-            </div>
-        </div>
-    </section>
-    
----
+        <section id="sistema" class="section">
+            <div class="container">
+                <h2 class="section-title">Mecánicas de Juego Centrales</h2>
+                <div class="game-system-grid">
+                    <div class="system-card">
+                        <div class="system-icon"><i class="fa-solid fa-hand-fist"></i></div>
+                        <h3>Combate Dinámico</h3>
+                        <p>Sistema de combos basado en el flujo de magia de Luz y Oscuridad. Usa la melé o los hechizos.</p>
+                    </div>
+                    <div class="system-card">
+                        <div class="system-icon"><i class="fa-solid fa-scroll"></i></div>
+                        <h3>Árbol de Habilidades</h3>
+                        <p>Desbloquea habilidades de 'Luz Pura' (Rapunzel) y 'Magia de Caos' (Finn). Elige tu camino.</p>
+                    </div>
+                    <div class="system-card">
+                        <div class="system-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <h3>Crafteo y Tesoros</h3>
+                        <p>Recolecta recursos en ambos mundos para mejorar equipo y crear pociones clave para la supervivencia.</p>
+                    </div>
+                    <div class="system-card">
+                        <div class="system-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Vínculos de Equipo</h3>
+                        <p>Los lazos con tus compañeros desbloquean ataques especiales y habilidades pasivas únicas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section id="registro" class="section cta-register">
-        <div class="container">
-            <h2 class="section-title">¡Únete a la Aventura!</h2>
-            <p class="cta-subtitle">Regístrate ahora para ser de los primeros en recibir el acceso anticipado y noticias sobre el desarrollo de Isla Eco.</p>
-            
-            <div class="registration-form animate-hidden">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="username">Nombre de Usuario</label>
-                        <input type="text" id="username" name="username" required placeholder="Ej: NaufragoFeliz94">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required placeholder="tu.email@ejemplo.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" required placeholder="Mínimo 8 caracteres">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full-width">Crear Cuenta</button>
-                </form>
-                <p class="login-link">¿Ya tienes cuenta? <a href="#">Iniciar Sesión</a></p>
-            </div>
-        </div>
-    </section>
+        <section class="development section">
+            <div class="container">
+                <div class="development-content">
+                    <div class="development-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Horas de Juego Estimadas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4K</div>
+                            <div class="stat-label">Resolución Gráfica Máxima</div>
+                        </div>
+                    </div>
+                    <div class="development-info">
+                        <h3>Tecnología y Visión</h3>
+                        <p>
+                            Estamos construyendo "El Último Sol" con el objetivo de ofrecer una experiencia visual impactante y una jugabilidad fluida en diversas plataformas. Nuestro motor de juego nos permite integrar la riqueza de la fantasía oscura con la luminosidad de los cuentos de hadas.
+                        </p>
+                        <p>
+                            El equipo de SENA Prom 2026 está comprometido con la entrega de una demo pulida y memorable.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-item">Unity 3D</span>
+                            <span class="tech-item">C#</span>
+                            <span class="tech-item">Shader Graph</span>
+                            <span class="tech-item">Blender</span>
+                            <span class="tech-item">Concept Art</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
----
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>El Último Sol</h3>
+                    <p>Un proyecto de la Promoción SENA 2026, enfocado en el diseño de experiencias interactivas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#historia" class="nav-link">Historia</a></li>
+                        <li><a href="#mundos" class="nav-link">Mundos</a></li>
+                        <li><a href="#personajes" class="nav-link">Personajes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Correo: sena.prom2026@email.com</p>
+                    <p>Ubicación: Bogotá, Colombia</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 SENA Promoción. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
 
-        <section id="sistema" class="section">
-        <div class="container">
-            <h2 class="section-title">Sistema de Juego</h2>
-            <div class="game-system-grid">
-                <div class="system-card animate-hidden">
-                    <div class="system-icon">🎯</div>
-                    <h3>Misiones Narrativas</h3>
-                    <p>Un sistema de **18 Misiones de Trama Principal** (9 por cada región) diseñadas para guiar a El Viajero a través de las dos regiones. Son esenciales para el progreso del personaje.</p>
-                </div>
-                <div class="system-card animate-hidden">
-                    <div class="system-icon">🎮</div>
-                    <h3>Personalización</h3>
-                    <p>Un sistema básico de personalización del personaje que permite a El Viajero adaptar su identidad y apariencia al comenzar su aventura en la Isla Eco.</p>
-                </div>
-                <div class="system-card animate-hidden">
-                    <div class="system-icon">🔧</div>
-                    <h3>Tecnología</h3>
-                    <p>Desarrollado en **Unity** con **C#** en VS Code, modelado en **Blender** y gráficos potenciados por **Adobe Illustrator**.</p>
-                </div>
-                <div class="system-card animate-hidden">
-                    <div class="system-icon">🌟</div>
-                    <h3>Ecosfera</h3>
-                    <p>Un entorno dinámico donde las leyes de la física pueden alterarse y la lógica se vuelve ilógica, creando desafíos y experiencias únicas en cada partida.</p>
-            </div>
-        </div>
-    </section>
-
----
-
-        <section id="desarrollo" class="section development">
-        <div class="container">
-            <h2 class="section-title">Progreso de Desarrollo</h2>
-            <div class="development-content">
-                <div class="development-stats">
-                    <div class="stat-item animate-hidden">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Región Oeste</div>
-                    </div>
-                    <div class="stat-item animate-hidden">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Región Este</div>
-                    </div>
-                    <div class="stat-item animate-hidden">
-                        <div class="stat-number">18/18</div>
-                        <div class="stat-label">Misiones TP</div>
-                    </div>
-                </div>
-                <div class="development-info">
-                    <h3>SENA Prom 2026</h3>
-                    <p>Un proyecto estudiantil del SENA que combina creatividad, tecnología y narrativa para crear una experiencia de juego única. Este proyecto representa la culminación de habilidades en desarrollo de videojuegos, modelado 3D y diseño digital.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">Unity 3D</span>
-                        <span class="tech-item">C#</span>
-                        <span class="tech-item">Blender</span>
-                        <span class="tech-item">Adobe Illustrator</span>
-                        <span class="tech-item">VS Code</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
----
-
-        <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>SENA Prom 2026</h3>
-                    <p>Un juego de aventura 3D que desafía la realidad</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Desarrollado con</h4>
-                    <ul>
-                        <li>Unity 3D</li>
-                        <li>C# & VS Code</li>
-                        <li>Blender</li>
-                        <li>Adobe Illustrator</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Proyecto Estudiantil</h4>
-                    <p>Desarrollado como proyecto académico del SENA, combinando creatividad y tecnología para crear exeriencias de juego innovadoras.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 SENA Prom 2026. Proyecto estudiantil SENA.</p>
-            </div>
-        </div>
-    </footer>
-
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

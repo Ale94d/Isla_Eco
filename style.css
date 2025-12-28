@@ -1,740 +1,685 @@
-﻿/*
-    SENA Prom 2026 - Video Game Website Styles
-    Diseño: Fusión de Fantasía LUMINOSA (Rapunzel) y Oscura (Hora de Aventura)
-    ========================================== 
-*/
+﻿/* ==========================================
+// style.css - SENA Prom 2026: Isla Eco
+// Estilos base, navegación, secciones, y animaciones.
+// ========================================== */
 
-/* CSS Reset y Variables */
+/* --- 1. Variables CSS y Reset Básico --- */
+:root {
+    /* Colores */
+    --primary: #7D57C2;        /* Púrpura/Violeta principal */
+    --primary-light: #9B7CCF;
+    --primary-dark: #5A3F8B;
+    --secondary: #57C2A9;      /* Aqua secundario para acentos */
+    --bg-dark: #1A1625;        /* Fondo principal (muy oscuro) */
+    --bg-surface: #252035;     /* Superficies (tarjetas, modales) */
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3AEC7;
+    --border-subtle: #3A3250;
+
+    /* Tipografía */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Espaciado */
+    --space-xs: 5px;
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 40px;
+    --space-xl: 80px;
+
+    /* Misceláneo */
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.5);
+    --transition-normal: 0.3s ease-in-out;
+}
+
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    /* COLORES PERSONALIZADOS PARA LA INVERSIÓN 
-        ------------------------------------
-        --primary: AHORA ES DORADO (Rapunzel)
-        --accent-west: AHORA ES MORADO (Caos)
-    */
-    
-    /* Colores Primarios (ACCIÓN Y MARCA - AHORA DORADO) */
-    --primary: #FFD700;       /* DORADO BRILLANTE (Marca y Botones Principales) */
-    --primary-light: #FFEB3B;    /* Amarillo Claro (Hover) */
-    --primary-dark: #CCA300;     /* Dorado Oscuro */
-    
-    /* Colores de Acento (Temáticos - AHORA MORADO/CAOS) */
-    --accent-west: #5E35B1;      /* Morado Profundo (Acento de Caos) */
-    --accent-east: #9575CD;      /* Morado Claro (Acento Secundario) */
-    
-    /* Colores Neutros (Base y Superficies - Siguen Oscuros) */
-    --bg-page: #0D0B14;          /* Fondo de la página (Muy Oscuro) */
-    --bg-surface: #1A1625;        /* Fondo de las Tarjetas/Menú (Oscuro) */
-    --border-subtle: #3C3650;    /* Bordes sutiles */
-    --text-primary: #F2F2F2;      /* Texto principal (Blanco/Claro) */
-    --text-secondary: #C5CAE9;    /* Texto secundario (Gris Lavanda) */
-    --text-disabled: #5F597A;     /* Texto deshabilitado */
-    
-    /* Colores Semánticos */
-    --success: #4CAF50;
-    --warning: #FFC107;
-    --error: #F44336;
-    
-    /* Tipografía, Espaciado, Bordes, etc. */
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --space-xs: 8px;
-    --space-sm: 16px;
-    --space-md: 24px;
-    --space-lg: 32px;
-    --space-xl: 48px;
-    --space-xxl: 96px;
-    --space-xxxl: 128px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --radius-full: 9999px;
-    --shadow-md: 0px 8px 24px rgba(255, 215, 0, 0.15); /* Sombra ajustada a Dorado */
-    --shadow-lg: 0px 12px 32px rgba(255, 215, 0, 0.25); /* Sombra ajustada a Dorado */
-    --shadow-hover: 0px 12px 32px rgba(255, 215, 0, 0.25); /* Sombra ajustada a Dorado */
-    --transition-fast: 0.15s ease-out;
-    --transition-normal: 0.25s ease-out;
-    --transition-slow: 0.3s ease-out;
-    --transition-bounce: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Base Styles */
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-body);
-    font-size: 18px;
-    line-height: 1.7;
+    font-family: var(--font-secondary);
+    background-color: var(--bg-dark);
     color: var(--text-primary);
-    background-color: var(--bg-page);
-    overflow-x: hidden;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
-/* Canvas para partículas */
+a {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: var(--transition-normal);
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* --- 2. Sistema de Partículas (Canvas) --- */
 #particles-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    opacity: 0.6;
+    z-index: -1; /* Mantenlo en el fondo */
 }
 
-/* Utilidades */
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
-}
-
-.section {
-    padding: var(--space-xxl) 0;
-}
-
-.section-title {
-    font-family: var(--font-heading);
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 1.2;
-    text-align: center;
-    margin-bottom: var(--space-xl);
-    /* Título principal con degradado Dorado / Morado */
-    background: linear-gradient(45deg, var(--primary), var(--accent-west));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ==========================================
-    NAVEGACIÓN
-    ========================================== */
-
+/* --- 3. Barra de Navegación (Navbar) --- */
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
+    /* Fondo semi-transparente por defecto, JS lo ajusta al hacer scroll */
     background: rgba(26, 22, 37, 0.95); 
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-primary);
     z-index: 1000;
-    transition: var(--transition-normal);
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled {
+    background: rgba(26, 22, 37, 0.98); /* Fondo más sólido al scrollear */
+    box-shadow: var(--shadow-md);
 }
 
 .nav-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: var(--space-md) var(--space-md);
     height: 80px;
 }
 
-.nav-logo .logo-text {
-    font-family: var(--font-heading);
-    font-size: 24px;
+.nav-logo {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary); /* Logo AHORA Dorado */
-    text-decoration: none;
+    color: var(--primary-light);
 }
 
 .nav-menu {
-    display: flex;
     list-style: none;
+    display: flex;
     gap: var(--space-lg);
 }
 
 .nav-link {
-    color: var(--text-secondary);
-    text-decoration: none;
+    font-family: var(--font-primary);
     font-weight: 500;
-    transition: var(--transition-normal);
+    color: var(--text-secondary);
     position: relative;
+    padding-bottom: 5px;
 }
 
 .nav-link:hover {
-    color: var(--primary); /* Hover AHORA Dorado */
+    color: var(--primary-light);
 }
 
+/* Indicador de sección activa */
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px;
     left: 0;
+    bottom: 0;
     width: 0;
     height: 2px;
-    background: var(--primary); /* Subrayado AHORA Dorado */
-    transition: var(--transition-normal);
+    background-color: var(--primary);
+    transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
-/* Hamburger Menu */
+/* Menú Hamburguesa (oculto por defecto) */
 .hamburger {
-    display: none;
-    flex-direction: column;
+    display: none; 
     cursor: pointer;
-    gap: 4px;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    z-index: 101; 
 }
 
 .hamburger span {
-    width: 25px;
+    display: block;
+    width: 100%;
     height: 3px;
-    background: var(--text-primary);
+    background-color: var(--text-primary);
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: 0.3s ease;
+}
+
+/* --- 4. Estilos de Botones --- */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     transition: var(--transition-normal);
 }
 
-/* ==========================================
-    HERO SECTION
-    ========================================== */
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(125, 87, 194, 0.4);
+}
 
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(125, 87, 194, 0.6);
+}
+
+.btn-secondary {
+    background: none;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(87, 194, 169, 0.1);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+/* --- 5. Estilos de Secciones Base --- */
+.section {
+    padding: var(--space-xl) 0;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Para que esté por encima del canvas */
+}
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--primary-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- 6. Hero Section (Inicio) --- */
 .hero {
     min-height: 100vh;
+    padding-top: 150px; /* Espacio para el navbar */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-xxxl) 0;
-    background: radial-gradient(circle at 50% 50%, var(--bg-surface) 0%, var(--bg-page) 70%); 
+    gap: var(--space-lg);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Importante para el parallax */
 }
 
 .hero-content {
-    flex: 1;
     max-width: 600px;
-    z-index: 2;
+    z-index: 10;
 }
 
 .hero-title {
-    font-family: var(--font-heading);
-    font-size: 64px;
+    font-family: var(--font-primary);
+    font-size: 5rem;
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: var(--space-md);
-    /* Título Hero con gradiente Dorado / Morado */
-    background: linear-gradient(45deg, var(--primary), var(--accent-west)); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    margin-bottom: var(--space-sm);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: var(--text-primary);
 }
 
 .hero-subtitle {
-    font-size: 20px;
-    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--secondary);
     margin-bottom: var(--space-md);
 }
 
 .hero-description {
-    font-size: 18px;
+    font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: var(--space-xl);
-    line-height: 1.6;
+    margin-bottom: var(--space-lg);
 }
 
 .hero-buttons {
     display: flex;
     gap: var(--space-md);
-    flex-wrap: wrap;
 }
 
-/* Botones */
-.btn {
-    padding: var(--space-sm) var(--space-lg);
-    border: none;
-    border-radius: var(--radius-full);
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition-bounce);
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-primary {
-    background: var(--primary); /* Botón principal AHORA Dorado */
-    color: var(--bg-page); /* Texto del botón oscuro para contraste */
-    box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); 
-}
-
-.btn-primary:active {
-    transform: scale(0.98);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--primary); /* Texto secundario AHORA Dorado */
-    border: 2px solid var(--primary); /* Borde secundario AHORA Dorado */
-}
-
-.btn-secondary:hover {
-    background: var(--primary); /* Fondo hover AHORA Dorado */
-    color: var(--bg-page);
-    transform: scale(1.05) translateY(-2px);
-}
-
-/* Hero Visual */
+/* Parallax Visual (Island Simulation) */
 .hero-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50vw;
+    height: 100vh;
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 .floating-island {
-    position: relative;
-    animation: float 6s ease-in-out infinite;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 400px;
+    height: 400px;
+    /* Animación de flotación suave */
+    animation: float 8s ease-in-out infinite; 
 }
 
 .island-main {
-    width: 300px;
-    height: 200px;
-    /* Degradado del objeto visual con Dorado / Morado */
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-west) 100%); 
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: var(--shadow-lg);
-    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--primary-dark) 0%, var(--primary) 60%, var(--bg-dark) 100%);
+    border-radius: 50%;
+    transform: rotateX(60deg) scaleY(0.8);
+    position: absolute;
+    box-shadow: 0 0 50px rgba(125, 87, 194, 0.5);
 }
 
 .island-shadow {
     position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.3);
+    bottom: -100px;
+    left: 50px;
+    width: 350px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    filter: blur(10px);
+    filter: blur(20px);
+    animation: shadowFloat 8s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateY(0) rotateX(60deg) scaleY(0.8); }
+    50% { transform: translateY(-30px) rotateX(60deg) scaleY(0.8); }
+}
+@keyframes shadowFloat {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.7; }
 }
 
-/* ==========================================
-    TARJETAS Y COMPONENTES
-    ========================================== */
 
-/* Story Grid */
+/* --- 7. Sección Historia --- */
 .story-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-lg);
+    margin-top: var(--space-md);
 }
 
 .story-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    background-color: var(--bg-surface);
     padding: var(--space-lg);
-    text-align: center;
-    transition: var(--transition-slow);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-md);
-}
-
-.story-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--primary); /* Borde de hover AHORA Dorado */
+    text-align: center;
+    opacity: 0; /* Oculto inicialmente para animación */
+    transform: translateY(30px);
 }
 
 .story-icon {
-    font-size: 48px;
+    font-size: 3rem;
     margin-bottom: var(--space-md);
-    color: var(--primary); /* Iconos AHORA Dorados */
 }
 
 .story-card h3 {
-    font-family: var(--font-heading);
-    font-size: 24px;
-    font-weight: 500;
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--primary-light);
     margin-bottom: var(--space-sm);
-    color: var(--primary); /* Títulos de tarjetas AHORA Dorados */
 }
 
 .story-card p {
     color: var(--text-secondary);
-    line-height: 1.6;
 }
 
-/* Sectors Grid */
+/* --- 8. Sección Regiones (Ecosistemas) --- */
 .sectors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: flex;
     gap: var(--space-lg);
+    justify-content: center;
+    margin-top: var(--space-md);
 }
 
 .sector-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
+    flex: 1;
+    max-width: 500px;
+    background-color: var(--bg-surface);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
-    transition: var(--transition-slow);
-    position: relative;
-    overflow: hidden;
+    border: 3px solid transparent;
+    transition: border-color var(--transition-normal);
+    opacity: 0; 
+}
+
+.sector-card.animate-in {
+     opacity: 1;
+}
+
+.sector-card.west {
+    border-color: var(--primary);
+}
+
+.sector-card.east {
+    border-color: var(--secondary);
 }
 
 .sector-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-}
-
-.sector-card.west:hover {
-    border-color: var(--primary); /* Borde de hover Dorado (Rapunzel) */
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Sombra ajustada a Dorado */
-}
-
-.sector-card.east:hover {
-    border-color: var(--accent-west); /* Borde de hover Morado (Caos) */
-    box-shadow: 0 0 15px rgba(94, 53, 177, 0.3);
+    box-shadow: 0 0 30px rgba(125, 87, 194, 0.5);
 }
 
 .sector-header h3 {
-    font-family: var(--font-heading);
-    font-size: 24px;
-    font-weight: 600;
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
     margin-bottom: var(--space-xs);
-    color: var(--accent-west); /* Por defecto, el título sigue siendo Morado */
-}
-
-.sector-card.west .sector-header h3 {
-    color: var(--primary); /* Título de la zona "West" (Luz) AHORA Dorado */
-}
-
-.sector-card.east .sector-header h3 {
-    color: var(--accent-west); /* Título de la zona "East" (Caos) AHORA Morado */
 }
 
 .sector-subtitle {
-    color: var(--text-secondary);
-    font-size: 14px;
-    margin-bottom: var(--space-md);
-}
-
-.sector-content p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--space-md);
-}
-
-.sector-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-md);
-}
-
-.tag {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-full);
-    font-size: 14px;
-}
-
-.sector-objectives h4 {
-    color: var(--primary); /* Título de objetivos AHORA Dorado */
-    margin-bottom: var(--space-xs);
-}
-
-/* Coming Soon Badge AHORA MORADO */
-.coming-soon-badge {
-    position: absolute;
-    top: var(--space-md);
-    right: var(--space-md);
-    background: var(--accent-west);
-    color: var(--text-primary);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-full);
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* Characters Grid */
-.characters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-lg);
-}
-
-.character-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: var(--transition-slow);
-    box-shadow: var(--shadow-md);
-}
-
-.character-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--primary); /* Borde de Hover AHORA Dorado */
-}
-
-.character-image {
-    height: 200px;
-    /* Fondo del personaje con degradado Dorado / Morado */
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-west) 100%); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.character-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--bg-page);
-    border: 3px solid var(--primary); /* Borde de Avatar AHORA Dorado */
-    position: relative;
-}
-
-/* Avatares específicos - Colores mixtos para variedad */
-.character-avatar.protagonist {
-    background: linear-gradient(45deg, var(--primary), #81C784); /* Dorado + Verde */
-}
-
-.character-avatar.kai {
-    background: linear-gradient(45deg, var(--primary), #FF8A65); /* Dorado + Naranja */
-}
-
-.character-avatar.sofia {
-    background: linear-gradient(45deg, var(--primary), #F06292); /* Dorado + Rosa */
-}
-
-.character-avatar.flame {
-    background: linear-gradient(45deg, var(--primary), #FF5722); /* Dorado + Rojo */
-}
-
-.character-avatar.bmo {
-    background: linear-gradient(45deg, var(--primary), #64B5F6); /* Dorado + Azul */
-}
-
-/* ESTILOS CORREGIDOS para Smull y Arvell */
-.character-avatar.smull {
-    background: linear-gradient(45deg, var(--primary), #FFEB3B); /* Dorado + Amarillo Brillante */
-    border: 3px solid var(--primary-light);
-}
-
-.character-avatar.arvell {
-    background: linear-gradient(45deg, var(--primary), #81C784); /* Dorado + Verde */
-    border: 3px solid var(--primary-light);
-}
-
-/* Emojis (pseudo-elementos ::before) */
-.character-avatar.protagonist::before {
-    content: "🧭";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-
-.character-avatar.kai::before {
-    content: "🎸";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-
-.character-avatar.sofia::before {
-    content: "🧚";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-
-.character-avatar.flame::before {
-    content: "🔥";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-
-.character-avatar.bmo::before {
-    content: "🤖";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-
-.character-avatar.smull::before {
-    content: "🦋";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-
-}
-.character-avatar.arvell::before {
-    content: "🐦";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 32px;
-}
-
-.character-image:hover .character-avatar {
-    transform: scale(1.1);
-    transition: var(--transition-normal);
-}
-
-.character-info {
-    padding: var(--space-md);
-}
-
-.character-info h3 {
-    font-family: var(--font-heading);
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: var(--space-xs);
-    color: var(--primary); /* Título del personaje AHORA Dorado */
-}
-
-.character-role {
-    color: var(--accent-west); /* Rol del personaje AHORA Morado */
-    font-size: 14px;
-    margin-bottom: var(--space-sm);
+    display: block;
     font-weight: 500;
-}
-
-.character-description {
     color: var(--text-secondary);
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* Game System Grid */
-.game-system-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-lg);
-}
-
-.system-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    text-align: center;
-    transition: var(--transition-slow);
-    box-shadow: var(--shadow-md);
-}
-
-.system-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--primary); /* Borde de hover Dorado */
-}
-
-.system-icon {
-    font-size: 48px;
     margin-bottom: var(--space-md);
-    color: var(--primary); /* Iconos de sistema AHORA Dorados */
-}
-
-.system-card h3 {
-    font-family: var(--font-heading);
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: var(--space-sm);
-    color: var(--primary); /* Títulos de sistema AHORA Dorados */
-}
-
-.system-card p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-/* ==========================================
-    DESARROLLO SECTION
-    ========================================== */
-
-.development {
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-.development-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-xl);
-    align-items: center;
-}
-
-.development-stats {
-    display: grid;
-    gap: var(--space-lg);
-}
-
-.stat-item {
-    text-align: center;
-    padding: var(--space-lg);
-    background: var(--bg-page); 
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-}
-
-.stat-number {
-    font-family: var(--font-heading);
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--primary); /* Número AHORA Dorado */
-    margin-bottom: var(--space-xs);
-}
-
-.stat-label {
-    color: var(--text-secondary);
-    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.development-info h3 {
-    font-family: var(--font-heading);
-    font-size: 32px;
-    font-weight: 600;
+.sector-content p {
     margin-bottom: var(--space-md);
-    color: var(--text-primary); 
+    color: var(--text-secondary);
+}
+
+.tag {
+    display: inline-block;
+    background-color: rgba(125, 87, 194, 0.2);
+    color: var(--primary-light);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    margin-right: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.sector-objectives h4 {
+    color: var(--secondary);
+    margin-top: var(--space-md);
+}
+
+.coming-soon-badge {
+    background-color: var(--primary-dark);
+    color: var(--text-primary);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 600;
+    margin-top: var(--space-md);
+    letter-spacing: 1px;
+}
+
+
+/* --- 9. Sección Personajes --- */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.character-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    padding: var(--space-md);
+    text-align: center;
+    opacity: 0;
+}
+
+.character-image {
+    position: relative;
+    height: 150px;
+    margin-bottom: var(--space-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Avatares Simulación (usa pseudo-elementos para íconos/emojis) */
+.character-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--primary-dark);
+    border: 4px solid var(--primary-light);
+    position: relative;
+    display: inline-block;
+}
+
+.character-avatar::before {
+    content: ''; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+/* Iconografía Específica (usando emojis en el content) */
+.character-avatar.protagonist::before { content: "👤"; }
+.character-avatar.kai::before { content: "🌀"; }
+.character-avatar.sofia::before { content: "✨"; }
+.character-avatar.flame::before { content: "🔥"; }
+.character-avatar.bmo::before { content: "🤖"; }
+.character-avatar.smull::before { content: "🦋"; } 
+.character-avatar.arvell::before { content: "🦜"; }
+
+.character-info h3 {
+    font-family: var(--font-primary);
+    font-size: 1.4rem;
+    color: var(--primary-light);
+}
+
+.character-role {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+}
+
+.character-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* --- 10. Sección CTA/Registro --- */
+.cta-register {
+    background-color: var(--bg-surface);
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.registration-form {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+    background-color: var(--bg-dark);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    text-align: left;
+    opacity: 0;
+}
+
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--primary-light);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(125, 87, 194, 0.3);
+}
+
+.btn-full-width {
+    width: 100%;
+    margin-top: var(--space-sm);
+}
+
+.login-link {
+    margin-top: var(--space-md);
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.login-link a {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* --- 11. Sección Sistema y Desarrollo --- */
+.game-system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.system-card {
+    background-color: var(--bg-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+    opacity: 0;
+}
+
+.system-icon {
+    font-size: 2.5rem;
+    color: var(--primary-light);
+    margin-bottom: var(--space-sm);
+}
+
+.system-card h3 {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-bottom: var(--space-xs);
+}
+
+.system-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Sección de Desarrollo y Progreso */
+.development {
+    padding-bottom: var(--space-xl);
+}
+
+.development-content {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: center;
+    margin-top: var(--space-lg);
+}
+
+.development-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-md);
+}
+
+.stat-item {
+    background-color: var(--bg-surface);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--primary-dark);
+    text-align: center;
+    opacity: 0;
+}
+
+.stat-number {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-top: var(--space-xs);
+}
+
+.development-info {
+    flex: 1.5;
+    padding: var(--space-md);
+}
+
+.development-info h3 {
+    font-family: var(--font-primary);
+    color: var(--primary-light);
+    margin-bottom: var(--space-sm);
 }
 
 .development-info p {
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
 }
 
 .tech-stack {
@@ -744,106 +689,134 @@ body {
 }
 
 .tech-item {
-    background: var(--primary); /* Tags AHORA Dorados */
-    color: var(--bg-page); /* Texto del tag en el color de fondo oscuro */
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-full);
-    font-size: 14px;
+    background-color: rgba(87, 194, 169, 0.15);
+    color: var(--secondary);
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
     font-weight: 500;
 }
 
-/* ==========================================
-    FOOTER
-    ========================================== */
 
+/* --- 12. Footer --- */
 .footer {
-    background: var(--bg-surface);
+    background-color: var(--bg-surface);
+    padding: var(--space-lg) 0 var(--space-md) 0;
     border-top: 1px solid var(--border-subtle);
-    padding: var(--space-xl) 0 var(--space-md);
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-lg);
-    margin-bottom: var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+    gap: var(--space-md);
 }
 
-.footer-section h3,
+.footer-section {
+    max-width: 300px;
+}
+
 .footer-section h4 {
-    font-family: var(--font-heading);
-    color: var(--primary); /* Títulos de Footer AHORA Dorados */
+    color: var(--primary-light);
+    font-family: var(--font-primary);
     margin-bottom: var(--space-sm);
 }
 
-.footer-section p {
+.footer-section p, .footer-section li {
     color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 0.9rem;
+    list-style: none;
 }
 
 .footer-section ul {
     list-style: none;
 }
 
-.footer-section li {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-xs);
-}
-
 .footer-bottom {
     text-align: center;
     padding-top: var(--space-md);
-    border-top: 1px solid var(--border-subtle);
-    color: var(--text-disabled);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ==========================================
-    RESPONSIVE DESIGN
-    ========================================== */
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
 
-/* Tablet */
+/* --- 13. Estilos del Modal (Trailer) --- */
+.trailer-modal .modal-content {
+    /* Estilos inyectados por JS, pero puedes añadir aquí si quieres */
+    animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- 14. Media Queries (Responsividad) --- */
+
 @media (max-width: 1024px) {
-    .section-title {
-        font-size: 40px;
-    }
-    
     .hero-title {
-        font-size: 48px;
+        font-size: 4rem;
     }
-    
-    .development-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+    .hero-content {
+        max-width: 50%;
+    }
+    .hero-visual {
+        right: 0;
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-    :root {
-        --space-xxxl: 64px;
-        --space-xxl: 64px;
+    .section {
+        padding: var(--space-lg) 0;
     }
-    
+
+    /* Navbar */
     .nav-menu {
-        display: none;
+        /* JS se encarga de posicionarlo, aquí solo el estilo */
+        gap: 0;
     }
     
-    .hamburger {
-        display: flex;
+    .nav-container {
+        padding: var(--space-md) var(--space-md);
+    }
+    
+    .nav-link {
+        padding: 15px 0;
     }
     
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: var(--space-xxl) 0;
+        padding-top: 100px;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        order: 2; /* Mover el contenido debajo de la imagen */
+    }
+
+    .hero-visual {
+        position: static;
+        transform: none;
+        width: 80%;
+        height: 300px;
+        margin: 0 auto 50px auto;
+        order: 1;
     }
     
     .hero-title {
-        font-size: 36px;
-    }
-    
-    .section-title {
-        font-size: 32px;
+        font-size: 3.5rem;
     }
     
     .hero-buttons {
@@ -851,79 +824,44 @@ body {
     }
     
     .sectors-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .characters-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .game-system-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .floating-island {
-        display: none;
-    }
-}
-
-/* Mobile Small */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 var(--space-sm);
-    }
-    
-    .hero-title {
-        font-size: 28px;
-    }
-    
-    .section-title {
-        font-size: 24px;
-    }
-    
-    .btn {
-        width: 100%;
-        margin-bottom: var(--space-sm);
-    }
-    
-    .hero-buttons {
         flex-direction: column;
     }
-}
-
-/* Animaciones adicionales */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+    
+    .development-content {
+        flex-direction: column;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    
+    .development-stats {
+        grid-template-columns: 1fr 1fr;
+        max-width: 400px;
+        margin: 0 auto var(--space-md) auto;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-section {
+        max-width: 100%;
     }
 }
 
-.story-card,
-.sector-card,
-.character-card,
-.system-card {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-/* Scrollbar personalizado */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-page);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary); /* Scrollbar AHORA Dorado */
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-light);
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    .btn {
+        width: 100%;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
 }
