@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isla Eco | SENA Prom 2026</title>
+    <title>Isla Eco | El Viajero</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,8 +16,9 @@
             <ul class="nav-menu">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li><a href="#historia" class="nav-link">Historia</a></li>
+                <li><a href="#Regiones" class="nav-link">Regiones</a></li>
                 <li><a href="#personajes" class="nav-link">Personajes</a></li>
-                <li><a href="#registro" class="nav-link">Registro</a></li>
+                <li><a href="#descargar" class="nav-link">Descargar</a></li>
             </ul>
         </div>
     </nav>
@@ -25,18 +26,16 @@
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Isla Eco</h1>
-            <p class="hero-subtitle">Una aventura surrealista te espera</p>
-            <p class="hero-description">Únete a un viajero en su épica travesía por una isla llena de misterios y leyes físicas alteradas.</p>
+            <p class="hero-subtitle">El despertar de un náufrago</p>
+            <p class="hero-description">Tras un incidente catastrófico en alta mar, el Viajero despierta en un mundo dividido. Tu objetivo: recuperar las gemas de poder para restaurar el equilibrio.</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToSection('historia')">Explorar</button>
+                <button class="btn btn-primary" onclick="scrollToSection('historia')">Comenzar Aventura</button>
             </div>
         </div>
-
-        <div class="hero-video-container animate-hidden">
+        <div class="hero-video-container">
             <div class="video-frame">
-                <video controls poster="https://via.placeholder.com/600x337/1A1625/7D57C2?text=Trailer+Isla+Eco" class="main-video">
+                <video controls class="main-video">
                     <source src="video/trailer.mp4" type="video/mp4">
-                    Tu navegador no soporta videos.
                 </video>
                 <div class="video-glow"></div>
             </div>
@@ -45,60 +44,99 @@
 
     <section id="historia" class="section">
         <div class="container">
-            <h2 class="section-title">La Historia</h2>
-            <div class="story-grid">
+            <div class="story-ecosystem-grid">
                 <div class="story-card animate-hidden">
-                    <div class="story-icon">⛵</div>
-                    <h3>El Naufragio</h3>
-                    <p>Tras un evento cataclísmico, el Viajero despierta en una isla donde el Caos y la Armonía luchan por el control.</p>
+                    <div class="story-icon">🌊</div>
+                    <h3>Incidente en Alta Mar</h3>
+                    <p>Lo que comenzó como una celebración vibrante terminó en un silencio profundo. El Viajero fue arrastrado por fuerzas desconocidas, despertando en una orilla donde el pasado es solo un eco lejano tras el naufragio[cite: 1].</p>
                 </div>
                 <div class="story-card animate-hidden">
-                    <div class="story-icon">🏝️</div>
-                    <h3>Los Ecosistemas</h3>
-                    <p>Dos regiones opuestas: el Sector Oeste (Caos) y el Sector Este (Armonía) con bellezas místicas.</p>
+                    <div class="story-icon">💎</div>
+                    <h3>El Misterio de las Gemas</h3>
+                    <p>Para restaurar el Nexo, el Viajero debe superar desafíos y fortalecer lazos mediante misiones de amistad para obtener el Fragmento de Gema del Caos y el Fragmento de Gema de la Armonía[cite: 9, 29, 32].</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Regiones" class="section">
+        <div class="container">
+            <h2 class="section-title">Regiones y Trama Principal</h2>
+            <div class="regions-detailed-grid">
+                
+                <div class="region-info-card animate-hidden west-border">
+                    <div class="region-header">
+                        <h3>Region Oeste</h3>
+                        <span class="guardian-tag">Guardián: Kai</span>
+                    </div>
+                    <p class="region-desc">Un paisaje de tecnología y caos donde deberás fortalecer lazos para avanzar[cite: 1, 10].</p>
+                    <div class="missions-list">
+                        <h4>Trama Principal (TP 1-9):</h4>
+                        <ul>
+                            <li><span>1-3.</span> Recupera objetos del accidente y ayuda a Flamius a estabilizar su fuego[cite: 1, 3].</li>
+                            <li><span>4-6.</span> Supera la Colina Invertida y gana los desafíos lógicos del robot Byte[cite: 4, 6].</li>
+                            <li><span>7-9.</span> Abre el Santuario, enfrenta la verdad de Cyd y reclama la <strong>Gema del Caos</strong>[cite: 7, 8, 9].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="region-info-card animate-hidden east-border">
+                    <div class="region-header">
+                        <h3>Region Este</h3>
+                        <span class="guardian-tag">Guardián: Lysandra</span>
+                    </div>
+                    <p class="region-desc">Santuario místico de vida donde la amistad revela secretos ancestrales[cite: 19].</p>
+                    <div class="missions-list">
+                        <h4>Trama Principal (TP 10-18):</h4>
+                        <ul>
+                            <li><span>10-12.</span> Domina la Magia de Crecimiento y purifica los manantiales de Linfa[cite: 20, 21].</li>
+                            <li><span>13-15.</span> Supera las rutas de Arvell y cura el pantano contaminado[cite: 22, 23, 24].</li>
+                            <li><span>16-18.</span> Sana al Árbol Antiguo y realiza el rito para obtener la <strong>Gema de la Armonía</strong>[cite: 25, 28, 29].</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <section id="personajes" class="section">
         <div class="container">
-            <h2 class="section-title">Habitantes</h2>
+            <h2 class="section-title">Habitantes de la Isla</h2>
             <div class="characters-grid">
                 <div class="character-card animate-hidden" data-id="Viajero">
-                    <div class="character-avatar protagonist">👤</div>
+                    <div class="character-avatar">👤</div>
                     <h3>El Viajero</h3>
-                    <p class="character-role">Protagonista</p>
                 </div>
                 <div class="character-card animate-hidden" data-id="Kai">
-                    <div class="character-avatar kai">🌀</div>
+                    <div class="character-avatar">🌀</div>
                     <h3>Kai</h3>
-                    <p class="character-role">Guardián del Caos</p>
                 </div>
                 <div class="character-card animate-hidden" data-id="Lysandra">
-                    <div class="character-avatar sofia">✨</div>
+                    <div class="character-avatar">✨</div>
                     <h3>Lysandra</h3>
-                    <p class="character-role">Guardián de la Armonía</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="registro" class="section">
+    <section id="descargar" class="section">
         <div class="container">
-            <h2 class="section-title">Registro</h2>
-            <div class="registration-form animate-hidden">
-                <form onsubmit="event.preventDefault(); alert('¡Bienvenido al equipo, viajero!');">
-                    <div class="form-group">
-                        <label>Usuario</label>
-                        <input type="text" required placeholder="Tu nombre">
+            <div class="download-container animate-hidden">
+                <div class="download-content">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Descarga el Juego</h2>
+                    <p>Vive la experiencia completa de Isla Eco. Embárcate en las 18 misiones principales y descubre los secretos de la amistad.</p>
+                    <div class="requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li>Windows 10/11</li>
+                            <li>RAM: 4GB</li>
+                            <li>Almacenamiento: 2GB</li>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" required placeholder="tu@correo.com">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full-width">Unirse a la Aventura</button>
-                </form>
+                    <a href="#" class="btn btn-primary">Descargar Ahora</a>
+                </div>
+                <div class="preview-box">Vista Previa del Juego</div>
             </div>
         </div>
     </section>
@@ -107,23 +145,15 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-body">
-                <div class="portrait-frame" id="modal-image">
-                    <span class="placeholder-text">Cuerpo Completo</span>
-                </div>
+                <div class="portrait-frame"></div>
                 <div class="modal-info">
                     <h2 id="modal-name"></h2>
                     <p id="modal-role" class="status-tag"></p>
-                    <div class="dialogue-box">
-                        <p id="modal-text"></p>
-                    </div>
+                    <div class="dialogue-box"><p id="modal-text"></p></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <p>&copy; 2025 SENA Prom 2026. Proyecto Isla Eco.</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>

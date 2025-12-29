@@ -1,130 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isla Eco | SENA Prom 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <canvas id="particles-canvas"></canvas>
+// Partículas de fondo
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">Isla Eco</div>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#historia" class="nav-link">Historia</a></li>
-                <li><a href="#personajes" class="nav-link">Personajes</a></li>
-                <li><a href="#registro" class="nav-link">Registro</a></li>
-            </ul>
-        </div>
-    </nav>
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+    }
+    update() {
+        this.x += this.speedX; this.y += this.speedY;
+        if(this.x > canvas.width) this.x = 0; if(this.y > canvas.height) this.y = 0;
+    }
+    draw() { ctx.fillStyle = 'rgba(125, 87, 194, 0.3)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill(); }
+}
+for(let i=0; i<60; i++) particles.push(new Particle());
+function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => {p.update(); p.draw();}); requestAnimationFrame(animate); }
+animate();
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Isla Eco</h1>
-            <p class="hero-subtitle">Una aventura surrealista te espera</p>
-            <p class="hero-description">Únete a un viajero en su épica travesía por una isla llena de misterios y leyes físicas alteradas.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToSection('historia')">Explorar</button>
-            </div>
-        </div>
+// Diálogos de personajes basados en la trama
+const dataNPC = {
+    "Viajero": { 
+        role: "NÁUFRAGO", 
+        msg: "—Ese objeto que encontré entre los restos... me recuerda un mundo que ya no existe[cite: 1, 12]. Debo encontrar las Gemas para entender qué pasó." 
+    },
+    "Kai": { 
+        role: "GUARDIÁN OESTE", 
+        msg: "—¿Buscas la Gema del Caos? Demuestra que tu voluntad puede superar esta física rota[cite: 4, 9]. Y tal vez, invítame a un cereal cósmico[cite: 10]." 
+    },
+    "Lysandra": { 
+        role: "GUARDIÁN ESTE", 
+        msg: "—La Gema de la Armonía se gana purificando la tierra[cite: 21, 29]. Siente el abrazo del agua y escucha el susurro de la Linfa[cite: 20, 30]." 
+    }
+};
 
-        <div class="hero-video-container animate-hidden">
-            <div class="video-frame">
-                <video controls poster="https://via.placeholder.com/600x337/1A1625/7D57C2?text=Trailer+Isla+Eco" class="main-video">
-                    <source src="video/trailer.mp4" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
-                <div class="video-glow"></div>
-            </div>
-        </div>
-    </section>
+const modal = document.getElementById('character-modal');
+document.querySelectorAll('.character-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        const npc = dataNPC[id];
+        document.getElementById('modal-name').innerText = id;
+        document.getElementById('modal-role').innerText = npc.role;
+        document.getElementById('modal-text').innerText = npc.msg;
+        modal.style.display = 'block';
+    });
+});
 
-    <section id="historia" class="section">
-        <div class="container">
-            <h2 class="section-title">La Historia</h2>
-            <div class="story-grid">
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">⛵</div>
-                    <h3>El Naufragio</h3>
-                    <p>Tras un evento cataclísmico, el Viajero despierta en una isla donde el Caos y la Armonía luchan por el control.</p>
-                </div>
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">🏝️</div>
-                    <h3>Los Ecosistemas</h3>
-                    <p>Dos regiones opuestas: el Sector Oeste (Caos) y el Sector Este (Armonía) con bellezas místicas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+document.querySelector('.close-modal').onclick = () => modal.style.display = 'none';
 
-    <section id="personajes" class="section">
-        <div class="container">
-            <h2 class="section-title">Habitantes</h2>
-            <div class="characters-grid">
-                <div class="character-card animate-hidden" data-id="Viajero">
-                    <div class="character-avatar protagonist">👤</div>
-                    <h3>El Viajero</h3>
-                    <p class="character-role">Protagonista</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Kai">
-                    <div class="character-avatar kai">🌀</div>
-                    <h3>Kai</h3>
-                    <p class="character-role">Guardián del Caos</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Lysandra">
-                    <div class="character-avatar sofia">✨</div>
-                    <h3>Lysandra</h3>
-                    <p class="character-role">Guardián de la Armonía</p>
-                </div>
-            </div>
-        </div>
-    </section>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('animate-show'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-hidden').forEach(el => observer.observe(el));
 
-    <section id="registro" class="section">
-        <div class="container">
-            <h2 class="section-title">Registro</h2>
-            <div class="registration-form animate-hidden">
-                <form onsubmit="event.preventDefault(); alert('¡Bienvenido al equipo, viajero!');">
-                    <div class="form-group">
-                        <label>Usuario</label>
-                        <input type="text" required placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" required placeholder="tu@correo.com">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full-width">Unirse a la Aventura</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <div id="character-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="portrait-frame" id="modal-image">
-                    <span class="placeholder-text">Cuerpo Completo</span>
-                </div>
-                <div class="modal-info">
-                    <h2 id="modal-name"></h2>
-                    <p id="modal-role" class="status-tag"></p>
-                    <div class="dialogue-box">
-                        <p id="modal-text"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p>&copy; 2025 SENA Prom 2026. Proyecto Isla Eco.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
