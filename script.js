@@ -1,123 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // ==========================================
-    // 1. Lógica del Menú Hamburguesa
-    // ==========================================
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            // Alternar una clase para mostrar/ocultar y animar el menú
-            navMenu.classList.toggle('active'); 
-            hamburger.classList.toggle('active'); // Opcional: animar el ícono
-            
-            // Estilo para el menú móvil que se muestra (se recomienda añadir esto al CSS también)
-            if (navMenu.classList.contains('active')) {
-                navMenu.style.display = 'flex';
-                navMenu.style.flexDirection = 'column';
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '80px';
-                navMenu.style.left = '0';
-                navMenu.style.width = '100%';
-                navMenu.style.backgroundColor = 'rgba(26, 22, 37, 0.95)';
-                navMenu.style.padding = '16px';
-                navMenu.style.borderTop = '1px solid var(--border-subtle)';
-            } else {
-                 // En CSS responsivo (max-width: 768px) debe volver a ser 'none'
-                 // Para simplificar, lo manejamos aquí:
-                 if (window.innerWidth <= 768) {
-                    navMenu.style.display = 'none';
-                 }
-            }
-        });
-        
-        // Cierra el menú cuando se hace clic en un enlace (en móvil)
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                    navMenu.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // ==========================================
-    // 2. Lógica para Partículas de Fondo (Efecto Fantasía)
-    // Usando Canvas para un efecto de "polvo estelar" o "luz dorada"
-    // ==========================================
+    // 1. SISTEMA DE PARTÍCULAS
     const canvas = document.getElementById('particles-canvas');
-    if (!canvas) return; // Salir si el canvas no existe
-
     const ctx = canvas.getContext('2d');
-    let width, height, particles;
-
-    // Configuración de las partículas basada en los colores Dorado/Morado
-    const particleSettings = {
-        count: 50,
-        color: 'rgba(255, 215, 0, 0.8)', // Dorado con opacidad
-        sizeMin: 1,
-        sizeMax: 4,
-        speed: 0.5,
-    };
-
-    function resizeCanvas() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        // Ajustar el número de partículas en pantallas más pequeñas
-        particleSettings.count = width > 768 ? 50 : 30;
-        createParticles();
-    }
+    let particles = [];
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    window.addEventListener('resize', resize); resize();
 
     class Particle {
         constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.size = Math.random() * (particleSettings.sizeMax - particleSettings.sizeMin) + particleSettings.sizeMin;
-            this.vx = Math.random() * particleSettings.speed * 2 - particleSettings.speed;
-            this.vy = Math.random() * particleSettings.speed * 2 - particleSettings.speed;
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+            this.color = Math.random() > 0.5 ? '#ff4d00' : '#00f2ff';
         }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-
-            // Reiniciar la partícula si sale de la pantalla
-            if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-            }
-        }
-
-        draw() {
-            ctx.fillStyle = particleSettings.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
+        update() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width) this.x = 0; if (this.y > canvas.height) this.y = 0; }
+        draw() { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
     }
-
-    function createParticles() {
-        particles = [];
-        for (let i = 0; i < particleSettings.count; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, width, height);
-
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
     animate();
 
+    // 2. DIÁLOGOS
+    const dataNPC = {
+        "Kai": { region: "PÁRAMO OESTE", msg: "—¿Otro viajero? Escucha, en este basurero el caos no perdona. O te mueves rápido o te vuelves parte del paisaje. Tú decides de qué lado estás." },
+        "Flamius": { region: "LA GRAN FORJA", msg: "—¡Cuidado donde pisas, viajero! El metal aquí quema más que el orgullo. Si traes fuego en el alma, quédate; si no, apártate." },
+        "Byte": { region: "TERMINAL DE DATOS", msg: "—Escaneando... Sujeto 'Viajero' detectado. No pareces un error del sistema, pero tampoco una actualización. Quédate quieto." },
+        "Lysandra": { region: "ALBORIA LUMINIS", msg: "—La linfa susurra tu llegada, viajero. No temas a la luz de este bosque; aquí la armonía protege a los que buscan la verdad." },
+        "Smull": { region: "EL REFUGIO", msg: "—¡Oh! Un viajero... eres muy grande. No pareces malo como los monstruos de las sombras. Si caminas despacio, quizás podamos ser amigos." },
+        "Arvell": { region: "RUTAS DEL CIELO", msg: "—¡Ey, viajero! El viento hoy está perfecto para una carrera, aunque dudo que tus pies sigan mi ritmo. ¿Te crees capaz?" }
+    };
+
+    // 3. INTERACCIONES (Efecto 3D y Modal)
+    const modal = document.getElementById('character-modal');
+
+    document.querySelectorAll('.character-card').forEach(card => {
+        // Efecto 3D al mover el mouse
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(1000px) rotateX(${y * 15}deg) rotateY(${x * 15}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+
+        // Abrir Modal
+        card.addEventListener('click', () => {
+            const id = card.getAttribute('data-id');
+            const npc = dataNPC[id];
+            document.getElementById('modal-name').innerText = id;
+            document.getElementById('modal-region').innerText = npc.region;
+            document.getElementById('modal-text').innerText = npc.msg;
+            document.getElementById('modal-region').style.color = card.getAttribute('data-region') === 'west' ? '#ff4d00' : '#00f2ff';
+            modal.style.display = 'block';
+        });
+    });
+
+    document.querySelector('.close-modal').onclick = () => modal.style.display = 'none';
+    window.onclick = (e) => { if(e.target == modal) modal.style.display = 'none'; };
 });

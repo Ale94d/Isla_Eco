@@ -3,261 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SENA Prom 2026 | El Último Sol</title>
-    
+    <title>SENA 2026 | El Nexo de la Isla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
     <canvas id="particles-canvas"></canvas>
 
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <span class="logo-text">EL ÚLTIMO SOL</span>
-            </a>
+        <div class="container nav-container">
+            <span class="logo-text">SENA PROM 2026</span>
             <ul class="nav-menu">
-                <li><a href="#historia" class="nav-link">Historia</a></li>
-                <li><a href="#mundos" class="nav-link">Mundos</a></li>
-                <li><a href="#personajes" class="nav-link">Personajes</a></li>
-                <li><a href="#sistema" class="nav-link">Sistema de Juego</a></li>
+                <li><a href="#sectores" class="nav-link">Sectores</a></li>
+                <li><a href="#personajes" class="nav-link">Habitantes</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">El Último Sol: <br> Ascenso y Caos</h1>
-                    <p class="hero-subtitle">Una Aventura que Fusiona la Luz y la Oscuridad</p>
-                    <p class="hero-description">
-                        Únete a Rapunzel en una búsqueda épica a través de un mundo devastado por el Caos. Navega entre los reinos de la Luz, llenos de esperanza dorada, y las tierras corruptas por la magia oscura de la Nocheosfera.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#mundos" class="btn btn-primary">Explorar Mundos <i class="fa-solid fa-flask"></i></a>
-                        <a href="#personajes" class="btn btn-secondary">Conocer Héroes <i class="fa-solid fa-user-group"></i></a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="floating-island">
-                        <div class="island-shadow"></div>
-                        <div class="island-main"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="historia" class="section">
-            <div class="container">
-                <h2 class="section-title">El Legado de la Luz y la Sombra</h2>
-                <div class="story-grid">
-                    <div class="story-card">
-                        <div class="story-icon"><i class="fa-solid fa-sun"></i></div>
-                        <h3>El Brillo Dorado</h3>
-                        <p>Recupera la Flor Dorada para restaurar el orden y la esperanza. Tus poderes de Luz son la clave.</p>
-                    </div>
-                    <div class="story-card">
-                        <div class="story-icon"><i class="fa-solid fa-moon"></i></div>
-                        <h3>Ecos de la Nocheosfera</h3>
-                        <p>Enfréntate a las criaturas del Caos. La oscuridad se intensifica con cada paso en las tierras corruptas.</p>
-                    </div>
-                    <div class="story-card">
-                        <div class="story-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
-                        <h3>Fusión de Géneros</h3>
-                        <p>Combina mecánicas de exploración y RPG de fantasía con elementos de plataformas y decisiones morales.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="mundos" class="section">
-            <div class="container">
-                <h2 class="section-title">Reinos de Aethel y Caos</h2>
-                <div class="sectors-grid">
-                    <div class="sector-card west">
-                        <div class="coming-soon-badge">PRÓXIMAMENTE</div>
-                        <div class="sector-header">
-                            <h3>El Jardín del Sol (West)</h3>
-                            <div class="sector-subtitle">Reino de Luz y Pureza</div>
-                        </div>
-                        <div class="sector-content">
-                            <p>El hogar de Rapunzel. Un reino vibrante, pero cuyo brillo comienza a desvanecerse. Explora la Torre y las Ciénagas de la Luz.</p>
-                            <div class="sector-features">
-                                <span class="tag">#Exploración</span>
-                                <span class="tag">#Puzzles</span>
-                                <span class="tag">#Crecimiento</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sector-card east">
-                        <div class="sector-header">
-                            <h3>La Nocheosfera (East)</h3>
-                            <div class="sector-subtitle">Zona de Oscuridad y Riesgo</div>
-                        </div>
-                        <div class="sector-content">
-                            <p>Tierras invadidas por el Rey Helado y sus aliados. Requiere táctica y cautela para sobrevivir a sus desafíos oscuros.</p>
-                            <div class="sector-features">
-                                <span class="tag">#Combate</span>
-                                <span class="tag">#Supervivencia</span>
-                                <span class="tag">#Táctico</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="personajes" class="section">
-            <div class="container">
-                <h2 class="section-title">Los Héroes de la Promesa</h2>
-                <div class="characters-grid">
-                    
-                    <div class="character-card">
-                        <div class="character-image">
-                            <div class="character-avatar protagonist"></div>
-                        </div>
-                        <div class="character-info">
-                            <h3>Rapunzel</h3>
-                            <div class="character-role">La Elegida, Portadora de la Luz</div>
-                            <p class="character-description">El corazón de la aventura. Usa el pelo dorado como arma y sanación.</p>
-                        </div>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-image">
-                            <div class="character-avatar kai"></div>
-                        </div>
-                        <div class="character-info">
-                            <h3>Kai</h3>
-                            <div class="character-role">El Caballero Desafinado</div>
-                            <p class="character-description">Un músico errante que lucha con su guitarra. Ayuda a Rapunzel por honor.</p>
-                        </div>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-image">
-                            <div class="character-avatar smull"></div>
-                        </div>
-                        <div class="character-info">
-                            <h3>Smull</h3>
-                            <div class="character-role">La Mariposa Sabia</div>
-                            <p class="character-description">Un ser elemental que guía a los héroes a través de los portales mágicos.</p>
-                        </div>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-image">
-                            <div class="character-avatar arvell"></div>
-                        </div>
-                        <div class="character-info">
-                            <h3>Arvell</h3>
-                            <div class="character-role">El Vigilante Silencioso</div>
-                            <p class="character-description">Un ex-guardaespaldas del Sol, ahora un explorador con habilidades aéreas.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="sistema" class="section">
-            <div class="container">
-                <h2 class="section-title">Mecánicas de Juego Centrales</h2>
-                <div class="game-system-grid">
-                    <div class="system-card">
-                        <div class="system-icon"><i class="fa-solid fa-hand-fist"></i></div>
-                        <h3>Combate Dinámico</h3>
-                        <p>Sistema de combos basado en el flujo de magia de Luz y Oscuridad. Usa la melé o los hechizos.</p>
-                    </div>
-                    <div class="system-card">
-                        <div class="system-icon"><i class="fa-solid fa-scroll"></i></div>
-                        <h3>Árbol de Habilidades</h3>
-                        <p>Desbloquea habilidades de 'Luz Pura' (Rapunzel) y 'Magia de Caos' (Finn). Elige tu camino.</p>
-                    </div>
-                    <div class="system-card">
-                        <div class="system-icon"><i class="fa-solid fa-cubes"></i></div>
-                        <h3>Crafteo y Tesoros</h3>
-                        <p>Recolecta recursos en ambos mundos para mejorar equipo y crear pociones clave para la supervivencia.</p>
-                    </div>
-                    <div class="system-card">
-                        <div class="system-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>Vínculos de Equipo</h3>
-                        <p>Los lazos con tus compañeros desbloquean ataques especiales y habilidades pasivas únicas.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="development section">
-            <div class="container">
-                <div class="development-content">
-                    <div class="development-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Horas de Juego Estimadas</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">4K</div>
-                            <div class="stat-label">Resolución Gráfica Máxima</div>
-                        </div>
-                    </div>
-                    <div class="development-info">
-                        <h3>Tecnología y Visión</h3>
-                        <p>
-                            Estamos construyendo "El Último Sol" con el objetivo de ofrecer una experiencia visual impactante y una jugabilidad fluida en diversas plataformas. Nuestro motor de juego nos permite integrar la riqueza de la fantasía oscura con la luminosidad de los cuentos de hadas.
-                        </p>
-                        <p>
-                            El equipo de SENA Prom 2026 está comprometido con la entrega de una demo pulida y memorable.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-item">Unity 3D</span>
-                            <span class="tech-item">C#</span>
-                            <span class="tech-item">Shader Graph</span>
-                            <span class="tech-item">Blender</span>
-                            <span class="tech-item">Concept Art</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
+    <header class="hero">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>El Último Sol</h3>
-                    <p>Un proyecto de la Promoción SENA 2026, enfocado en el diseño de experiencias interactivas.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navegación</h4>
-                    <ul>
-                        <li><a href="#historia" class="nav-link">Historia</a></li>
-                        <li><a href="#mundos" class="nav-link">Mundos</a></li>
-                        <li><a href="#personajes" class="nav-link">Personajes</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Correo: sena.prom2026@email.com</p>
-                    <p>Ubicación: Bogotá, Colombia</p>
-                </div>
+            <h1 class="hero-title">Entre el Caos y la Armonía</h1>
+            <p class="hero-subtitle">Bienvenido, viajero. La isla guarda secretos que solo tú puedes descubrir.</p>
+        </div>
+    </header>
+
+    <section id="sectores" class="section container">
+        <h2 class="section-title">Sectores Explorables</h2>
+        <div class="sectors-grid">
+            <div class="sector-card west">
+                <h3>Región Oeste</h3>
+                <p>Páramos de vapor y tecnología olvidada bajo el sol del desierto.</p>
             </div>
-            <div class="footer-bottom">
-                &copy; 2026 SENA Promoción. Todos los derechos reservados.
+            <div class="sector-card east">
+                <h3>Región Este</h3>
+                <p>Bosques de linfa y naturaleza eterna protegida por la luz.</p>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <section id="personajes" class="section container">
+        <h2 class="section-title">Habitantes de la Isla</h2>
+        <div class="characters-grid">
+            <div class="character-card" data-id="Kai" data-region="west">
+                <div class="avatar-simple">🎸</div>
+                <h3>Kai</h3>
+                <span class="role-tag">Guardián</span>
+            </div>
+            <div class="character-card" data-id="Flamius" data-region="west">
+                <div class="avatar-simple">🔥</div>
+                <h3>Flamius</h3>
+                <span class="role-tag">Forjador</span>
+            </div>
+            <div class="character-card" data-id="Byte" data-region="west">
+                <div class="avatar-simple">💿</div>
+                <h3>Byte</h3>
+                <span class="role-tag">I.A.</span>
+            </div>
+            <div class="character-card" data-id="Lysandra" data-region="east">
+                <div class="avatar-simple">🧚</div>
+                <h3>Lysandra</h3>
+                <span class="role-tag">Luz</span>
+            </div>
+            <div class="character-card" data-id="Smull" data-region="east">
+                <div class="avatar-simple">🐛</div>
+                <h3>Smull</h3>
+                <span class="role-tag">Sabio</span>
+            </div>
+            <div class="character-card" data-id="Arvell" data-region="east">
+                <div class="avatar-simple">🐦</div>
+                <h3>Arvell</h3>
+                <span class="role-tag">Vuelo</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="character-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="portrait-frame" id="modal-image">
+                    <span class="placeholder-text">Cuerpo Completo</span>
+                </div>
+                <div class="modal-info">
+                    <span id="modal-region" class="region-label"></span>
+                    <h2 id="modal-name"></h2>
+                    <div class="dialogue-box">
+                        <p id="modal-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
