@@ -8,36 +8,43 @@ const PERSONAJES = {
         rol: "Náufrago del Tiempo", 
         msg: "El accidente fragmentó la gema nexo. Debo encontrar ambas mitades para volver a casa.",
         img: "none"
+        color: "rgba(207, 195, 190, 0.9)"
     },
     "Kai": { 
         rol: "Guardián del Páramo", 
         msg: "La tecnología dorada no es un juguete. Si buscas la mitad de la gema, prepárate para luchar.",
         img: "img/kai.png"
+        color: rgba(137, 67, 194, 0.9)"
     },
     "Byte": { 
         rol: "Asistente Robótico", 
         msg: "Bip... Análisis completado. La energía mágica de la selva está corrompiendo mis circuitos.",
         img: "img/byte.png"
+        color: "rgba(100, 111, 214, 0.9)"
     },
     "Flamius": { 
         rol: "Espíritu de Fuego", 
         msg: "El calor del núcleo es lo único que mantiene esta isla a flote. No dejes que se apague.",
         img: "img/flamius.png"
+        color: "rgba(235, 82, 27, 0.9)"
     },
     "Lysandra": { 
         rol: "Sabia de la Selva", 
         msg: "La naturaleza tiene memoria. Ella sabe quién causó el accidente arcano.",
         img: "img/lysandra.png"
+        color: "rgba(255, 69, 0, 0.9)"
     },
     "Smull": { 
         rol: "Brote de Cristal", 
         msg: "¡Las plantas brillan porque tienen hambre! No te acerques mucho a las raíces azules.",
         img: "img/smull.png"
+        color: "rgba(255, 69, 0, 0.9)"
     },
     "Arvell": { 
         rol: "Vigía de los Cielos", 
         msg: "Desde mi posición veo cómo las dos regiones chocan. El equilibrio es frágil.",
         img: "img/arvell.png"
+        color: "rgba(255, 69, 0, 0.9)"
     }
 };
 
