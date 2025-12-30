@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isla Eco | El Viajero</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,45 +14,43 @@
         <div class="nav-container">
             <div class="nav-logo">Isla Eco</div>
             <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#historia" class="nav-link">Historia</a></li>
-                <li><a href="#Regiones" class="nav-link">Regiones</a></li>
-                <li><a href="#personajes" class="nav-link">Personajes</a></li>
-                <li><a href="#registro" class="nav-link">Registro</a></li>
-                <li><a href="#descargar" class="nav-link">Descargar</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#Regiones">Regiones</a></li>
+                <li><a href="#personajes">Personajes</a></li>
+                <li><a href="#descargar">Descargar</a></li>
             </ul>
         </div>
     </nav>
 
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Isla Eco</h1>
-            <p class="hero-subtitle">El despertar de un náufrago</p>
-            <p class="hero-description">Tras un incidente catastrófico en alta mar, el Viajero despierta en un mundo dividido. Tu objetivo: recuperar las gemas de poder para restaurar el equilibrio.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToSection('descargar')">Comenzar Aventura</button>
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Isla Eco</h1>
+                <p class="subtitle">El despertar de un náufrago</p>
+                <p>Tras un incidente catastrófico en alta mar, el Viajero despierta en un mundo dividido. Tu objetivo: recuperar las gemas de poder para restaurar el equilibrio.</p>
+                <button class="btn-primary" onclick="scrollToSection('descargar')">Comenzar Aventura</button>
             </div>
-        </div>
-        <div class="hero-video-container">
-            <div class="video-frame">
-                <video controls class="main-video">
-                    <source src="video/trailer.mp4" type="video/mp4">
-                    Tu navegador no soporta video.
-                </video>
+            <div class="hero-video">
+                <div class="video-wrapper">
+                    <video controls poster="img/thumb.jpg">
+                        <source src="video/trailer.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="historia" class="section">
         <div class="container">
-            <div class="story-ecosystem-grid">
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">🌊</div>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="icon">🌊</span>
                     <h3>Incidente en Alta Mar</h3>
                     <p>Lo que comenzó como una travesía tranquila terminó en un naufragio misterioso, dejando al Viajero en las costas de una isla desconocida.</p>
                 </div>
-                <div class="story-card animate-hidden">
-                    <div class="story-icon">💎</div>
+                <div class="card">
+                    <span class="icon">💎</span>
                     <h3>El Misterio de las Gemas</h3>
                     <p>Para salvar este mundo, deberás reunir fragmentos perdidos y restaurar el Nexo de Energía antes de que el equilibrio se rompa para siempre.</p>
                 </div>
@@ -62,23 +60,22 @@
 
     <section id="Regiones" class="section">
         <div class="container">
-            <h2 class="section-title">Regiones y Trama Principal</h2>
-            <div class="regions-detailed-grid">
-                <div class="region-info-card animate-hidden west-border">
+            <h2 class="title-center">Regiones y Trama Principal</h2>
+            <div class="grid-2">
+                <div class="region-card west">
                     <h3>Región Oeste</h3>
-                    <p class="region-desc">Un vasto paisaje donde la tecnología antigua colisiona con una lógica surrealista. Bajo la vigilancia de <strong>Kai</strong>, navegarás por estructuras metálicas flotantes para comprender el origen del desequilibrio.</p>
-                    <div class="missions-list">
-                        <h4>Resumen de Misiones (1-9):</h4>
-                        <p>Desde la estabilización del fuego con Flamius hasta los desafíos de Byte, cada paso te acerca a la Gema del sector.</p>
+                    <p>Un paisaje donde la tecnología antigua y la lógica surrealista dominan. Bajo la vigilancia de <strong>Kai</strong>, navegarás por estructuras metálicas flotantes para comprender el origen del desequilibrio.</p>
+                    <div class="mission-box">
+                        <strong>Misiones (1-9):</strong>
+                        <p>Desde la estabilización del fuego con Flamius hasta los desafíos lógicos de Byte.</p>
                     </div>
                 </div>
-
-                <div class="region-info-card animate-hidden east-border">
+                <div class="region-card east">
                     <h3>Región Este</h3>
-                    <p class="region-desc">Un santuario místico de magia ancestral. Aquí reside <strong>Lysandra</strong>, quien guía a los viajeros a través de bosques susurrantes para restaurar la conexión con la esencia de la isla.</p>
-                    <div class="missions-list">
-                        <h4>Resumen de Misiones (10-18):</h4>
-                        <p>Dominarás la Magia de Crecimiento con Smull y surcarás cielos con Arvell para realizar el rito sagrado del Árbol Antiguo.</p>
+                    <p>Un santuario místico de magia ancestral. Aquí reside <strong>Lysandra</strong>, quien guía a los viajeros a través de bosques susurrantes para restaurar la conexión con la esencia de la isla.</p>
+                    <div class="mission-box">
+                        <strong>Misiones (10-18):</strong>
+                        <p>Dominarás la Magia de Crecimiento con Smull y realizarás el rito del Árbol Antiguo.</p>
                     </div>
                 </div>
             </div>
@@ -87,56 +84,28 @@
 
     <section id="personajes" class="section">
         <div class="container">
-            <h2 class="section-title">Habitantes de la Isla</h2>
+            <h2 class="title-center">Habitantes de la Isla</h2>
             <div class="characters-grid">
-                <div class="character-card animate-hidden" data-id="Viajero">
-                    <div class="character-avatar">👤</div>
-                    <h3>El Viajero</h3>
-                    <p class="status-tag">Protagonista</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Kai">
-                    <div class="character-avatar">🌀</div>
-                    <h3>Kai</h3>
-                    <p class="status-tag">Guardián</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Flamius">
-                    <div class="character-avatar">🔥</div>
-                    <h3>Flamius</h3>
-                    <p class="status-tag">Aliado</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Byte">
-                    <div class="character-avatar">🤖</div>
-                    <h3>Byte</h3>
-                    <p class="status-tag">Lógica</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Lysandra">
-                    <div class="character-avatar">✨</div>
-                    <h3>Lysandra</h3>
-                    <p class="status-tag">Guardiana</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Smull">
-                    <div class="character-avatar">🦋</div>
-                    <h3>Smull</h3>
-                    <p class="status-tag">Espíritu</p>
-                </div>
-                <div class="character-card animate-hidden" data-id="Arvell">
-                    <div class="character-avatar">🦜</div>
-                    <h3>Arvell</h3>
-                    <p class="status-tag">Vigía</p>
-                </div>
+                <div class="char-item" data-id="Viajero"><span>👤</span><h4>El Viajero</h4><p>Protagonista</p></div>
+                <div class="char-item" data-id="Kai"><span>🌀</span><h4>Kai</h4><p>Guardián</p></div>
+                <div class="char-item" data-id="Flamius"><span>🔥</span><h4>Flamius</h4><p>Aliado</p></div>
+                <div class="char-item" data-id="Byte"><span>🤖</span><h4>Byte</h4><p>Lógica</p></div>
+                <div class="char-item" data-id="Lysandra"><span>✨</span><h4>Lysandra</h4><p>Guardiana</p></div>
+                <div class="char-item" data-id="Smull"><span>🦋</span><h4>Smull</h4><p>Espíritu</p></div>
+                <div class="char-item" data-id="Arvell"><span>🦜</span><h4>Arvell</h4><p>Vigía</p></div>
             </div>
         </div>
     </section>
 
     <section id="registro" class="section">
-        <div class="container">
-            <div class="register-container animate-hidden">
-                <h2 class="section-title">Crea tu Cuenta</h2>
-                <form class="register-form">
+        <div class="container-small">
+            <div class="register-box">
+                <h2 class="title-center">Crea tu Cuenta</h2>
+                <form class="reg-form">
                     <input type="text" placeholder="Usuario" required>
                     <input type="email" placeholder="Email" required>
                     <input type="password" placeholder="Contraseña" required>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <button type="submit" class="btn-primary">Registrarse</button>
                 </form>
             </div>
         </div>
@@ -144,41 +113,33 @@
 
     <section id="descargar" class="section">
         <div class="container">
-            <h2 class="section-title">Descarga e Imágenes</h2>
-            <div class="download-layout">
-                <div class="carousel-container">
-                    <div class="carousel-slide">
-                        <img src="img/game1.jpg" alt="Imagen Juego 1">
-                        <img src="img/game2.jpg" alt="Imagen Juego 2">
-                        <img src="img/game3.jpg" alt="Imagen Juego 3">
-                    </div>
-                    <div class="carousel-controls">
-                        <button id="prevBtn">❮</button>
-                        <button id="nextBtn">❯</button>
+            <div class="download-grid">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="slide">IMAGEN 1</div>
+                        <div class="slide">IMAGEN 2</div>
+                        <div class="slide">IMAGEN 3</div>
                     </div>
                 </div>
-                <div class="download-box">
-                    <p>Vive la experiencia completa de Isla Eco.</p>
-                    <div class="req-space"></div>
-                    <a href="#" class="btn btn-primary">Descargar Ahora</a>
+                <div class="download-info">
+                    <h2>Descarga Isla Eco</h2>
+                    <p>Embárcate en la aventura completa.</p>
+                    <div class="req-empty"></div>
+                    <button class="btn-primary">Descargar Ahora</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="character-modal" class="modal">
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="portrait-container">
-                    <div id="modal-image-placeholder" class="character-art"></div>
-                </div>
-                <div class="modal-info">
+            <span class="close">&times;</span>
+            <div class="modal-flex">
+                <div class="modal-art" id="modal-art"></div>
+                <div class="modal-text">
                     <h2 id="modal-name"></h2>
-                    <p id="modal-role" class="status-tag"></p>
-                    <div class="dialogue-box">
-                        <p id="modal-text"></p>
-                    </div>
+                    <p id="modal-role" class="tag"></p>
+                    <div class="dialogue" id="modal-msg"></div>
                 </div>
             </div>
         </div>
