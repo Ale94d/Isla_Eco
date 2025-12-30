@@ -26,17 +26,19 @@
         </div>
     </nav>
 
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero section">
         <div class="container hero-flex">
             <div class="hero-text">
                 <h1>Isla Eco</h1>
                 <p class="subtitle">El despertar de un náufrago</p>
-                <p>Restaura el equilibrio entre la tecnología y la magia pura.</p>
+                <p>Restaura el equilibrio entre la tecnología y la magia pura en un mundo fracturado.</p>
                 <button class="btn-primary" onclick="scrollToSection('descargar')">Jugar Ahora</button>
             </div>
             <div class="hero-video">
                 <div class="video-wrapper">
-                    <video controls poster="img/poster.jpg"><source src="video/trailer.mp4" type="video/mp4"></video>
+                    <video controls poster="img/poster.jpg">
+                        <source src="video/trailer.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -46,15 +48,15 @@
         <div class="container">
             <h2 class="title-center">Crónicas de la Isla</h2>
             <div class="historia-grid">
-                <div class="historia-card">
+                <div class="card-box">
                     <i class="fas fa-bolt gold-icon"></i>
                     <h3>El Accidente Arcano</h3>
-                    <p>Una falla crítica en el núcleo fracturó la realidad, dejando rastros de poder inestable que dividieron el mundo.</p>
+                    <p>Una falla crítica en el núcleo fracturó la realidad, dejando rastros de poder inestable que dividieron el mundo en dos ecosistemas opuestos.</p>
                 </div>
-                <div class="historia-card">
+                <div class="card-box">
                     <i class="fas fa-gem gold-icon"></i>
                     <h3>Ecosistemas y Gema Nexo</h3>
-                    <p>Recupera las dos mitades de la **Gema Nexo** en el Páramo y la Selva para salvar la isla.</p>
+                    <p>Debes recuperar las dos mitades de la Gema Nexo ocultas en el Páramo de Silicio y la Selva de Cristal para evitar el colapso total.</p>
                 </div>
             </div>
         </div>
@@ -64,17 +66,17 @@
         <div class="container">
             <h2 class="title-center">Regiones</h2>
             <div class="regiones-flex">
-                <div class="region-card">
+                <div class="card-box region-card">
                     <i class="fas fa-microchip region-icon"></i>
                     <h3>Región Oeste</h3>
                     <p class="tag">Páramo de Silicio</p>
-                    <p>Tecnología antigua y engranajes dorados.</p>
+                    <p>Un desierto tecnológico lleno de maquinaria antigua, engranajes dorados y peligros mecánicos.</p>
                 </div>
-                <div class="region-card">
+                <div class="card-box region-card">
                     <i class="fas fa-leaf region-icon"></i>
                     <h3>Región Este</h3>
                     <p class="tag">Selva de Cristal</p>
-                    <p>Naturaleza pura y flora bioluminiscente.</p>
+                    <p>Un santuario místico donde la naturaleza ha crecido de forma descontrolada y bioluminiscente.</p>
                 </div>
             </div>
         </div>
@@ -97,13 +99,13 @@
 
     <section id="registro" class="section">
         <div class="container flex-center">
-            <div class="centered-box">
-                <h2 class="title-center">Registro</h2>
+            <div class="card-box centered-form-box">
+                <h2 class="title-center">Crear Cuenta</h2>
                 <form class="reg-form">
-                    <input type="text" placeholder="Usuario" required>
-                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Nombre de Usuario" required>
+                    <input type="email" placeholder="Correo Electrónico" required>
                     <input type="password" placeholder="Contraseña" required>
-                    <button type="submit" class="btn-primary">Registrarse</button>
+                    <button type="submit" class="btn-primary">Registrarse Ahora</button>
                 </form>
             </div>
         </div>
@@ -111,39 +113,40 @@
 
     <section id="descargar" class="section">
         <div class="container flex-center">
-            <div class="centered-box download-grid-container">
-                <h2 class="title-center">Galería y Descargas</h2>
+            <div class="card-box download-container">
+                <h2 class="title-center">Galería y Descarga</h2>
                 <div class="download-grid">
-                    <div class="download-col-carousel">
-                        <div class="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="img/game1.jpg" alt="1"></div>
-                                <div class="carousel-item"><img src="img/game2.jpg" alt="2"></div>
-                                <div class="carousel-item"><img src="img/game3.jpg" alt="3"></div>
-                            </div>
+                    <div class="col-carousel">
+                        <div class="carousel-wrapper">
+                            <div class="carousel-item active"><img src="img/game1.jpg" alt="Captura 1"></div>
+                            <div class="carousel-item"><img src="img/game2.jpg" alt="Captura 2"></div>
+                            <div class="carousel-item"><img src="img/game3.jpg" alt="Captura 3"></div>
                             <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
                             <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
                         </div>
                     </div>
-                    <div class="download-col-btns">
-                        <p>Disponible para:</p>
+                    <div class="col-buttons">
+                        <p>Selecciona tu plataforma:</p>
                         <button class="btn-primary btn-full"><i class="fab fa-windows"></i> Windows</button>
                         <button class="btn-primary btn-full"><i class="fab fa-apple"></i> Mac OS</button>
+                        <p class="version-text">Versión actual: 1.0.2</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="modal" class="modal">
+    <div id="modal-personaje" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close-btn">&times;</span>
             <div class="modal-body">
-                <div class="modal-img-frame"><img id="modal-char-img" src="" alt="P"></div>
+                <div class="modal-img-frame">
+                    <img id="modal-img" src="" alt="Imagen de Personaje">
+                </div>
                 <div class="modal-text">
-                    <h2 id="modal-name"></h2>
-                    <p id="modal-role" class="tag"></p>
-                    <div id="modal-msg" class="dialogue"></div>
+                    <h2 id="modal-name">Nombre</h2>
+                    <p id="modal-role" class="tag">Rol</p>
+                    <div id="modal-msg" class="dialogue">Mensaje de ejemplo...</div>
                 </div>
             </div>
         </div>

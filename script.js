@@ -1,162 +1,124 @@
 /**
- * ISLA ECO - LÓGICA INTEGRAL
- * Autor: El Viajero
+ * LÓGICA DE ISLA ECO - EL VIAJERO
  */
 
-// 1. BASE DE DATOS DE PERSONAJES (Incluye a Arvell)
-const charData = {
+// 1. DATOS DE PERSONAJES
+const PERSONAJES = {
     "Viajero": { 
-        role: "Náufrago", 
-        img: "img/viajero.png", 
-        msg: "El accidente lo fragmentó todo. Mi misión es encontrar las piezas de la Gema Nexo para restaurar el orden." 
+        rol: "Náufrago del Tiempo", 
+        msg: "El accidente fragmentó la gema nexo. Debo encontrar ambas mitades para volver a casa.",
+        img: "img/viajero.png"
     },
     "Kai": { 
-        role: "Guardián del Oeste", 
-        img: "img/kai.png", 
-        msg: "Si buscas tecnología dorada y engranajes antiguos, el Páramo de Silicio es tu lugar. Ten cuidado con los restos del accidente." 
+        rol: "Guardián del Páramo", 
+        msg: "La tecnología dorada no es un juguete. Si buscas la mitad de la gema, prepárate para luchar.",
+        img: "img/kai.png"
     },
     "Byte": { 
-        role: "Dron Lógico", 
-        img: "img/byte.png", 
-        msg: "Análisis: Firma de energía detectada. La inestabilidad en la isla aumenta un 15% cada hora. Recomiendo precaución." 
+        rol: "Asistente Robótico", 
+        msg: "Bip... Análisis completado. La energía mágica de la selva está corrompiendo mis circuitos.",
+        img: "img/byte.png"
     },
     "Flamius": { 
-        role: "Espíritu Arcano", 
-        img: "img/flamius.png", 
-        msg: "Mi fuego no se apaga, ni siquiera tras la gran explosión. Represento la energía que aún late en el núcleo." 
+        rol: "Espíritu de Fuego", 
+        msg: "El calor del núcleo es lo único que mantiene esta isla a flote. No dejes que se apague.",
+        img: "img/flamius.png"
     },
     "Lysandra": { 
-        role: "Sabia del Este", 
-        img: "img/lysandra.png", 
-        msg: "La Selva de Cristal susurra secretos místicos. La naturaleza está herida, pero la magia pura aún puede salvarla." 
+        rol: "Sabia de la Selva", 
+        msg: "La naturaleza tiene memoria. Ella sabe quién causó el accidente arcano.",
+        img: "img/lysandra.png"
     },
     "Smull": { 
-        role: "Brote Místico", 
-        img: "img/smull.png", 
-        msg: "¡Cuidado donde pisas! Las plantas brillan más de lo normal hoy y tienen mucha hambre de energía mágica." 
+        rol: "Brote de Cristal", 
+        msg: "¡Las plantas brillan porque tienen hambre! No te acerques mucho a las raíces azules.",
+        img: "img/smull.png"
     },
     "Arvell": { 
-        role: "Vigía del Aire", 
-        img: "img/arvell.png", 
-        msg: "Desde lo más alto de la isla, vigilo que nadie robe las gemas. Nada escapa a mi vista entre las nubes." 
+        rol: "Vigía de los Cielos", 
+        msg: "Desde mi posición veo cómo las dos regiones chocan. El equilibrio es frágil.",
+        img: "img/arvell.png"
     }
 };
 
-// 2. SISTEMA DE VENTANAS EMERGENTES (MODAL)
-const modal = document.getElementById('modal');
-const modalName = document.getElementById('modal-name');
-const modalRole = document.getElementById('modal-role');
-const modalMsg = document.getElementById('modal-msg');
-const modalImg = document.getElementById('modal-char-img');
-const closeBtn = document.querySelector('.close');
+// 2. VENTANA EMERGENTE (MODAL)
+const modal = document.getElementById('modal-personaje');
+const closeBtn = document.querySelector('.close-btn');
 
-// Asignar clics a los círculos de personajes
-document.querySelectorAll('.char-circle').forEach(el => {
-    el.onclick = function() {
-        const id = this.getAttribute('data-id');
-        const data = charData[id];
-        
-        // Rellenar datos
-        modalName.innerText = id;
-        modalRole.innerText = data.role;
-        modalMsg.innerText = data.msg;
-        modalImg.src = data.img;
-        
-        // Mostrar ventana con animación flex
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Evita scroll al estar abierto
-    };
+document.querySelectorAll('.char-circle').forEach(boton => {
+    boton.addEventListener('click', () => {
+        const nombre = boton.getAttribute('data-id');
+        const data = PERSONAJES[nombre];
+
+        if (data) {
+            document.getElementById('modal-name').innerText = nombre;
+            document.getElementById('modal-role').innerText = data.rol;
+            document.getElementById('modal-msg').innerText = data.msg;
+            document.getElementById('modal-img').src = data.img;
+            
+            modal.style.display = 'flex';
+        }
+    });
 });
 
-// Cerrar ventana al pulsar la X
-closeBtn.onclick = () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-};
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; };
 
-// Cerrar ventana al pulsar fuera del cuadro
-window.onclick = (e) => {
-    if(e.target == modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-};
-
-// 3. LÓGICA DEL CARRUSEL DE IMÁGENES
-let slideIdx = 0;
-
+// 3. LÓGICA DEL CARRUSEL
+let slideIndex = 0;
 function moveSlide(n) {
     const slides = document.querySelectorAll('.carousel-item');
-    if (slides.length === 0) return;
-
-    // Quitar clase activa actual
-    slides[slideIdx].classList.remove('active');
+    slides[slideIndex].classList.remove('active');
     
-    // Calcular siguiente índice
-    slideIdx = (slideIdx + n + slides.length) % slides.length;
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
     
-    // Activar nueva slide
-    slides[slideIdx].classList.add('active');
+    slides[slideIndex].classList.add('active');
 }
 
-// 4. FONDO ANIMADO DE PARTÍCULAS (Ambientación)
+// 4. FONDO DE ORBES DORADOS (PARTÍCULAS)
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
 
-function resize() {
+function initParticles() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resize);
-resize();
-
-class Particle {
-    constructor() {
-        this.reset();
-    }
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vX = Math.random() * 0.4 - 0.2;
-        this.vY = Math.random() * 0.4 - 0.2;
-        this.size = Math.random() * 1.5 + 0.5;
-        this.opacity = Math.random() * 0.5 + 0.1;
-    }
-    update() {
-        this.x += this.vX;
-        this.y += this.vY;
-        if(this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-            this.reset();
-        }
-    }
-    draw() {
-        ctx.fillStyle = `rgba(255, 204, 51, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+    particles = [];
+    for (let i = 0; i < 60; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speedX: Math.random() * 0.5 - 0.25,
+            speedY: Math.random() * 0.5 - 0.25
+        });
     }
 }
 
-// Crear partículas
-for(let i = 0; i < 70; i++) {
-    particles.push(new Particle());
-}
-
-function animate() {
+function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255, 204, 51, 0.5)";
+    
     particles.forEach(p => {
-        p.update();
-        p.draw();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        p.x += p.speedX;
+        p.y += p.speedY;
+        
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
     });
-    requestAnimationFrame(animate);
+    
+    requestAnimationFrame(animateParticles);
 }
-animate();
 
-// 5. NAVEGACIÓN SUAVE (Smooth Scroll)
+window.addEventListener('resize', initParticles);
+initParticles();
+animateParticles();
+
+// 5. DESPLAZAMIENTO SUAVE
 function scrollToSection(id) {
-    const target = document.getElementById(id);
-    if(target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
