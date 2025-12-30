@@ -39,7 +39,6 @@
                     <source src="video/trailer.mp4" type="video/mp4">
                     Tu navegador no soporta video.
                 </video>
-                <div class="video-glow"></div>
             </div>
         </div>
     </section>
@@ -67,19 +66,19 @@
             <div class="regions-detailed-grid">
                 <div class="region-info-card animate-hidden west-border">
                     <h3>Región Oeste</h3>
-                    <p class="region-desc">Un vasto paisaje donde la tecnología antigua colisiona con una lógica surrealista que desafía la gravedad. Bajo la vigilancia de <strong>Kai</strong>, el Guardián del Oeste, navegarás por estructuras metálicas flotantes y resolverás acertijos que alteran la realidad misma para comprender el origen del desequilibrio.</p>
+                    <p class="region-desc">Un vasto paisaje donde la tecnología antigua colisiona con una lógica surrealista. Bajo la vigilancia de <strong>Kai</strong>, navegarás por estructuras metálicas flotantes para comprender el origen del desequilibrio.</p>
                     <div class="missions-list">
                         <h4>Resumen de Misiones (1-9):</h4>
-                        <p>Desde la estabilización del fuego vital con Flamius hasta los desafíos lógicos en la Colina Invertida de Byte, cada paso te acerca a la confrontación final en el Santuario para reclamar la Gema.</p>
+                        <p>Desde la estabilización del fuego con Flamius hasta los desafíos de Byte, cada paso te acerca a la Gema del sector.</p>
                     </div>
                 </div>
 
                 <div class="region-info-card animate-hidden east-border">
                     <h3>Región Este</h3>
-                    <p class="region-desc">Un santuario místico envuelto en una neblina de magia ancestral, donde la naturaleza florece en formas imposibles y colores vibrantes. Aquí reside <strong>Lysandra</strong>, la Guardiana del Este, quien guía a los viajeros a través de bosques susurrantes y manantiales puros para restaurar la conexión perdida con la esencia de la isla.</p>
+                    <p class="region-desc">Un santuario místico de magia ancestral. Aquí reside <strong>Lysandra</strong>, quien guía a los viajeros a través de bosques susurrantes para restaurar la conexión con la esencia de la isla.</p>
                     <div class="missions-list">
                         <h4>Resumen de Misiones (10-18):</h4>
-                        <p>Aprenderás a dominar la Magia de Crecimiento con Smull y a surcar los cielos con Arvell, sanando la corrupción del pantano hasta realizar el rito sagrado del Árbol Antiguo.</p>
+                        <p>Dominarás la Magia de Crecimiento con Smull y surcarás cielos con Arvell para realizar el rito sagrado del Árbol Antiguo.</p>
                     </div>
                 </div>
             </div>
@@ -132,7 +131,7 @@
     <section id="registro" class="section">
         <div class="container">
             <div class="register-container animate-hidden">
-                <h2 class="section-title">Únete a la Aventura</h2>
+                <h2 class="section-title">Crea tu Cuenta</h2>
                 <form class="register-form">
                     <input type="text" placeholder="Usuario" required>
                     <input type="email" placeholder="Email" required>
@@ -145,16 +144,24 @@
 
     <section id="descargar" class="section">
         <div class="container">
-            <div class="download-container animate-hidden">
-                <div class="download-content">
-                    <h2 class="section-title" style="text-align: left;">Descarga el Juego</h2>
-                    <p>Embárcate en las 18 misiones principales de Isla Eco.</p>
-                    <div class="requirements-placeholder">
-                        <p>Próximamente: Detalles técnicos de instalación.</p>
+            <h2 class="section-title">Descarga e Imágenes</h2>
+            <div class="download-layout">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="img/game1.jpg" alt="Imagen Juego 1">
+                        <img src="img/game2.jpg" alt="Imagen Juego 2">
+                        <img src="img/game3.jpg" alt="Imagen Juego 3">
                     </div>
+                    <div class="carousel-controls">
+                        <button id="prevBtn">❮</button>
+                        <button id="nextBtn">❯</button>
+                    </div>
+                </div>
+                <div class="download-box">
+                    <p>Vive la experiencia completa de Isla Eco.</p>
+                    <div class="req-space"></div>
                     <a href="#" class="btn btn-primary">Descargar Ahora</a>
                 </div>
-                <div class="preview-box">Previsualización</div>
             </div>
         </div>
     </section>
@@ -163,11 +170,15 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-body">
-                <div class="portrait-frame" id="modal-avatar"></div>
+                <div class="portrait-container">
+                    <div id="modal-image-placeholder" class="character-art"></div>
+                </div>
                 <div class="modal-info">
                     <h2 id="modal-name"></h2>
                     <p id="modal-role" class="status-tag"></p>
-                    <div class="dialogue-box"><p id="modal-text"></p></div>
+                    <div class="dialogue-box">
+                        <p id="modal-text"></p>
+                    </div>
                 </div>
             </div>
         </div>

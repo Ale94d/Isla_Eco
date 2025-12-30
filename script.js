@@ -23,36 +23,50 @@ for(let i=0; i<60; i++) particles.push(new Particle());
 function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => {p.update(); p.draw();}); requestAnimationFrame(animate); }
 animate();
 
+// DIÁLOGOS DE PERSONAJES HACIA EL VIAJERO
 const dataNPC = {
-    "Viajero": { role: "NÁUFRAGO", msg: "—¿Dónde estoy? Todo lo que recuerdo es el estruendo del mar." },
-    "Kai": { role: "GUARDIÁN OESTE", msg: "—Bienvenido al lado inestable de la isla. No toques nada que flote demasiado." },
-    "Flamius": { role: "ESPÍRITU FUEGO", msg: "—¿Traes madera? Mi llama necesita avivarse para abrir el camino." },
-    "Byte": { role: "ROBOT LOGIC", msg: "—01001000 Hola. Mis circuitos detectan una anomalía en tu ADN viajero." },
-    "Lysandra": { role: "GUARDIANA ESTE", msg: "—La naturaleza te da la bienvenida, siempre que respetes su flujo." },
-    "Smull": { role: "ESPÍRITU BOSQUE", msg: "—Las flores cantan cuando pasas. Debes ser el elegido." },
-    "Arvell": { role: "VIGÍA CIELO", msg: "—Desde arriba vi tu barco caer. Tuviste suerte de aterrizar aquí." }
+    "Viajero": { role: "PROTAGONISTA", msg: "Mis recuerdos están fragmentados... pero sé que estas gemas son la clave.", img: "" },
+    "Kai": { role: "GUARDIÁN", msg: "—Viajero, ten cuidado con la gravedad en el Oeste. No todo lo que flota es seguro.", img: "url('img/kai-draw.png')" },
+    "Flamius": { role: "ALIADO", msg: "—Siento el frío de tu mundo, náufrago. Deja que mi fuego te guíe.", img: "url('img/flamius-draw.png')" },
+    "Byte": { role: "LÓGICA", msg: "—Procesando datos... Tu presencia es una variable inesperada en mi sistema.", img: "url('img/byte-draw.png')" },
+    "Lysandra": { role: "GUARDIANA", msg: "—Hueles a salitre y metal. La armonía del bosque te sanará si se lo permites.", img: "url('img/lysandra-draw.png')" },
+    "Smull": { role: "ESPÍRITU", msg: "—¡Pequeño viajero! Ayúdame a despertar las flores y ellas te darán el paso.", img: "url('img/smull-draw.png')" },
+    "Arvell": { role: "VIGÍA", msg: "—Te vi caer desde las nubes. El viento tiene mucho que contarte sobre este lugar.", img: "url('img/arvell-draw.png')" }
 };
 
+// Modal Logic
 const modal = document.getElementById('character-modal');
 document.querySelectorAll('.character-card').forEach(card => {
     card.addEventListener('click', () => {
         const id = card.getAttribute('data-id');
         const npc = dataNPC[id];
-        const icon = card.querySelector('.character-avatar').innerText;
         document.getElementById('modal-name').innerText = id;
         document.getElementById('modal-role').innerText = npc.role;
         document.getElementById('modal-text').innerText = npc.msg;
-        document.getElementById('modal-avatar').innerText = icon;
+        document.getElementById('modal-image-placeholder').style.backgroundImage = npc.img;
         modal.style.display = 'block';
     });
 });
 
 document.querySelector('.close-modal').onclick = () => modal.style.display = 'none';
-window.onclick = (e) => { if(e.target == modal) modal.style.display = 'none'; }
+
+// Carrusel Logic
+const slide = document.querySelector('.carousel-slide');
+let counter = 0;
+document.getElementById('nextBtn').onclick = () => {
+    if (counter >= 2) counter = -1;
+    counter++;
+    slide.style.transform = `translateX(${-counter * 100}%)`;
+};
+document.getElementById('prevBtn').onclick = () => {
+    if (counter <= 0) counter = 3;
+    counter--;
+    slide.style.transform = `translateX(${-counter * 100}%)`;
+};
+
+function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('animate-show'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.animate-hidden').forEach(el => observer.observe(el));
-
-function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
