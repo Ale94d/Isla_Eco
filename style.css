@@ -1,135 +1,85 @@
 ﻿:root {
-    /* Paleta de colores: Morados oscuros y Oro */
-    --bg-dark-deep: #050308;        /* Negro místico */
-    --bg-purple-dark: #0a0612;      /* Morado base */
-    --bg-purple-glow: #1a122b;      /* Morado de resplandor */
-    --gold: #ffcc33;                /* Oro puro */
-    --gold-faded: rgba(255, 204, 51, 0.3);
-    --morado-vibrante: #9d7cff;
-    --text-white: #f5f5f5;
+    --bg-dark: #050308;
+    --bg-purple: #0a0612;
+    --bg-glow: #1a122b;
+    --gold: #ffcc33;
+    --morado-luz: #9d7cff;
+    --text: #f5f5f5;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-html { 
-    scroll-behavior: smooth; 
-}
+* { margin:0; padding:0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body { 
-    /* Fondo con degradado de morados oscuros */
-    background: radial-gradient(circle at center, var(--bg-purple-glow) 0%, var(--bg-purple-dark) 40%, var(--bg-dark-deep) 100%);
-    background-attachment: fixed; /* Mantiene el degradado estático al hacer scroll */
-    color: var(--text-white); 
+    background: radial-gradient(circle, var(--bg-glow) 0%, var(--bg-purple) 60%, var(--bg-dark) 100%);
+    background-attachment: fixed;
+    color: var(--text);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    line-height: 1.6;
 }
 
-/* El Canvas de los Orbes Dorados */
-#particles-canvas { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    z-index: -1; /* Se mantiene detrás de todo el contenido */
-    pointer-events: none; 
-}
+#particles-canvas { position: fixed; top:0; left:0; z-index: -1; pointer-events: none; }
 
-/* NAVBAR (Con transparencia para ver el degradado) */
-.navbar { 
-    position: fixed; 
-    width: 100%; 
-    background: rgba(10, 6, 18, 0.85); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 1000; 
-    border-bottom: 1px solid var(--gold-faded); 
-}
+/* NAVEGACIÓN FLEX */
+.navbar { position: fixed; width: 100%; z-index: 1000; background: rgba(10,6,18,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,204,51,0.2); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 15px 20px; }
+.nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
+.nav-menu a { color: #fff; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.nav-menu a:hover { color: var(--gold); }
+.btn-nav { background: var(--gold); color: #000 !important; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
 
-.nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 15px 20px; 
-}
+/* HERO FLEX */
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+.hero-container { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; align-items: center; }
+.hero-text { flex: 1; min-width: 300px; }
+.hero-video { flex: 1; min-width: 300px; }
+.hero-text h1 { font-size: 4rem; color: var(--gold); font-family: 'Poppins'; }
+.subtitle { font-size: 1.5rem; color: var(--morado-luz); margin-bottom: 20px; }
+.video-wrapper { border: 2px solid var(--gold); border-radius: 15px; overflow: hidden; background: #000; }
+video { width: 100%; display: block; }
 
-.nav-logo { 
-    color: var(--gold); 
-    font-weight: bold; 
-    font-family: 'Poppins', sans-serif; 
-    font-size: 1.6rem;
-    text-shadow: 0 0 10px rgba(255, 204, 51, 0.5);
-}
+/* SECCIONES */
+.section { padding: 80px 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.title-center { text-align: center; color: var(--gold); font-size: 2.8rem; margin-bottom: 40px; font-family: 'Poppins'; }
 
-.nav-menu { 
-    display: flex; 
-    list-style: none; 
-    gap: 25px; 
+/* REGIONES FLEX */
+.regiones-flex { display: flex; gap: 30px; flex-wrap: wrap; }
+.region-card { 
+    flex: 1; min-width: 300px; background: rgba(26,18,43,0.7); padding: 40px; 
+    border-radius: 20px; border: 1px solid rgba(255,204,51,0.2); text-align: center;
+    transition: 0.4s;
 }
+.region-card:hover { transform: translateY(-10px); border-color: var(--gold); background: rgba(26,18,43,0.9); }
+.gold-icon { font-size: 3rem; color: var(--gold); margin-bottom: 20px; display: block; }
 
-.nav-menu a { 
-    color: var(--text-white); 
-    text-decoration: none; 
-    font-weight: 500; 
-    transition: 0.3s; 
+/* PERSONAJES FLEX */
+.characters-flex { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.char-item { 
+    background: rgba(26,18,43,0.8); padding: 25px; width: 160px; 
+    border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
+.char-item:hover { background: var(--gold); color: #000; transform: scale(1.05); }
+.char-item i { font-size: 2.5rem; color: var(--gold); }
+.char-item:hover i { color: #000; }
 
-.nav-menu a:hover { 
-    color: var(--gold); 
-}
+/* REGISTRO Y DESCARGA */
+.register-box { max-width: 500px; margin: 0 auto; background: rgba(26,18,43,0.8); padding: 40px; border-radius: 20px; border: 1px solid var(--gold); }
+.reg-form { display: flex; flex-direction: column; gap: 15px; }
+.reg-form input { padding: 12px; border-radius: 5px; border: 1px solid var(--morado-luz); background: #000; color: #fff; }
+.download-card { text-align: center; background: rgba(255,204,51,0.05); border: 2px dashed var(--gold); padding: 50px; border-radius: 20px; }
+.btn-group { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
 
-/* SECCIONES TRANSVÍTREAS */
-.card, .register-box, .download-card { 
-    background: rgba(26, 18, 43, 0.7); /* Morado oscuro semi-transparente */
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 204, 51, 0.2);
-    border-radius: 20px;
-    padding: 30px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
+/* BOTONES */
+.btn-primary { background: var(--gold); color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { box-shadow: 0 0 20px var(--gold); transform: scale(1.05); }
 
-.card:hover {
-    border-color: var(--gold);
-    transform: translateY(-5px);
-}
+/* MODAL FLEX (Ventanas personajes) */
+.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
+.modal-content { background: #1a122b; padding: 40px; border-radius: 20px; border: 2px solid var(--gold); position: relative; max-width: 450px; text-align: center; }
+.close { position: absolute; right: 20px; top: 10px; font-size: 2.5rem; color: var(--gold); cursor: pointer; }
+.tag { color: var(--morado-luz); font-weight: bold; text-transform: uppercase; margin-top: 10px; }
+.dialogue { border-left: 3px solid var(--gold); padding-left: 15px; font-style: italic; margin-top: 20px; color: #ccc; }
 
-/* TÍTULOS */
-.title-center { 
-    text-align: center; 
-    color: var(--gold); 
-    font-family: 'Poppins', sans-serif; 
-    font-size: 3rem; 
-    margin-bottom: 50px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* BOTONES DORADOS */
-.btn-primary { 
-    background: var(--gold); 
-    color: var(--bg-dark-deep); 
-    padding: 12px 30px; 
-    border: none; 
-    border-radius: 8px; 
-    font-weight: bold; 
-    cursor: pointer; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
-}
-
-.btn-primary:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 0 20px var(--gold); 
-}
-
-/* MODAL */
-.modal-content { 
-    background: var(--bg-purple-dark); 
-    border: 2px solid var(--gold); 
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-}
+@media (max-width: 768px) { .nav-menu { display: none; } }

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isla Eco | El Viajero</title>
+    <title>Isla Eco</title>
+    <link rel="icon" href="https://img.icons8.com/emoji/48/island-with-palm-tree.png" type="image/png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -30,12 +32,12 @@
             <div class="hero-text">
                 <h1>Isla Eco</h1>
                 <p class="subtitle">El despertar de un náufrago</p>
-                <p>Explora un mundo donde la tecnología y la magia se fusionan. Recupera las gemas doradas.</p>
-                <button class="btn-primary" onclick="scrollToSection('descargar')">Jugar Ahora</button>
+                <p>Un mundo donde los orbes dorados marcan el camino hacia la verdad.</p>
+                <button class="btn-primary" onclick="scrollToSection('descargar')">Comenzar Aventura</button>
             </div>
             <div class="hero-video">
                 <div class="video-wrapper">
-                    <video controls poster="img/poster.jpg"><source src="video/trailer.mp4" type="video/mp4"></video>
+                    <video controls><source src="video/trailer.mp4" type="video/mp4"></video>
                 </div>
             </div>
         </div>
@@ -43,35 +45,28 @@
 
     <section id="historia" class="section">
         <div class="container">
-            <h2 class="title-center">Crónicas del Viajero</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <i class="fas fa-anchor fa-2x gold"></i>
-                    <h3>El Gran Naufragio</h3>
-                    <p>Tras una tormenta dorada, despiertas en una orilla desconocida. Tu brújula no marca el norte, marca el destino.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-gem fa-2x gold"></i>
-                    <h3>El Poder Ancestral</h3>
-                    <p>Las gemas de la isla mantienen el equilibrio. Si caen en manos equivocadas, la Isla Eco se apagará.</p>
-                </div>
+            <h2 class="title-center">Crónicas de la Isla</h2>
+            <div class="card-historia">
+                <p>Despiertas en una orilla bañada por luz violeta. Eres el **Viajero**, y tu misión es recuperar las gemas místicas que mantienen la armonía entre la tecnología antigua y la magia natural antes de que la oscuridad lo consuma todo.</p>
             </div>
         </div>
     </section>
 
     <section id="regiones" class="section">
         <div class="container">
-            <h2 class="title-center">Explora el Nexo</h2>
-            <div class="grid-2">
-                <div class="card region-box">
-                    <i class="fas fa-bolt fa-3x gold"></i>
-                    <h3>Oeste Tecnológico</h3>
-                    <p>Ruinas de metal y energía neón. El hogar de las máquinas que aún sueñan.</p>
+            <h2 class="title-center">Regiones Principales</h2>
+            <div class="regiones-flex">
+                <div class="region-card oeste">
+                    <i class="fas fa-microchip gold-icon"></i>
+                    <h3>Región Oeste</h3>
+                    <p class="tag">Sector Tecnológico</p>
+                    <p>Una metrópolis de engranajes y neón. Aquí, el conocimiento se almacena en circuitos dorados y las máquinas aún esperan el regreso de su creador.</p>
                 </div>
-                <div class="card region-box">
-                    <i class="fas fa-seedling fa-3x gold"></i>
-                    <h3>Este Místico</h3>
-                    <p>Bosques que respiran y ríos de luz. Donde la magia es la ley natural.</p>
+                <div class="region-card este">
+                    <i class="fas fa-leaf gold-icon"></i>
+                    <h3>Región Este</h3>
+                    <p class="tag">Santuario Místico</p>
+                    <p>Bosques que respiran y ríos de energía pura. La magia fluye a través de las raíces de los árboles milenarios protegidos por la naturaleza.</p>
                 </div>
             </div>
         </div>
@@ -80,7 +75,7 @@
     <section id="personajes" class="section">
         <div class="container">
             <h2 class="title-center">Habitantes</h2>
-            <div class="characters-grid">
+            <div class="characters-flex">
                 <div class="char-item" data-id="Viajero"><i class="fas fa-user-astronaut"></i><h4>Viajero</h4></div>
                 <div class="char-item" data-id="Kai"><i class="fas fa-guitar"></i><h4>Kai</h4></div>
                 <div class="char-item" data-id="Byte"><i class="fas fa-robot"></i><h4>Byte</h4></div>
@@ -91,13 +86,13 @@
     </section>
 
     <section id="registro" class="section">
-        <div class="container-small">
+        <div class="container">
             <div class="register-box">
-                <h2 class="title-center" style="font-size: 2rem;">Crea tu Perfil</h2>
+                <h2 class="title-center">Crea tu Cuenta</h2>
                 <form class="reg-form" id="registro-form">
                     <input type="text" placeholder="Nombre de Viajero" required>
-                    <input type="email" placeholder="Correo de Contacto" required>
-                    <input type="password" placeholder="Contraseña Segura" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Contraseña" required>
                     <button type="submit" class="btn-primary">Registrarse</button>
                 </form>
             </div>
@@ -107,8 +102,7 @@
     <section id="descargar" class="section">
         <div class="container">
             <div class="download-card">
-                <h2 class="gold">Descargar Isla Eco</h2>
-                <p>Comienza tu expedición hoy mismo. Versión 1.2 disponible.</p>
+                <h2 class="gold-text">Descarga Isla Eco</h2>
                 <div class="btn-group">
                     <button class="btn-primary"><i class="fab fa-windows"></i> Windows</button>
                     <button class="btn-primary"><i class="fab fa-apple"></i> Mac OS</button>
@@ -120,7 +114,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div id="modal-name" class="modal-title"></div>
+            <h2 id="modal-name"></h2>
             <p id="modal-role" class="tag"></p>
             <div id="modal-msg" class="dialogue"></div>
         </div>
