@@ -7,7 +7,7 @@ const PERSONAJES = {
     "Viajero": { 
         rol: "Náufrago del Tiempo", 
         msg: "El accidente fragmentó la gema nexo. Debo encontrar ambas mitades para volver a casa.",
-        img: "img/viajero.png"
+        img: "none"
     },
     "Kai": { 
         rol: "Guardián del Páramo", 
