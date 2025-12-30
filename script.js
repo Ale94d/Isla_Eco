@@ -14,10 +14,10 @@ class Orbe {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
+        this.size = Math.random() * 2.5 + 1;
         this.speedX = Math.random() * 0.4 - 0.2;
         this.speedY = Math.random() * 0.4 - 0.2;
-        this.opacity = Math.random();
+        this.opacity = Math.random() * 0.5 + 0.2;
     }
     update() {
         this.x += this.speedX;
@@ -35,7 +35,7 @@ class Orbe {
     }
 }
 
-for(let i=0; i<60; i++) particles.push(new Orbe());
+for(let i=0; i<70; i++) particles.push(new Orbe());
 
 function animate() {
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -44,7 +44,18 @@ function animate() {
 }
 animate();
 
-// 2. GESTIÓN DE SONIDOS (SFX)
+// 2. DATOS COMPLETOS DE PERSONAJES
+const dataNPC = {
+    "Viajero": { role: "Náufrago Arcano", msg: "Mis recuerdos brillan como el oro... debo encontrar las gemas." },
+    "Kai": { role: "Guardián Rockero", msg: "¡Eh, Viajero! El Oeste tiene ritmo. ¡Sigue el compás!" },
+    "Flamius": { role: "Aliado de Fuego", msg: "Mi llama arde con la fuerza del sol para protegerte." },
+    "Byte": { role: "Unidad de Lógica", msg: "Análisis completado. La isla requiere energía dorada." },
+    "Lysandra": { role: "Guardiana Este", msg: "El bosque susurra tu nombre. La armonía te sanará." },
+    "Smull": { role: "Espíritu Bosque", msg: "¡Hola! Las plantas brillan cuando tú pasas cerca." },
+    "Arvell": { role: "Vigía del Cielo", msg: "Te vi caer. Las corrientes de aire te guiarán." }
+};
+
+// 3. SONIDOS Y MODAL
 const sfx = {
     clic: new Audio('sonidos/clic.mp3'),
     magia: new Audio('sonidos/magia.mp3'),
@@ -53,45 +64,25 @@ const sfx = {
     exito: new Audio('sonidos/exito.mp3')
 };
 
-function sonar(nombre) {
-    const s = sfx[nombre];
-    if(s) { 
-        s.volume = 0.3; 
-        s.currentTime = 0; 
-        s.play().catch(()=>{}); 
-    }
+function sonar(n) {
+    const s = sfx[n];
+    if(s) { s.volume = 0.3; s.currentTime = 0; s.play().catch(()=>{}); }
 }
-
-// 3. DATOS DE PERSONAJES
-const npcs = {
-    "Viajero": { role: "Náufrago Arcano", msg: "Mis recuerdos brillan como el oro... debo encontrar las gemas." },
-    "Kai": { role: "Guardián Rockero", msg: "¡Eh, Viajero! El Oeste tiene ritmo. ¡Sigue el compás o te perderás!" },
-    "Byte": { role: "Unidad de Lógica", msg: "Análisis completado. La energía dorada en esta zona es estable." },
-    "Lysandra": { role: "Guardiana del Este", msg: "El bosque susurra tu nombre. La armonía mística te sanará." },
-    "Smull": { role: "Espíritu del Bosque", msg: "¡Hola! Las plantas brillan cuando tú pasas cerca. ¡Qué divertido!" }
-};
-
-// 4. INTERACCIONES
-document.querySelectorAll('.btn-primary, .nav-menu a').forEach(el => {
-    el.addEventListener('click', () => sonar('clic'));
-});
 
 const modal = document.getElementById('modal');
 document.querySelectorAll('.char-item').forEach(el => {
     el.addEventListener('click', () => {
         const id = el.getAttribute('data-id');
-        
-        // Sonido según el personaje
+        const npc = dataNPC[id];
+
+        // Sonido por tipo de personaje
         if(id === 'Byte') sonar('robot');
         else if(id === 'Kai') sonar('guitarra');
         else sonar('magia');
 
-        // Llenar datos en la ventana
         document.getElementById('modal-name').innerText = id;
-        document.getElementById('modal-role').innerText = npcs[id].role;
-        document.getElementById('modal-msg').innerText = npcs[id].msg;
-        
-        // Mostrar modal con Flexbox
+        document.getElementById('modal-role').innerText = npc.role;
+        document.getElementById('modal-msg').innerText = npc.msg;
         modal.style.display = 'flex';
     });
 });
@@ -101,7 +92,7 @@ document.querySelector('.close').onclick = () => modal.style.display = 'none';
 document.getElementById('registro-form').onsubmit = (e) => {
     e.preventDefault();
     sonar('exito');
-    alert("¡Cuenta creada con éxito! Bienvenido a Isla Eco.");
+    alert("¡Registro exitoso!");
 };
 
 function scrollToSection(id) {
