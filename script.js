@@ -1,136 +1,162 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isla Eco | El Viajero</title>
-    <link rel="icon" href="https://img.icons8.com/emoji/48/island-with-palm-tree.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <canvas id="particles-canvas"></canvas>
+/**
+ * ISLA ECO - LÓGICA INTEGRAL
+ * Autor: El Viajero
+ */
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo"><i class="fas fa-sun"></i> ISLA ECO</div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#historia">Historia</a></li>
-                <li><a href="#regiones">Regiones</a></li>
-                <li><a href="#personajes">Personajes</a></li>
-                <li><a href="#registro">Registro</a></li>
-                <li><a href="#descargar">Descargas</a></li>
-            </ul>
-        </div>
-    </nav>
+// 1. BASE DE DATOS DE PERSONAJES (Incluye a Arvell)
+const charData = {
+    "Viajero": { 
+        role: "Náufrago", 
+        img: "img/viajero.png", 
+        msg: "El accidente lo fragmentó todo. Mi misión es encontrar las piezas de la Gema Nexo para restaurar el orden." 
+    },
+    "Kai": { 
+        role: "Guardián del Oeste", 
+        img: "img/kai.png", 
+        msg: "Si buscas tecnología dorada y engranajes antiguos, el Páramo de Silicio es tu lugar. Ten cuidado con los restos del accidente." 
+    },
+    "Byte": { 
+        role: "Dron Lógico", 
+        img: "img/byte.png", 
+        msg: "Análisis: Firma de energía detectada. La inestabilidad en la isla aumenta un 15% cada hora. Recomiendo precaución." 
+    },
+    "Flamius": { 
+        role: "Espíritu Arcano", 
+        img: "img/flamius.png", 
+        msg: "Mi fuego no se apaga, ni siquiera tras la gran explosión. Represento la energía que aún late en el núcleo." 
+    },
+    "Lysandra": { 
+        role: "Sabia del Este", 
+        img: "img/lysandra.png", 
+        msg: "La Selva de Cristal susurra secretos místicos. La naturaleza está herida, pero la magia pura aún puede salvarla." 
+    },
+    "Smull": { 
+        role: "Brote Místico", 
+        img: "img/smull.png", 
+        msg: "¡Cuidado donde pisas! Las plantas brillan más de lo normal hoy y tienen mucha hambre de energía mágica." 
+    },
+    "Arvell": { 
+        role: "Vigía del Aire", 
+        img: "img/arvell.png", 
+        msg: "Desde lo más alto de la isla, vigilo que nadie robe las gemas. Nada escapa a mi vista entre las nubes." 
+    }
+};
 
-    <section id="inicio" class="hero">
-        <div class="container hero-flex">
-            <div class="hero-text">
-                <h1>Isla Eco</h1>
-                <p class="subtitle">El despertar de un náufrago</p>
-                <p>Restaura el equilibrio entre la tecnología y la magia pura.</p>
-                <button class="btn-primary" onclick="scrollToSection('descargar')">Jugar Ahora</button>
-            </div>
-            <div class="hero-video">
-                <div class="video-wrapper">
-                    <video controls poster="img/poster.jpg">
-                        <source src="video/trailer.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
+// 2. SISTEMA DE VENTANAS EMERGENTES (MODAL)
+const modal = document.getElementById('modal');
+const modalName = document.getElementById('modal-name');
+const modalRole = document.getElementById('modal-role');
+const modalMsg = document.getElementById('modal-msg');
+const modalImg = document.getElementById('modal-char-img');
+const closeBtn = document.querySelector('.close');
 
-    <section id="historia" class="section">
-        <div class="container">
-            <h2 class="title-center">Crónicas de la Isla</h2>
-            <div class="historia-grid">
-                <div class="historia-card">
-                    <i class="fas fa-bolt gold-icon"></i>
-                    <h3>El Accidente Arcano</h3>
-                    <p>Una falla crítica en el núcleo fracturó la realidad, dejando rastros de poder inestable que dividieron el mundo.</p>
-                </div>
-                <div class="historia-card">
-                    <i class="fas fa-gem gold-icon"></i>
-                    <h3>Ecosistemas y Gema Nexo</h3>
-                    <p>Recupera las dos mitades de la **Gema Nexo** en el Páramo y la Selva para salvar la isla.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// Asignar clics a los círculos de personajes
+document.querySelectorAll('.char-circle').forEach(el => {
+    el.onclick = function() {
+        const id = this.getAttribute('data-id');
+        const data = charData[id];
+        
+        // Rellenar datos
+        modalName.innerText = id;
+        modalRole.innerText = data.role;
+        modalMsg.innerText = data.msg;
+        modalImg.src = data.img;
+        
+        // Mostrar ventana con animación flex
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Evita scroll al estar abierto
+    };
+});
 
-    <section id="personajes" class="section">
-        <div class="container">
-            <h2 class="title-center">Habitantes</h2>
-            <div class="characters-flex">
-                <div class="char-circle" data-id="Viajero"><i class="fas fa-user-astronaut"></i><p>Viajero</p></div>
-                <div class="char-circle" data-id="Kai"><i class="fas fa-guitar"></i><p>Kai</p></div>
-                <div class="char-circle" data-id="Byte"><i class="fas fa-robot"></i><p>Byte</p></div>
-                <div class="char-circle" data-id="Flamius"><i class="fas fa-fire"></i><p>Flamius</p></div>
-                <div class="char-circle" data-id="Lysandra"><i class="fas fa-wand-sparkles"></i><p>Lysandra</p></div>
-                <div class="char-circle" data-id="Smull"><i class="fas fa-seedling"></i><p>Smull</p></div>
-                <div class="char-circle" data-id="Arvell"><i class="fas fa-wind"></i><p>Arvell</p></div>
-            </div>
-        </div>
-    </section>
+// Cerrar ventana al pulsar la X
+closeBtn.onclick = () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
 
-    <section id="registro" class="section">
-        <div class="container flex-center">
-            <div class="centered-box">
-                <h2 class="title-center">Registro</h2>
-                <form class="reg-form">
-                    <input type="text" placeholder="Usuario" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Contraseña" required>
-                    <button type="submit" class="btn-primary">Registrarse</button>
-                </form>
-            </div>
-        </div>
-    </section>
+// Cerrar ventana al pulsar fuera del cuadro
+window.onclick = (e) => {
+    if(e.target == modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+};
 
-    <section id="descargar" class="section">
-        <div class="container flex-center">
-            <div class="centered-box download-grid-container">
-                <h2 class="title-center">Galería y Descargas</h2>
-                <div class="download-grid">
-                    <div class="download-col-carousel">
-                        <div class="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="img/game1.jpg" alt="1"></div>
-                                <div class="carousel-item"><img src="img/game2.jpg" alt="2"></div>
-                                <div class="carousel-item"><img src="img/game3.jpg" alt="3"></div>
-                            </div>
-                            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-                            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
-                        </div>
-                    </div>
-                    <div class="download-col-btns">
-                        <p>Disponible para:</p>
-                        <button class="btn-primary btn-full"><i class="fab fa-windows"></i> Windows</button>
-                        <button class="btn-primary btn-full"><i class="fab fa-apple"></i> Mac OS</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// 3. LÓGICA DEL CARRUSEL DE IMÁGENES
+let slideIdx = 0;
 
-    <div id="modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-body">
-                <div class="modal-img-frame"><img id="modal-char-img" src="" alt="Personaje"></div>
-                <div class="modal-text">
-                    <h2 id="modal-name"></h2>
-                    <p id="modal-role" class="tag"></p>
-                    <div id="modal-msg" class="dialogue"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+function moveSlide(n) {
+    const slides = document.querySelectorAll('.carousel-item');
+    if (slides.length === 0) return;
 
-    <script src="script.js"></script>
-</body>
-</html>
+    // Quitar clase activa actual
+    slides[slideIdx].classList.remove('active');
+    
+    // Calcular siguiente índice
+    slideIdx = (slideIdx + n + slides.length) % slides.length;
+    
+    // Activar nueva slide
+    slides[slideIdx].classList.add('active');
+}
+
+// 4. FONDO ANIMADO DE PARTÍCULAS (Ambientación)
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+class Particle {
+    constructor() {
+        this.reset();
+    }
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vX = Math.random() * 0.4 - 0.2;
+        this.vY = Math.random() * 0.4 - 0.2;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.1;
+    }
+    update() {
+        this.x += this.vX;
+        this.y += this.vY;
+        if(this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+            this.reset();
+        }
+    }
+    draw() {
+        ctx.fillStyle = `rgba(255, 204, 51, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+// Crear partículas
+for(let i = 0; i < 70; i++) {
+    particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+// 5. NAVEGACIÓN SUAVE (Smooth Scroll)
+function scrollToSection(id) {
+    const target = document.getElementById(id);
+    if(target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+}
