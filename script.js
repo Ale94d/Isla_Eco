@@ -1,82 +1,70 @@
-:root {
-    --bg-dark: #050308;
-    --bg-purple: #0a0612;
-    --bg-glow: #1a122b;
-    --gold: #ffcc33;
-    --morado: #9d7cff;
-    --text: #f5f5f5;
+// 1. PARTICULAS (ORBES)
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+class Orbe {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.opacity = Math.random();
+    }
+    update() {
+        this.x += this.speedX; this.y += this.speedY;
+        if(this.x > canvas.width) this.x=0; if(this.y > canvas.height) this.y=0;
+    }
+    draw() {
+        ctx.fillStyle = `rgba(255, 204, 51, ${this.opacity})`;
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+    }
+}
+for(let i=0; i<80; i++) particles.push(new Orbe());
+function animate() {
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+}
+animate();
+
+// 2. CARRUSEL FUNCIONAL
+let slideIndex = 0;
+const slides = document.querySelectorAll('.carousel-item');
+
+function moveSlide(n) {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
+    slides[slideIndex].classList.add('active');
 }
 
-* { margin:0; padding:0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
+// 3. PERSONAJES Y DIÁLOGOS
+const charInfo = {
+    "Viajero": { role: "Náufrago Arcano", msg: "El accidente fragmentó mis recuerdos... y el mundo." },
+    "Kai": { role: "Guardián de Engranajes", msg: "En el Páramo, la tecnología no espera a nadie." },
+    "Byte": { role: "Asistente Lógico", msg: "Bip. Detectando alta inestabilidad en la Selva de Cristal." },
+    "Flamius": { role: "Espíritu Ígneo", msg: "Mi llama mantendrá el calor en el núcleo central." },
+    "Lysandra": { role: "Sabia de la Selva", msg: "La magia de cristal es poderosa, pero frágil." },
+    "Smull": { role: "Brote Místico", msg: "¡Mira! Las plantas cantan después del accidente." }
+};
 
-body { 
-    background: radial-gradient(circle, var(--bg-glow) 0%, var(--bg-purple) 60%, var(--bg-dark) 100%);
-    background-attachment: fixed;
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+const modal = document.getElementById('modal');
+document.querySelectorAll('.char-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        document.getElementById('modal-name').innerText = id;
+        document.getElementById('modal-role').innerText = charInfo[id].role;
+        document.getElementById('modal-msg').innerText = charInfo[id].msg;
+        modal.style.display = 'flex';
+    });
+});
+
+document.querySelector('.close').onclick = () => modal.style.display = 'none';
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
-
-#particles-canvas { position: fixed; top:0; left:0; z-index: -1; pointer-events: none; }
-
-/* NAVBAR RESPONSIVA */
-.navbar { position: fixed; width: 100%; z-index: 1000; background: rgba(10,6,18,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,204,51,0.2); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 1rem; }
-.nav-menu { display: flex; list-style: none; gap: 1.5rem; }
-.nav-menu a { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
-.btn-nav { background: var(--gold); color: #000 !important; padding: 0.4rem 1rem; border-radius: 5px; font-weight: bold; }
-
-/* SECCIONES GENERALES */
-.section { padding: 5rem 1rem; }
-.container { max-width: 1200px; margin: 0 auto; }
-.title-center { text-align: center; color: var(--gold); font-size: 2.5rem; margin-bottom: 3rem; font-family: 'Poppins'; }
-
-/* HERO (FLEXBOX DINÁMICO) */
-.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 5rem; }
-.hero-container { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; }
-.hero-text { flex: 1; min-width: 300px; text-align: left; }
-.hero-video { flex: 1; min-width: 300px; }
-.hero-text h1 { font-size: 3.5rem; color: var(--gold); line-height: 1.1; }
-.video-wrapper { border: 2px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,204,51,0.2); }
-video { width: 100%; display: block; }
-
-/* REGIONES (COLUMNAS RESPONSIVAS) */
-.regiones-flex { display: flex; flex-wrap: wrap; gap: 2rem; }
-.region-card { 
-    flex: 1; min-width: 300px; background: rgba(26,18,43,0.7); padding: 2.5rem; 
-    border-radius: 20px; border: 1px solid rgba(255,204,51,0.2); text-align: center;
-}
-.region-icon { font-size: 3rem; color: var(--gold); margin-bottom: 1rem; display: block; }
-
-/* PERSONAJES (GRILLA FLEXIBLE) */
-.characters-flex { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-.char-item { 
-    background: rgba(26,18,43,0.8); padding: 1.5rem; width: 140px; 
-    border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s;
-}
-.char-item:hover { background: var(--gold); color: #000; transform: translateY(-5px); }
-
-/* MODAL */
-.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 1rem; }
-.modal-content { background: #1a122b; padding: 2.5rem; border-radius: 20px; border: 2px solid var(--gold); max-width: 500px; width: 100%; position: relative; text-align: center; }
-.close { position: absolute; right: 1.5rem; top: 0.5rem; font-size: 2.5rem; color: var(--gold); cursor: pointer; }
-
-/* MEDIA QUERIES (PARA MÓVILES) */
-@media (max-width: 768px) {
-    .nav-menu { display: none; } /* Oculta menú en móviles por ahora */
-    .hero-text { text-align: center; }
-    .hero-text h1 { font-size: 2.5rem; }
-    .title-center { font-size: 2rem; }
-    .hero-container { flex-direction: column; }
-}
-
-/* OTROS ELEMENTOS */
-.btn-primary { background: var(--gold); color: #000; padding: 0.8rem 2rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-primary:hover { box-shadow: 0 0 15px var(--gold); }
-.tag { color: var(--morado); font-weight: bold; text-transform: uppercase; font-size: 0.75rem; }
-.register-box { max-width: 500px; margin: 0 auto; background: rgba(26,18,43,0.8); padding: 3rem; border-radius: 20px; border: 1px solid var(--gold); }
-.reg-form { display: flex; flex-direction: column; gap: 1rem; }
-.reg-form input { padding: 0.8rem; border-radius: 5px; border: 1px solid var(--morado); background: #000; color: #fff; }
-.download-card { text-align: center; background: rgba(255,204,51,0.05); border: 2px dashed var(--gold); padding: 3rem; border-radius: 20px; }
-.btn-group { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }

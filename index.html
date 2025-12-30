@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isla Eco</title>
     <link rel="icon" href="https://img.icons8.com/emoji/48/island-with-palm-tree.png" type="image/png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -22,7 +21,7 @@
                 <li><a href="#regiones">Regiones</a></li>
                 <li><a href="#personajes">Personajes</a></li>
                 <li><a href="#registro">Registro</a></li>
-                <li><a href="#descargar" class="btn-nav">Descargar</a></li>
+                <li><a href="#descargar">Descargas</a></li>
             </ul>
         </div>
     </nav>
@@ -32,7 +31,6 @@
             <div class="hero-text">
                 <h1>Isla Eco</h1>
                 <p class="subtitle">El despertar de un náufrago</p>
-                <p>Explora un mundo donde la tecnología y la magia se fusionan. Recupera las gemas doradas.</p>
                 <button class="btn-primary" onclick="scrollToSection('descargar')">Jugar Ahora</button>
             </div>
             <div class="hero-video">
@@ -45,9 +43,20 @@
 
     <section id="historia" class="section">
         <div class="container">
-            <h2 class="title-center">Historia</h2>
+            <h2 class="title-center">Nuestra Historia</h2>
             <div class="card-story">
-                <p>Tras una tormenta mística, despiertas en una isla donde los orbes dorados flotan en un cielo morado. Eres el elegido para unir el <b>Oeste Tecnológico</b> y el <b>Este Místico</b>.</p>
+                <p>Todo comenzó con el **Gran Accidente Arcano**, una falla crítica en el núcleo de la isla que fracturó la realidad en dos ecosistemas opuestos. Como náufrago de este desastre, despiertas en un mundo dividido:</p>
+                <div class="eco-boxes">
+                    <div class="eco-item">
+                        <h4 class="gold">Páramo de Silicio</h4>
+                        <p>Un desierto tecnológico de chatarra dorada y circuitos que aún laten bajo la arena.</p>
+                    </div>
+                    <div class="eco-item">
+                        <h4 class="gold">Selva de Cristal</h4>
+                        <p>Un santuario místico de flora bioluminiscente alimentada por la magia pura del accidente.</p>
+                    </div>
+                </div>
+                <p>Tu misión es reconciliar estos dos mundos antes de que la inestabilidad borre a la Isla Eco del mapa.</p>
             </div>
         </div>
     </section>
@@ -59,14 +68,14 @@
                 <div class="region-card oeste">
                     <i class="fas fa-microchip region-icon"></i>
                     <h3>Región Oeste</h3>
-                    <p class="tag">Sector Tecnológico</p>
-                    <p>Una metrópolis de engranajes antiguos y luces de neón. Aquí la lógica es la ley, custodiada por Kai y Byte.</p>
+                    <p class="tag">Páramo Tecnológico</p>
+                    <p>Hogar de Kai y Byte. Un lugar de lógica, metal y secretos mecánicos.</p>
                 </div>
                 <div class="region-card este">
                     <i class="fas fa-leaf region-icon"></i>
                     <h3>Región Este</h3>
                     <p class="tag">Santuario Místico</p>
-                    <p>Bosques ancestrales donde los árboles brillan con luz propia. La magia fluye protegida por Lysandra.</p>
+                    <p>Hogar de Lysandra y Smull. Donde la magia fluye por las raíces de los árboles.</p>
                 </div>
             </div>
         </div>
@@ -76,13 +85,30 @@
         <div class="container">
             <h2 class="title-center">Habitantes</h2>
             <div class="characters-flex">
-                <div class="char-item" data-id="Viajero"><i class="fas fa-user-astronaut"></i><h4>Viajero</h4></div>
-                <div class="char-item" data-id="Kai"><i class="fas fa-guitar"></i><h4>Kai</h4></div>
-                <div class="char-item" data-id="Byte"><i class="fas fa-robot"></i><h4>Byte</h4></div>
-                <div class="char-item" data-id="Flamius"><i class="fas fa-fire"></i><h4>Flamius</h4></div>
-                <div class="char-item" data-id="Lysandra"><i class="fas fa-wand-sparkles"></i><h4>Lysandra</h4></div>
-                <div class="char-item" data-id="Smull"><i class="fas fa-seedling"></i><h4>Smull</h4></div>
-                <div class="char-item" data-id="Arvell"><i class="fas fa-wind"></i><h4>Arvell</h4></div>
+                <div class="char-card" data-id="Viajero">
+                    <div class="char-img"><img src="img/viajero.png" alt="Viajero"><i class="fas fa-user-astronaut placeholder"></i></div>
+                    <h4>Viajero</h4>
+                </div>
+                <div class="char-card" data-id="Kai">
+                    <div class="char-img"><img src="img/kai.png" alt="Kai"><i class="fas fa-guitar placeholder"></i></div>
+                    <h4>Kai</h4>
+                </div>
+                <div class="char-card" data-id="Byte">
+                    <div class="char-img"><img src="img/byte.png" alt="Byte"><i class="fas fa-robot placeholder"></i></div>
+                    <h4>Byte</h4>
+                </div>
+                <div class="char-card" data-id="Flamius">
+                    <div class="char-img"><img src="img/flamius.png" alt="Flamius"><i class="fas fa-fire placeholder"></i></div>
+                    <h4>Flamius</h4>
+                </div>
+                <div class="char-card" data-id="Lysandra">
+                    <div class="char-img"><img src="img/lysandra.png" alt="Lysandra"><i class="fas fa-wand-sparkles placeholder"></i></div>
+                    <h4>Lysandra</h4>
+                </div>
+                <div class="char-card" data-id="Smull">
+                    <div class="char-img"><img src="img/smull.png" alt="Smull"><i class="fas fa-seedling placeholder"></i></div>
+                    <h4>Smull</h4>
+                </div>
             </div>
         </div>
     </section>
@@ -95,7 +121,7 @@
                     <input type="text" placeholder="Usuario" required>
                     <input type="email" placeholder="Email" required>
                     <input type="password" placeholder="Contraseña" required>
-                    <button type="submit" class="btn-primary">Registrarse</button>
+                    <button type="submit" class="btn-primary">Crear Cuenta</button>
                 </form>
             </div>
         </div>
@@ -103,8 +129,19 @@
 
     <section id="descargar" class="section">
         <div class="container">
+            <h2 class="title-center">Descargas y Galería</h2>
+            
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active"><img src="img/game1.jpg" alt="Vista 1"></div>
+                    <div class="carousel-item"><img src="img/game2.jpg" alt="Vista 2"></div>
+                    <div class="carousel-item"><img src="img/game3.jpg" alt="Vista 3"></div>
+                </div>
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+
             <div class="download-card">
-                <h2 class="gold-text">Descargar Juego</h2>
                 <div class="btn-group">
                     <button class="btn-primary"><i class="fab fa-windows"></i> Windows</button>
                     <button class="btn-primary"><i class="fab fa-apple"></i> Mac OS</button>
