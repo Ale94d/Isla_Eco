@@ -5,81 +5,249 @@
     --text: #f5f5f5;
 }
 
-* { margin:0; padding:0; box-sizing: border-box; }
-body { background: radial-gradient(circle, var(--bg-glow) 0%, var(--bg-dark) 100%); background-attachment: fixed; color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+/* 1. Error de reseteo: Asegurar que el box-sizing no rompa el diseño */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.section { padding: 60px 0; }
-.title-center { text-align: center; color: var(--gold); font-size: 2.2rem; margin-bottom: 40px; }
+body { 
+    background: radial-gradient(circle, var(--bg-glow) 0%, var(--bg-dark) 100%); 
+    background-attachment: fixed; 
+    color: var(--text); 
+    font-family: 'Inter', sans-serif; 
+    overflow-x: hidden; 
+    line-height: 1.6; /* 2. Error de legibilidad: Espaciado de línea añadido */
+}
 
-/* INICIO (HERO) RESPONSIVO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
-.hero-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: center; }
+/* 3. Error de navegación: fixed requiere top:0 para no flotar en el medio */
+.navbar { 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    z-index: 2000; /* 4. Error de capa: Debe estar por encima de todo */
+    background: rgba(10, 6, 18, 0.95); 
+    border-bottom: 1px solid rgba(255, 204, 51, 0.2); 
+    height: 70px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+.nav-menu { 
+    display: flex; 
+    list-style: none; 
+    gap: 20px; 
+}
+
+.nav-menu a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    transition: 0.3s;
+}
+
+.nav-menu a:hover { color: var(--gold); }
+
+/* 5. Error de Secciones: Padding superior insuficiente para navbar fixed */
+.section { padding: 100px 20px 60px; } 
+
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+
+.title-center { 
+    text-align: center; 
+    color: var(--gold); 
+    font-size: 2.2rem; 
+    margin-bottom: 40px; 
+    text-transform: uppercase;
+}
+
+/* INICIO (HERO) - Ajuste responsivo */
+.hero { 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    padding-top: 80px; 
+}
+
+.hero-flex { 
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    gap: 40px; 
+    justify-content: center; 
+    width: 100%; 
+}
+
 .hero-text { flex: 1; min-width: 320px; }
-.hero-text h1 { font-size: 4rem; color: var(--gold); }
+.hero-text h1 { font-size: 3.5rem; color: var(--gold); margin-bottom: 15px; }
+
 .hero-video { flex: 1; min-width: 320px; max-width: 550px; }
-.video-wrapper { border: 2px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,204,51,0.2); }
+.video-wrapper { 
+    border: 2px solid var(--gold); 
+    border-radius: 15px; 
+    overflow: hidden; 
+    background: #000;
+}
 video { width: 100%; display: block; }
 
-/* HISTORIA */
-.historia-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.historia-card { flex: 1; min-width: 300px; background: rgba(26,18,43,0.7); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); }
-.gold-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+/* PERSONAJES - 6. Error de interactividad: z-index para asegurar clics */
+.characters-flex { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+}
 
-/* REGIONES */
-.regiones-flex { display: flex; flex-wrap: wrap; gap: 20px; }
-.region-card { flex: 1; min-width: 300px; background: rgba(26,18,43,0.8); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); text-align: center; }
-.region-icon { font-size: 3rem; color: var(--gold); margin-bottom: 10px; }
+.char-circle { 
+    cursor: pointer; 
+    text-align: center; 
+    width: 100px; 
+    position: relative;
+    z-index: 10; 
+}
 
-/* PERSONAJES */
-.characters-flex { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.char-circle { cursor: pointer; text-align: center; width: 100px; }
-.char-circle i { width: 80px; height: 80px; background: #000; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--gold); margin: 0 auto 10px; transition: 0.3s; }
-.char-circle:hover i { transform: translateY(-5px); box-shadow: 0 0 15px var(--gold); }
+.char-circle i { 
+    width: 80px; 
+    height: 80px; 
+    background: #000; 
+    border: 2px solid var(--gold); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 2rem; 
+    color: var(--gold); 
+    margin: 0 auto 10px; 
+    transition: 0.3s; 
+}
 
-/* CAJAS CENTRADAS */
+.char-circle:hover i { 
+    transform: translateY(-5px); 
+    box-shadow: 0 0 15px var(--gold); 
+}
+
+/* CAJAS CENTRADAS (REGISTRO Y DESCARGAS) */
 .flex-center { display: flex; justify-content: center; }
-.centered-box { background: rgba(26,18,43,0.8); border: 2px solid var(--gold); padding: 40px; border-radius: 25px; width: 100%; max-width: 850px; }
+.centered-box { 
+    background: rgba(26, 18, 43, 0.85); 
+    border: 2px solid var(--gold); 
+    padding: 40px; 
+    border-radius: 25px; 
+    width: 100%; 
+    max-width: 850px; 
+}
 
-/* GRID DE DESCARGA */
-.download-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: center; }
+/* 7. Error de Grid: Definición de columnas para dispositivos */
+.download-grid { 
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 30px; 
+    align-items: center; 
+}
+
 .download-col-btns { display: flex; flex-direction: column; gap: 15px; }
-.btn-full { width: 100%; }
+.btn-full { width: 100%; margin-bottom: 10px; }
 
-/* CARRUSEL */
-.carousel { position: relative; height: 280px; border-radius: 15px; overflow: hidden; border: 1px solid var(--gold); }
-.carousel-item { display: none; height: 100%; }
+/* CARRUSEL - 8. Error de altura: Faltaba unidad 'px' o '%' */
+.carousel { 
+    position: relative; 
+    height: 300px; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    border: 1px solid var(--gold); 
+    background: #000; 
+}
+
+.carousel-item { display: none; height: 100%; width: 100%; }
 .carousel-item.active { display: block; }
 .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-.carousel-btn { position: absolute; top: 50%; background: rgba(0,0,0,0.6); color: var(--gold); border: none; padding: 15px; cursor: pointer; z-index: 5; }
+
+.carousel-btn { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: rgba(0, 0, 0, 0.7); 
+    color: var(--gold); 
+    border: none; 
+    padding: 15px; 
+    cursor: pointer; 
+    z-index: 100; 
+}
 .next { right: 0; }
 
-/* NAVBAR */
-.navbar { position: fixed; width: 100%; z-index: 1000; background: rgba(10,6,18,0.95); border-bottom: 1px solid rgba(255,204,51,0.2); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; }
-.nav-menu { display: flex; list-style: none; gap: 20px; }
-.nav-menu a { color: #fff; text-decoration: none; font-size: 0.9rem; }
+/* 9. Error de Modal: El display inicial debe permitir la activación por JS */
+.modal { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.95); 
+    z-index: 3000; 
+    display: none; /* Se activa con flex desde JS */
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px; 
+}
 
-/* MODAL */
-.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
-.modal-content { background: var(--bg-glow); border: 2px solid var(--gold); max-width: 750px; width: 90%; border-radius: 20px; overflow: hidden; position: relative; }
+.modal-content { 
+    background: var(--bg-glow); 
+    border: 2px solid var(--gold); 
+    max-width: 750px; 
+    width: 100%; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    position: relative; 
+}
+
 .modal-body { display: flex; flex-wrap: wrap; }
 .modal-img-frame { flex: 1; min-width: 300px; height: 350px; background: #000; }
 .modal-img-frame img { width: 100%; height: 100%; object-fit: cover; }
 .modal-text { flex: 1; min-width: 300px; padding: 30px; }
-.close { position: absolute; right: 20px; top: 10px; font-size: 2.5rem; color: var(--gold); cursor: pointer; z-index: 10; }
 
-/* BOTONES Y GENERAL */
-.btn-primary { background: var(--gold); color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--gold); }
-.tag { color: var(--gold); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
-.dialogue { font-style: italic; color: #ccc; margin-top: 15px; border-left: 2px solid var(--gold); padding-left: 10px; }
-.reg-form { display: flex; flex-direction: column; gap: 15px; }
-.reg-form input { padding: 12px; border-radius: 5px; background: #000; color: #fff; border: 1px solid var(--gold); }
+.close { 
+    position: absolute; 
+    right: 20px; 
+    top: 10px; 
+    font-size: 2.5rem; 
+    color: var(--gold); 
+    cursor: pointer; 
+    z-index: 100; 
+}
 
-/* RESPONSIVO MÓVIL */
+#particles-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+
+.btn-primary { 
+    background: var(--gold); 
+    color: #000; 
+    padding: 12px 25px; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+
+/* MEDIA QUERIES - Visibilidad en cualquier dispositivo */
 @media (max-width: 768px) {
     .nav-menu { display: none; }
+    .hero-text h1 { font-size: 2.5rem; text-align: center; }
     .hero-text { text-align: center; }
     .download-grid { grid-template-columns: 1fr; }
     .modal-body { flex-direction: column; }

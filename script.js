@@ -1,87 +1,136 @@
-:root {
-    --bg-dark: #050308;
-    --bg-glow: #1a122b;
-    --gold: #ffcc33;
-    --text: #f5f5f5;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isla Eco | El Viajero</title>
+    <link rel="icon" href="https://img.icons8.com/emoji/48/island-with-palm-tree.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
 
-* { margin:0; padding:0; box-sizing: border-box; }
-body { background: radial-gradient(circle, var(--bg-glow) 0%, var(--bg-dark) 100%); background-attachment: fixed; color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><i class="fas fa-sun"></i> ISLA ECO</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#regiones">Regiones</a></li>
+                <li><a href="#personajes">Personajes</a></li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#descargar">Descargas</a></li>
+            </ul>
+        </div>
+    </nav>
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.section { padding: 60px 0; }
-.title-center { text-align: center; color: var(--gold); font-size: 2.2rem; margin-bottom: 40px; }
+    <section id="inicio" class="hero">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <h1>Isla Eco</h1>
+                <p class="subtitle">El despertar de un náufrago</p>
+                <p>Restaura el equilibrio entre la tecnología y la magia pura.</p>
+                <button class="btn-primary" onclick="scrollToSection('descargar')">Jugar Ahora</button>
+            </div>
+            <div class="hero-video">
+                <div class="video-wrapper">
+                    <video controls poster="img/poster.jpg">
+                        <source src="video/trailer.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* INICIO (HERO) RESPONSIVO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
-.hero-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: center; }
-.hero-text { flex: 1; min-width: 320px; }
-.hero-text h1 { font-size: 4rem; color: var(--gold); }
-.hero-video { flex: 1; min-width: 320px; max-width: 550px; }
-.video-wrapper { border: 2px solid var(--gold); border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(255,204,51,0.2); }
-video { width: 100%; display: block; }
+    <section id="historia" class="section">
+        <div class="container">
+            <h2 class="title-center">Crónicas de la Isla</h2>
+            <div class="historia-grid">
+                <div class="historia-card">
+                    <i class="fas fa-bolt gold-icon"></i>
+                    <h3>El Accidente Arcano</h3>
+                    <p>Una falla crítica en el núcleo fracturó la realidad, dejando rastros de poder inestable que dividieron el mundo.</p>
+                </div>
+                <div class="historia-card">
+                    <i class="fas fa-gem gold-icon"></i>
+                    <h3>Ecosistemas y Gema Nexo</h3>
+                    <p>Recupera las dos mitades de la **Gema Nexo** en el Páramo y la Selva para salvar la isla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* HISTORIA */
-.historia-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.historia-card { flex: 1; min-width: 300px; background: rgba(26,18,43,0.7); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); }
-.gold-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+    <section id="personajes" class="section">
+        <div class="container">
+            <h2 class="title-center">Habitantes</h2>
+            <div class="characters-flex">
+                <div class="char-circle" data-id="Viajero"><i class="fas fa-user-astronaut"></i><p>Viajero</p></div>
+                <div class="char-circle" data-id="Kai"><i class="fas fa-guitar"></i><p>Kai</p></div>
+                <div class="char-circle" data-id="Byte"><i class="fas fa-robot"></i><p>Byte</p></div>
+                <div class="char-circle" data-id="Flamius"><i class="fas fa-fire"></i><p>Flamius</p></div>
+                <div class="char-circle" data-id="Lysandra"><i class="fas fa-wand-sparkles"></i><p>Lysandra</p></div>
+                <div class="char-circle" data-id="Smull"><i class="fas fa-seedling"></i><p>Smull</p></div>
+                <div class="char-circle" data-id="Arvell"><i class="fas fa-wind"></i><p>Arvell</p></div>
+            </div>
+        </div>
+    </section>
 
-/* REGIONES */
-.regiones-flex { display: flex; flex-wrap: wrap; gap: 20px; }
-.region-card { flex: 1; min-width: 300px; background: rgba(26,18,43,0.8); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); text-align: center; }
-.region-icon { font-size: 3rem; color: var(--gold); margin-bottom: 10px; }
+    <section id="registro" class="section">
+        <div class="container flex-center">
+            <div class="centered-box">
+                <h2 class="title-center">Registro</h2>
+                <form class="reg-form">
+                    <input type="text" placeholder="Usuario" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Contraseña" required>
+                    <button type="submit" class="btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-/* PERSONAJES */
-.characters-flex { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.char-circle { cursor: pointer; text-align: center; width: 100px; }
-.char-circle i { width: 80px; height: 80px; background: #000; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--gold); margin: 0 auto 10px; transition: 0.3s; }
-.char-circle:hover i { transform: translateY(-5px); box-shadow: 0 0 15px var(--gold); }
+    <section id="descargar" class="section">
+        <div class="container flex-center">
+            <div class="centered-box download-grid-container">
+                <h2 class="title-center">Galería y Descargas</h2>
+                <div class="download-grid">
+                    <div class="download-col-carousel">
+                        <div class="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active"><img src="img/game1.jpg" alt="1"></div>
+                                <div class="carousel-item"><img src="img/game2.jpg" alt="2"></div>
+                                <div class="carousel-item"><img src="img/game3.jpg" alt="3"></div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+                        </div>
+                    </div>
+                    <div class="download-col-btns">
+                        <p>Disponible para:</p>
+                        <button class="btn-primary btn-full"><i class="fab fa-windows"></i> Windows</button>
+                        <button class="btn-primary btn-full"><i class="fab fa-apple"></i> Mac OS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* CAJAS CENTRADAS */
-.flex-center { display: flex; justify-content: center; }
-.centered-box { background: rgba(26,18,43,0.8); border: 2px solid var(--gold); padding: 40px; border-radius: 25px; width: 100%; max-width: 850px; }
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img-frame"><img id="modal-char-img" src="" alt="Personaje"></div>
+                <div class="modal-text">
+                    <h2 id="modal-name"></h2>
+                    <p id="modal-role" class="tag"></p>
+                    <div id="modal-msg" class="dialogue"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-/* GRID DE DESCARGA */
-.download-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: center; }
-.download-col-btns { display: flex; flex-direction: column; gap: 15px; }
-.btn-full { width: 100%; }
-
-/* CARRUSEL */
-.carousel { position: relative; height: 280px; border-radius: 15px; overflow: hidden; border: 1px solid var(--gold); }
-.carousel-item { display: none; height: 100%; }
-.carousel-item.active { display: block; }
-.carousel-item img { width: 100%; height: 100%; object-fit: cover; }
-.carousel-btn { position: absolute; top: 50%; background: rgba(0,0,0,0.6); color: var(--gold); border: none; padding: 15px; cursor: pointer; z-index: 5; }
-.next { right: 0; }
-
-/* NAVBAR */
-.navbar { position: fixed; width: 100%; z-index: 1000; background: rgba(10,6,18,0.95); border-bottom: 1px solid rgba(255,204,51,0.2); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; }
-.nav-menu { display: flex; list-style: none; gap: 20px; }
-.nav-menu a { color: #fff; text-decoration: none; font-size: 0.9rem; }
-
-/* MODAL */
-.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
-.modal-content { background: var(--bg-glow); border: 2px solid var(--gold); max-width: 750px; width: 90%; border-radius: 20px; overflow: hidden; position: relative; }
-.modal-body { display: flex; flex-wrap: wrap; }
-.modal-img-frame { flex: 1; min-width: 300px; height: 350px; background: #000; }
-.modal-img-frame img { width: 100%; height: 100%; object-fit: cover; }
-.modal-text { flex: 1; min-width: 300px; padding: 30px; }
-.close { position: absolute; right: 20px; top: 10px; font-size: 2.5rem; color: var(--gold); cursor: pointer; z-index: 10; }
-
-/* BOTONES Y GENERAL */
-.btn-primary { background: var(--gold); color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--gold); }
-.tag { color: var(--gold); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
-.dialogue { font-style: italic; color: #ccc; margin-top: 15px; border-left: 2px solid var(--gold); padding-left: 10px; }
-.reg-form { display: flex; flex-direction: column; gap: 15px; }
-.reg-form input { padding: 12px; border-radius: 5px; background: #000; color: #fff; border: 1px solid var(--gold); }
-
-/* RESPONSIVO MÓVIL */
-@media (max-width: 768px) {
-    .nav-menu { display: none; }
-    .hero-text { text-align: center; }
-    .download-grid { grid-template-columns: 1fr; }
-    .modal-body { flex-direction: column; }
-    .modal-img-frame { height: 250px; }
-}
+    <script src="script.js"></script>
+</body>
+</html>
