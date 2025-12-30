@@ -1,78 +1,135 @@
 ﻿:root {
-    --bg-dark: #0a0612;
-    --bg-gradient: radial-gradient(circle, #1a122b 0%, #0a0612 100%);
-    --bg-surface: rgba(26, 18, 43, 0.9);
-    --gold: #ffcc33;
-    --text: #f5f5f5;
-    --morado: #9d7cff;
+    /* Paleta de colores: Morados oscuros y Oro */
+    --bg-dark-deep: #050308;        /* Negro místico */
+    --bg-purple-dark: #0a0612;      /* Morado base */
+    --bg-purple-glow: #1a122b;      /* Morado de resplandor */
+    --gold: #ffcc33;                /* Oro puro */
+    --gold-faded: rgba(255, 204, 51, 0.3);
+    --morado-vibrante: #9d7cff;
+    --text-white: #f5f5f5;
 }
 
-* { margin:0; padding:0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
 body { 
-    font-family: 'Inter', sans-serif; 
-    background: var(--bg-dark); 
-    background-image: var(--bg-gradient); 
-    color: var(--text); 
+    /* Fondo con degradado de morados oscuros */
+    background: radial-gradient(circle at center, var(--bg-purple-glow) 0%, var(--bg-purple-dark) 40%, var(--bg-dark-deep) 100%);
+    background-attachment: fixed; /* Mantiene el degradado estático al hacer scroll */
+    color: var(--text-white); 
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    line-height: 1.6;
 }
 
-canvas { position: fixed; top:0; left:0; z-index:-1; pointer-events: none; }
+/* El Canvas de los Orbes Dorados */
+#particles-canvas { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: -1; /* Se mantiene detrás de todo el contenido */
+    pointer-events: none; 
+}
 
-/* NAVBAR */
-.navbar { position: fixed; width:100%; background: rgba(10, 6, 18, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1000; padding: 15px 0; border-bottom: 1px solid rgba(255, 204, 51, 0.2); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.nav-logo { color: var(--gold); font-weight: bold; font-family: 'Poppins'; font-size: 1.5rem; }
-.nav-menu { display: flex; list-style: none; gap: 20px; }
-.nav-menu a { color: var(--text); text-decoration: none; font-size: 0.9rem; }
-.btn-nav { background: var(--gold); color: #000 !important; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
+/* NAVBAR (Con transparencia para ver el degradado) */
+.navbar { 
+    position: fixed; 
+    width: 100%; 
+    background: rgba(10, 6, 18, 0.85); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000; 
+    border-bottom: 1px solid var(--gold-faded); 
+}
 
-/* SECCIONES */
-.section { padding: 100px 0; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.container-small { max-width: 500px; margin: 0 auto; }
-.title-center { text-align: center; margin-bottom: 50px; font-size: 3rem; color: var(--gold); font-family: 'Poppins'; }
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 15px 20px; 
+}
 
-/* CARDS */
-.card { background: var(--bg-surface); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 204, 51, 0.1); transition: 0.3s; }
-.card:hover { border-color: var(--gold); transform: translateY(-5px); }
-.gold { color: var(--gold); margin-bottom: 10px; display: block; }
+.nav-logo { 
+    color: var(--gold); 
+    font-weight: bold; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px rgba(255, 204, 51, 0.5);
+}
 
-/* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
-.hero-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; align-items: center; }
-.hero-text h1 { font-size: 5rem; color: var(--gold); font-family: 'Poppins'; line-height: 1.1; }
-.subtitle { font-size: 1.5rem; color: var(--morado); margin-bottom: 20px; }
-.video-wrapper { border: 2px solid var(--gold); border-radius: 15px; overflow: hidden; }
-video { width: 100%; display: block; }
+.nav-menu { 
+    display: flex; 
+    list-style: none; 
+    gap: 25px; 
+}
 
-/* PERSONAJES */
-.characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; }
-.char-item { background: var(--bg-surface); padding: 25px; border-radius: 15px; text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.3s; }
-.char-item i { font-size: 2rem; color: var(--gold); margin-bottom: 10px; display: block; }
-.char-item:hover { background: var(--gold); color: #000; }
-.char-item:hover i { color: #000; }
+.nav-menu a { 
+    color: var(--text-white); 
+    text-decoration: none; 
+    font-weight: 500; 
+    transition: 0.3s; 
+}
 
-/* REGISTRO Y DESCARGA */
-.register-box { background: var(--bg-surface); padding: 40px; border-radius: 20px; border: 1px solid var(--gold); }
-.reg-form { display: flex; flex-direction: column; gap: 15px; }
-.reg-form input { padding: 12px; border-radius: 8px; border: 1px solid var(--morado); background: #000; color: #fff; }
-.download-card { text-align: center; background: var(--bg-surface); padding: 60px; border-radius: 30px; border: 2px dashed var(--gold); }
-.btn-group { display: flex; gap: 20px; justify-content: center; margin-top: 30px; }
+.nav-menu a:hover { 
+    color: var(--gold); 
+}
 
-/* BOTONES */
-.btn-primary { background: var(--gold); color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-primary:hover { box-shadow: 0 0 15px var(--gold); transform: scale(1.05); }
+/* SECCIONES TRANSVÍTREAS */
+.card, .register-box, .download-card { 
+    background: rgba(26, 18, 43, 0.7); /* Morado oscuro semi-transparente */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 204, 51, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+/* TÍTULOS */
+.title-center { 
+    text-align: center; 
+    color: var(--gold); 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 3rem; 
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* BOTONES DORADOS */
+.btn-primary { 
+    background: var(--gold); 
+    color: var(--bg-dark-deep); 
+    padding: 12px 30px; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+.btn-primary:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px var(--gold); 
+}
 
 /* MODAL */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; }
-.modal-content { background: #1a122b; max-width: 600px; margin: 15vh auto; padding: 30px; border-radius: 20px; border: 2px solid var(--gold); position: relative; }
-.close { position: absolute; right: 20px; top: 10px; font-size: 2rem; color: var(--gold); cursor: pointer; }
-.modal-flex { display: flex; gap: 20px; align-items: center; }
-.modal-art { width: 150px; height: 150px; background: #000; border-radius: 10px; border: 1px solid var(--gold); }
-.dialogue { margin-top: 15px; font-style: italic; color: #ccc; }
-
-@media (max-width: 768px) {
-    .hero-container, .modal-flex { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+.modal-content { 
+    background: var(--bg-purple-dark); 
+    border: 2px solid var(--gold); 
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }

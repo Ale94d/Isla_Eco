@@ -1,328 +1,131 @@
-﻿/* PALETA DE COLORES (Estilo Rapunzel)
-   Se han corregido las variables para evitar errores de sintaxis 
-*/
-:root {
-    --bg-dark: #0a0612;
-    --bg-gradient: radial-gradient(circle, #1a122b 0%, #0a0612 100%);
-    --bg-surface: rgba(26, 18, 43, 0.8);
-    --gold: #ffcc33;
-    --gold-glow: rgba(255, 204, 51, 0.3);
-    --text: #f5f5f5;
-    --morado: #9d7cff;
-}
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isla Eco | El Viajero</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
 
-/* RESET GENERAL */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><i class="fas fa-sun"></i> ISLA ECO</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#regiones">Regiones</a></li>
+                <li><a href="#personajes">Personajes</a></li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#descargar" class="btn-nav">Descargar</a></li>
+            </ul>
+        </div>
+    </nav>
 
-html {
-    scroll-behavior: smooth;
-}
+    <section id="inicio" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Isla Eco</h1>
+                <p class="subtitle">El despertar de un náufrago</p>
+                <p>Explora un mundo donde la tecnología y la magia se fusionan. Recupera las gemas doradas.</p>
+                <button class="btn-primary" onclick="scrollToSection('descargar')">Jugar Ahora</button>
+            </div>
+            <div class="hero-video">
+                <div class="video-wrapper">
+                    <video controls poster="img/poster.jpg"><source src="video/trailer.mp4" type="video/mp4"></video>
+                </div>
+            </div>
+        </div>
+    </section>
 
-body { 
-    font-family: 'Inter', sans-serif; 
-    background-color: var(--bg-dark); 
-    background-image: var(--bg-gradient); 
-    background-attachment: fixed;
-    color: var(--text); 
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+    <section id="historia" class="section">
+        <div class="container">
+            <h2 class="title-center">Crónicas del Viajero</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <i class="fas fa-anchor fa-2x gold"></i>
+                    <h3>El Gran Naufragio</h3>
+                    <p>Tras una tormenta dorada, despiertas en una orilla desconocida. Tu brújula no marca el norte, marca el destino.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-gem fa-2x gold"></i>
+                    <h3>El Poder Ancestral</h3>
+                    <p>Las gemas de la isla mantienen el equilibrio. Si caen en manos equivocadas, la Isla Eco se apagará.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* CANVAS DE FONDO */
-#particles-canvas { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    z-index: -1; 
-    pointer-events: none; 
-}
+    <section id="regiones" class="section">
+        <div class="container">
+            <h2 class="title-center">Explora el Nexo</h2>
+            <div class="grid-2">
+                <div class="card region-box">
+                    <i class="fas fa-bolt fa-3x gold"></i>
+                    <h3>Oeste Tecnológico</h3>
+                    <p>Ruinas de metal y energía neón. El hogar de las máquinas que aún sueñan.</p>
+                </div>
+                <div class="card region-box">
+                    <i class="fas fa-seedling fa-3x gold"></i>
+                    <h3>Este Místico</h3>
+                    <p>Bosques que respiran y ríos de luz. Donde la magia es la ley natural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* NAVBAR (Corregido backdrop-filter para compatibilidad) */
-.navbar { 
-    position: fixed; 
-    width: 100%; 
-    background-color: rgba(10, 6, 18, 0.9); 
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px); 
-    z-index: 1000; 
-    padding: 15px 0; 
-    border-bottom: 1px solid rgba(255, 204, 51, 0.2); 
-}
+    <section id="personajes" class="section">
+        <div class="container">
+            <h2 class="title-center">Habitantes</h2>
+            <div class="characters-grid">
+                <div class="char-item" data-id="Viajero"><i class="fas fa-user-astronaut"></i><h4>Viajero</h4></div>
+                <div class="char-item" data-id="Kai"><i class="fas fa-guitar"></i><h4>Kai</h4></div>
+                <div class="char-item" data-id="Byte"><i class="fas fa-robot"></i><h4>Byte</h4></div>
+                <div class="char-item" data-id="Lysandra"><i class="fas fa-wand-sparkles"></i><h4>Lysandra</h4></div>
+                <div class="char-item" data-id="Smull"><i class="fas fa-leaf"></i><h4>Smull</h4></div>
+            </div>
+        </div>
+    </section>
 
-.nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
+    <section id="registro" class="section">
+        <div class="container-small">
+            <div class="register-box">
+                <h2 class="title-center" style="font-size: 2rem;">Crea tu Perfil</h2>
+                <form class="reg-form" id="registro-form">
+                    <input type="text" placeholder="Nombre de Viajero" required>
+                    <input type="email" placeholder="Correo de Contacto" required>
+                    <input type="password" placeholder="Contraseña Segura" required>
+                    <button type="submit" class="btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-.nav-logo { 
-    font-weight: bold; 
-    color: var(--gold); 
-    font-size: 1.5rem; 
-    font-family: 'Poppins', sans-serif; 
-}
+    <section id="descargar" class="section">
+        <div class="container">
+            <div class="download-card">
+                <h2 class="gold">Descargar Isla Eco</h2>
+                <p>Comienza tu expedición hoy mismo. Versión 1.2 disponible.</p>
+                <div class="btn-group">
+                    <button class="btn-primary"><i class="fab fa-windows"></i> Windows</button>
+                    <button class="btn-primary"><i class="fab fa-apple"></i> Mac OS</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.nav-menu { 
-    display: flex; 
-    list-style: none; 
-    gap: 20px; 
-    align-items: center; 
-}
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-name" class="modal-title"></div>
+            <p id="modal-role" class="tag"></p>
+            <div id="modal-msg" class="dialogue"></div>
+        </div>
+    </div>
 
-.nav-menu a { 
-    color: var(--text); 
-    text-decoration: none; 
-    font-size: 0.9rem; 
-    transition: color 0.3s ease; 
-}
-
-.nav-menu a:hover { 
-    color: var(--gold); 
-}
-
-.btn-nav { 
-    background-color: var(--gold); 
-    color: var(--bg-dark) !important; 
-    padding: 8px 15px; 
-    border-radius: 5px; 
-    font-weight: bold; 
-}
-
-/* LAYOUT DE SECCIONES */
-.section { 
-    padding: 100px 0; 
-    position: relative;
-}
-
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
-
-.container-small { 
-    max-width: 500px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
-
-.title-center { 
-    text-align: center; 
-    margin-bottom: 60px; 
-    font-size: 3rem; 
-    color: var(--gold); 
-    font-family: 'Poppins', sans-serif; 
-}
-
-.grid-2 { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 30px; 
-}
-
-.gold { color: var(--gold); }
-
-/* CARDS */
-.card, .region-card { 
-    background-color: var(--bg-surface); 
-    padding: 40px; 
-    border-radius: 20px; 
-    border: 1px solid rgba(255, 204, 51, 0.1); 
-    transition: transform 0.3s ease, border-color 0.3s ease; 
-}
-
-.card:hover, .region-card:hover { 
-    border-color: var(--gold); 
-    transform: translateY(-5px); 
-}
-
-/* HERO SECTION */
-.hero { 
-    min-height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    padding-top: 80px; 
-}
-
-.hero-container { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 50px; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-    align-items: center; 
-}
-
-.hero-text h1 { 
-    font-size: 5rem; 
-    color: var(--gold); 
-    font-family: 'Poppins', sans-serif; 
-    line-height: 1.1; 
-}
-
-.subtitle { 
-    font-size: 1.8rem; 
-    color: var(--morado); 
-    margin-bottom: 20px; 
-}
-
-.video-wrapper { 
-    border: 2px solid var(--gold); 
-    border-radius: 20px; 
-    overflow: hidden; 
-    box-shadow: 0 0 30px var(--gold-glow); 
-}
-
-video { 
-    width: 100%; 
-    display: block; 
-}
-
-/* PERSONAJES */
-.characters-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
-    gap: 20px; 
-}
-
-.char-item { 
-    background-color: var(--bg-surface); 
-    padding: 30px; 
-    border-radius: 20px; 
-    text-align: center; 
-    cursor: pointer; 
-    border: 1px solid transparent; 
-    transition: 0.3s ease; 
-}
-
-.char-item i { 
-    font-size: 2.5rem; 
-    color: var(--gold); 
-    margin-bottom: 10px; 
-    display: block; 
-}
-
-.char-item:hover { 
-    background-color: var(--gold); 
-}
-
-.char-item:hover i, .char-item:hover h4 { 
-    color: var(--bg-dark); 
-}
-
-/* FORMULARIO DE REGISTRO */
-.register-box { 
-    background-color: var(--bg-surface); 
-    padding: 40px; 
-    border-radius: 30px; 
-    border: 1px solid var(--gold); 
-}
-
-.reg-form { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; 
-}
-
-.reg-form input { 
-    padding: 12px; 
-    border-radius: 8px; 
-    border: 1px solid var(--morado); 
-    background-color: var(--bg-dark); 
-    color: white; 
-    outline: none;
-}
-
-.reg-form input:focus {
-    border-color: var(--gold);
-}
-
-/* BOTONES */
-.btn-primary { 
-    background-color: var(--gold); 
-    color: var(--bg-dark); 
-    padding: 15px 30px; 
-    border: none; 
-    border-radius: 10px; 
-    font-weight: bold; 
-    cursor: pointer; 
-    font-size: 1rem; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-
-.btn-primary:hover { 
-    box-shadow: 0 0 20px var(--gold); 
-    transform: scale(1.05); 
-}
-
-/* MODAL */
-.modal { 
-    display: none; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.9); 
-    z-index: 2000; 
-}
-
-.modal-content { 
-    background-color: #1a122b; 
-    max-width: 700px; 
-    margin: 10vh auto; 
-    padding: 40px; 
-    border-radius: 25px; 
-    border: 2px solid var(--gold); 
-    position: relative; 
-}
-
-.close { 
-    position: absolute; 
-    right: 25px; 
-    top: 15px; 
-    font-size: 2.5rem; 
-    color: var(--gold); 
-    cursor: pointer; 
-}
-
-.modal-flex { 
-    display: flex; 
-    gap: 30px; 
-    align-items: center; 
-}
-
-.modal-art { 
-    width: 200px; 
-    height: 250px; 
-    background-color: #000; 
-    border-radius: 15px; 
-    background-size: cover; 
-    border: 1px dashed var(--gold); 
-}
-
-.tag { color: var(--gold); font-weight: bold; }
-
-.dialogue { 
-    margin-top: 20px; 
-    padding: 15px; 
-    background-color: rgba(0,0,0,0.3); 
-    border-left: 4px solid var(--gold); 
-    font-style: italic; 
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero-container { grid-template-columns: 1fr; text-align: center; }
-    .hero-text h1 { font-size: 3rem; }
-    .modal-flex { flex-direction: column; text-align: center; }
-    .nav-menu { display: none; } /* En móviles se suele usar menú hamburguesa */
-}
+    <script src="script.js"></script>
+</body>
+</html>
