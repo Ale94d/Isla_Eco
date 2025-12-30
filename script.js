@@ -7,7 +7,7 @@ const PERSONAJES = {
     "Viajero": { 
         rol: "Náufrago del Tiempo", 
         msg: "El accidente fragmentó la gema nexo. Debo encontrar ambas mitades para volver a casa.",
-        img: "none"
+        img: "img/viajero.png"
     },
     "Kai": { 
         rol: "Guardián del Páramo", 
@@ -54,7 +54,16 @@ document.querySelectorAll('.char-circle').forEach(boton => {
             document.getElementById('modal-name').innerText = nombre;
             document.getElementById('modal-role').innerText = data.rol;
             document.getElementById('modal-msg').innerText = data.msg;
-            document.getElementById('modal-img').src = data.img;
+            
+            const cuadroImagen = document.querySelector('.modal-img-frame');
+            const imagenElemento = document.getElementById('modal-img');
+
+            if (data.img === "none") {
+                cuadroImagen.style.display = 'none';
+            } else {
+                cuadroImagen.style.display = 'block';
+                imagenElemento.src = data.img;
+            }
             
             modal.style.display = 'flex';
         }
