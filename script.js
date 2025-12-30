@@ -5,44 +5,44 @@
 // 1. DATOS DE PERSONAJES
 const PERSONAJES = {
     "Viajero": { 
-        rol: "Náufrago del Tiempo", 
-        msg: "El accidente fragmentó la gema nexo. Debo encontrar ambas mitades para volver a casa.",
+        rol: "Aetaryn", 
+        msg: "Intenté marcharme, pero la isla no me dejó ir. No estoy atrapado por la fuerza… simplemente no hay camino de regreso",
         img: "none",
         color: "rgba(108, 106, 109, 0.95)"
     },
     "Kai": { 
-        rol: "Guardián del Páramo", 
-        msg: "La tecnología dorada no es un juguete. Si buscas la mitad de la gema, prepárate para luchar.",
+        rol: "Khavar del Jardín de los Ecos", 
+        msg: "El Oeste no rechaza a nadie, pero tampoco facilita las cosas. Si sigues avanzando por aquí, tendrás que aprender a convivir con una energía que nunca se queda quieta.",
         img: "kai.png",
         color: "rgba(85, 12, 138, 0.95)"
     },
     "Byte": { 
-        rol: "Asistente Robótico", 
-        msg: "Bip... Análisis completado. La energía mágica de la selva está corrompiendo mis circuitos.",
+        rol: "Vyrtek Autónomo", 
+        msg: "Registro actualizado: salida de la isla no disponible. Mi función ahora es ayudarte a adaptarte a un entorno que opera fuera de parámetros normales.",
         img: "byte.png",
         color: "rgba(0, 102, 204, 0.95)"
     },
     "Flamius": { 
-        rol: "Espíritu de Fuego", 
-        msg: "El calor del núcleo es lo único que mantiene esta isla a flote. No dejes que se apague.",
+        rol: "Ignar de la Forja Viva", 
+        msg: "El fuego no solo destruye, también mantiene el movimiento. Mientras arda, la energía de la isla sigue fluyendo y no se apaga del todo.",
         img: "flamius.png",
         color: "rgba(235, 82, 27, 0.95)"
     },
     "Lysandra": { 
-        rol: "Sabia de la Selva", 
-        msg: "La naturaleza tiene memoria. Ella sabe quién causó el accidente arcano.",
+        rol: "Elyreth de Alboria", 
+        msg: "La isla no te retiene por castigo. Tu llegada alteró un equilibrio que aún busca estabilizarse, y Alboria responde a cada decisión que tomas.",
         img: "lysandra.png",
         color: "rgba(0, 191, 255, 0.95)"
     },
     "Smull": { 
-        rol: "Brote de Cristal", 
-        msg: "¡Las plantas brillan porque tienen hambre! No te acerques mucho a las raíces azules.",
+        rol: "Lúmyn Brotal", 
+        msg: "Antes, todo crecía sin problemas… ahora algunas raíces se resisten. Cuando eso pasa, suele ser porque la isla siente que algo falta.",
         img: "smull.png",
         color: "rgba(34, 139, 34, 0.95)" //
     },
     "Arvell": { 
-        rol: "Vigía de los Cielos", 
-        msg: "Desde mi posición veo cómo las dos regiones chocan. El equilibrio es frágil.",
+        rol: "Aeralyn Vigía", 
+        msg: "Desde lo alto se nota el desequilibrio. No importa qué región elijas primero, ambas dependen de la misma decisión final.",
         img: "arvell.png",
         color: "rgba(218, 165, 32, 0.95)"
     }
