@@ -1,4 +1,103 @@
-﻿/* VENTANA MODAL - DISEÑO ADAPTABLE Y SIN CORTES */
+﻿/* VARIABLES Y ESTILO BASE */
+:root {
+    --gold: #ffcc33;
+    --gold-glow: rgba(255, 204, 51, 0.4);
+    --bg-dark: #0a0a0a;
+    --bg-glow: rgba(20, 20, 20, 0.95);
+    --text-light: #f0f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* NAVEGACIÓN */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+}
+
+.logo-sun {
+    color: var(--gold);
+    margin-right: 10px;
+    text-shadow: 0 0 10px var(--gold);
+    transition: transform 0.3s ease;
+}
+
+/* SECCIÓN DE HISTORIA Y ECOSISTEMAS */
+.history-section {
+    padding: 80px 10%;
+    text-align: center;
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+}
+
+.history-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* SECCIÓN DE PERSONAJES (LOS 7 CÍRCULOS) */
+.characters-section {
+    padding: 60px 5%;
+    text-align: center;
+    background: #0a0a0a;
+}
+
+.characters-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.char-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #222;
+}
+
+.char-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.char-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* VENTANA MODAL COMPLETA */
 .modal { 
     display: none; 
     position: fixed; 
@@ -6,88 +105,106 @@
     left: 0; 
     width: 100%; 
     height: 100%; 
-    background: rgba(0,0,0,0.95); 
+    background: rgba(0,0,0,0.9); 
     z-index: 2000; 
     align-items: center; 
-    justify-content: center;
+    justify-content: center; 
     padding: 20px;
 }
 
 .modal-content { 
     background: var(--bg-glow); 
     border: 2px solid var(--gold); 
-    width: 100%; 
-    max-width: 850px; 
-    max-height: 90vh; 
+    width: 90%; 
+    max-width: 750px; 
     border-radius: 20px; 
-    overflow-y: auto; 
+    overflow: hidden; 
     position: relative;
-    transition: background-color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    /* Transición para suavizar el cambio de color entre personajes */
+    transition: background-color 0.8s ease, border-color 0.8s ease;
 }
 
 .modal-body { 
     display: flex; 
     flex-wrap: wrap; 
-    width: 100%;
 }
 
 .modal-img-frame { 
     flex: 1; 
-    min-width: 320px; 
-    height: 450px; 
-    background: #000;
+    min-width: 300px; 
+    height: 400px; 
+    background: #000; 
 }
 
 .modal-img-frame img { 
     width: 100%; 
     height: 100%; 
-    object-fit: cover;
-    display: block;
+    object-fit: cover; 
 }
 
 .modal-text { 
-    flex: 1.2; 
-    min-width: 320px; 
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex: 1; 
+    min-width: 300px; 
+    padding: 40px; 
 }
 
 .close-btn { 
-    position: sticky; /* Se mantiene visible arriba aunque hagas scroll */
-    float: right;
+    position: absolute; 
     right: 20px; 
     top: 10px; 
     font-size: 2.5rem; 
     color: var(--gold); 
     cursor: pointer; 
-    z-index: 100;
-    margin-right: 20px;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.close-btn:hover {
-    transform: scale(1.1);
+    z-index: 100; 
 }
 
 .dialogue { 
     font-style: italic; 
-    color: #eee; 
-    margin-top: 25px; 
-    border-left: 3px solid var(--gold); 
-    padding-left: 20px;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    color: #ccc; 
+    margin-top: 20px; 
+    border-left: 2px solid var(--gold); 
+    padding-left: 15px; 
 }
 
-/* AJUSTE PARA MÓVILES */
+/* SECCIÓN DE DESCARGAS Y CARRUSEL */
+.downloads-section {
+    padding: 80px 5%;
+    background: #111;
+    text-align: center;
+}
+
+.carousel-container {
+    margin: 40px auto;
+    max-width: 900px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+/* AJUSTES PARA DISPOSITIVOS MÓVILES (NO SE CORTA NADA) */
 @media (max-width: 768px) {
-    .modal-img-frame {
-        height: 300px;
+    .modal-content {
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
     }
+    
+    .modal-body {
+        flex-direction: column;
+    }
+    
+    .modal-img-frame {
+        min-width: 100%;
+        height: 250px;
+    }
+    
     .modal-text {
-        padding: 25px;
+        min-width: 100%;
+        padding: 20px;
+    }
+
+    .char-circle {
+        width: 100px;
+        height: 100px;
     }
 }
