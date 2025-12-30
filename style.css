@@ -1,65 +1,77 @@
 ﻿:root {
-    --bg: #13111b;
-    --surface: #1e1b2e;
-    --primary: #7d57c2;
-    --secondary: #57c2a9;
+    --bg: #0f0c18;
+    --surface: #1a1629;
+    --primary: #8e66ff;
+    --secondary: #00f2c3;
     --text: #ffffff;
-    --gray: #b3aec7;
+    --gray: #a19db5;
 }
 
 * { margin:0; padding:0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
 canvas { position: fixed; top:0; left:0; z-index:-1; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
-.container-small { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container-small { max-width: 500px; margin: 0 auto; padding: 0 20px; }
 
 /* NAVBAR */
-.navbar { position: fixed; width:100%; background: rgba(19, 17, 27, 0.9); z-index: 100; padding: 15px 0; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin:0 auto; padding: 0 20px; }
-.nav-menu { display: flex; list-style: none; gap: 20px; }
-.nav-menu a { color: var(--gray); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+.navbar { position: fixed; width:100%; background: rgba(15, 12, 24, 0.95); z-index: 1000; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin:0 auto; padding:0 20px; }
+.nav-logo { font-family: 'Poppins'; font-weight: bold; font-size: 1.5rem; color: var(--primary); }
+.nav-menu { display: flex; list-style: none; gap: 25px; }
+.nav-menu a { color: var(--gray); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+.nav-menu a:hover { color: var(--primary); }
 
-/* HERO */
+/* HERO - USANDO FLEXBOX */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
-.hero-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.hero-text h1 { font-size: 4rem; color: var(--primary); font-family: 'Poppins'; }
-.video-wrapper { border: 3px solid var(--primary); border-radius: 20px; overflow: hidden; background: #000; }
+.hero-container { display: flex; align-items: center; gap: 40px; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.hero-text { flex: 1; }
+.hero-text h1 { font-family: 'Poppins'; font-size: 4.5rem; line-height: 1.1; margin-bottom: 10px; }
+.subtitle { font-size: 1.5rem; color: var(--secondary); margin-bottom: 20px; font-weight: 600; }
+.hero-video { flex: 1.2; }
+.video-wrapper { border: 2px solid var(--primary); border-radius: 20px; overflow: hidden; box-shadow: 0 0 30px rgba(142, 102, 255, 0.3); }
 video { width: 100%; display: block; }
 
-/* GRIDS CORREGIDOS */
-.section { padding: 100px 0; width: 100%; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; }
-.card, .region-card { background: var(--surface); padding: 30px; border-radius: 20px; border-top: 4px solid var(--primary); }
+/* GRIDS PARA HISTORIA Y REGIONES */
+.section { padding: 80px 0; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.card, .region-card { background: var(--surface); padding: 40px; border-radius: 24px; border-top: 4px solid var(--primary); transition: 0.3s; }
+.icon-color { color: var(--primary); margin-bottom: 20px; display: block; }
 .east { border-top-color: var(--secondary); }
+.mission-box { margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 12px; font-size: 0.9rem; }
 
-/* PERSONAJES EN COLUMNAS */
-.characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 40px; }
-.char-item { background: var(--surface); padding: 20px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
+/* PERSONAJES - GRID ADAPTABLE */
+.characters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; }
+.char-item { background: var(--surface); padding: 25px; border-radius: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+.char-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; display: block; }
 .char-item:hover { transform: translateY(-10px); background: var(--primary); }
-.char-item span { font-size: 3rem; display: block; }
+.char-item:hover i, .char-item:hover h4 { color: white; }
 
-/* REGISTRO */
-.register-box { background: var(--surface); padding: 40px; border-radius: 25px; }
-.reg-form { display: flex; flex-direction: column; gap: 15px; }
-.reg-form input { padding: 12px; border-radius: 8px; border: none; background: var(--bg); color: white; }
-
-/* DESCARGA */
+/* CARRUSEL */
 .download-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; }
-.carousel { background: #000; height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.req-empty { height: 50px; }
+.carousel-container { position: relative; height: 350px; overflow: hidden; border-radius: 20px; border: 1px solid var(--primary); }
+.carousel-track { display: flex; transition: 0.5s ease; height: 100%; }
+.slide { min-width: 100%; height: 100%; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px; cursor: pointer; border-radius: 50%; }
+.next { right: 10px; } .prev { left: 10px; }
 
 /* MODAL */
-.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 1000; }
-.modal-content { background: var(--surface); width: 90%; max-width: 700px; margin: 10vh auto; padding: 40px; border-radius: 20px; position: relative; }
-.modal-flex { display: flex; gap: 30px; align-items: center; }
-.modal-art { width: 200px; height: 250px; background: var(--bg); border-radius: 15px; }
-.dialogue { margin-top: 20px; padding: 15px; border-left: 3px solid var(--primary); font-style: italic; }
+.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); z-index: 2000; backdrop-filter: blur(8px); }
+.modal-content { background: var(--surface); width: 90%; max-width: 750px; margin: 10vh auto; padding: 40px; border-radius: 30px; position: relative; border: 1px solid var(--primary); }
+.modal-flex { display: flex; gap: 40px; align-items: center; }
+.modal-art { width: 250px; height: 300px; background: #000; border-radius: 20px; background-size: cover; background-position: center; flex-shrink: 0; border: 2px dashed var(--primary); }
+.dialogue { margin-top: 25px; padding: 20px; border-left: 4px solid var(--primary); background: rgba(255,255,255,0.05); font-style: italic; font-size: 1.1rem; }
+.close { position: absolute; right: 25px; top: 20px; font-size: 2rem; cursor: pointer; }
 
-.btn-primary { background: var(--primary); color: white; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-.title-center { text-align: center; margin-bottom: 40px; font-size: 2.5rem; }
+/* BOTONES Y GENERAL */
+.btn-primary { background: var(--primary); color: white; padding: 14px 28px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { filter: brightness(1.2); transform: scale(1.05); }
+.title-center { text-align: center; margin-bottom: 50px; font-size: 3rem; font-family: 'Poppins'; }
+.tag { color: var(--secondary); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
 
 @media (max-width: 768px) {
-    .hero-container, .grid-2, .download-grid { grid-template-columns: 1fr; }
-    .hero-text h1 { font-size: 2.5rem; }
+    .hero-container, .grid-2, .download-grid, .modal-flex { flex-direction: column; grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 3rem; }
+    .modal-art { margin: 0 auto; }
 }

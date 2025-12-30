@@ -1,4 +1,4 @@
-// Partículas de fondo
+// Fondo de Partículas
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -10,8 +10,8 @@ class Particle {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
     }
     update() {
         this.x += this.speedX; this.y += this.speedY;
@@ -19,13 +19,11 @@ class Particle {
         if(this.y > canvas.height) this.y = 0;
     }
     draw() {
-        ctx.fillStyle = 'rgba(125, 87, 194, 0.4)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.fillStyle = 'rgba(142, 102, 255, 0.4)';
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
     }
 }
-for(let i=0; i<50; i++) particles.push(new Particle());
+for(let i=0; i<60; i++) particles.push(new Particle());
 function animate() {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     particles.forEach(p => { p.update(); p.draw(); });
@@ -33,18 +31,18 @@ function animate() {
 }
 animate();
 
-// Datos de Personajes
+// Datos de Personajes (Mensajes dirigidos al Viajero)
 const dataNPC = {
-    "Viajero": { role: "Náufrago", msg: "Mis recuerdos están fragmentados... pero sé que estas gemas son la clave.", art: "" },
-    "Kai": { role: "Guardián Oeste", msg: "Viajero, ten cuidado con la gravedad en el Oeste. No todo lo que flota es seguro.", art: "url('img/kai.png')" },
-    "Flamius": { role: "Aliado Fuego", msg: "Siento el frío de tu mundo, náufrago. Deja que mi llama te guíe.", art: "url('img/flamius.png')" },
-    "Byte": { role: "Unidad Lógica", msg: "Procesando datos... Tu presencia es una variable inesperada en mi sistema.", art: "url('img/byte.png')" },
-    "Lysandra": { role: "Guardiana Este", msg: "Hueles a salitre y metal. La armonía del bosque te sanará si se lo permites.", art: "url('img/lysandra.png')" },
-    "Smull": { role: "Espíritu Bosque", msg: "¡Pequeño viajero! Ayúdame a despertar las flores y ellas te darán el paso.", art: "url('img/smull.png')" },
-    "Arvell": { role: "Vigía del Cielo", msg: "Te vi caer desde las nubes. El viento tiene mucho que contarte sobre este lugar.", art: "url('img/arvell.png')" }
+    "Viajero": { role: "Náufrago", msg: "Mis recuerdos están fragmentados... pero sé que estas gemas son la clave.", art: "url('img/viajero-art.png')" },
+    "Kai": { role: "Guardián Oeste", msg: "—Viajero, ten cuidado con la gravedad en el Oeste. No todo lo que flota es seguro.", art: "url('img/kai-art.png')" },
+    "Flamius": { role: "Aliado Fuego", msg: "—Siento el frío de tu mundo, viajero. Deja que mi llama caliente tu alma.", art: "url('img/flamius-art.png')" },
+    "Byte": { role: "Unidad Lógica", msg: "—Viajero, tu presencia es una variable inesperada en mis cálculos lógicos.", art: "url('img/byte-art.png')" },
+    "Lysandra": { role: "Guardiana Este", msg: "—Hueles a salitre, viajero. El bosque te dará la paz que buscas.", art: "url('img/lysandra-art.png')" },
+    "Smull": { role: "Espíritu Bosque", msg: "—¡Hola viajero! ¿Me ayudas a despertar las flores mágicas?", art: "url('img/smull-art.png')" },
+    "Arvell": { role: "Vigía del Cielo", msg: "—Te vi caer, viajero. Las corrientes de aire te llevarán a tu destino.", art: "url('img/arvell-art.png')" }
 };
 
-// Modal
+// Lógica del Modal
 const modal = document.getElementById('modal');
 document.querySelectorAll('.char-item').forEach(card => {
     card.onclick = () => {
@@ -59,7 +57,18 @@ document.querySelectorAll('.char-item').forEach(card => {
 });
 
 document.querySelector('.close').onclick = () => modal.style.display = 'none';
-window.onclick = (e) => { if(e.target == modal) modal.style.display = 'none'; }
+
+// Lógica del Carrusel
+const track = document.getElementById('track');
+let index = 0;
+document.getElementById('nextBtn').onclick = () => {
+    index = (index + 1) % 3;
+    track.style.transform = `translateX(-${index * 100}%)`;
+};
+document.getElementById('prevBtn').onclick = () => {
+    index = (index - 1 + 3) % 3;
+    track.style.transform = `translateX(-${index * 100}%)`;
+};
 
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });

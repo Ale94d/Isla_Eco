@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isla Eco | El Viajero</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +13,7 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Isla Eco</div>
+            <div class="nav-logo"><i class="fas fa-gem"></i> Isla Eco</div>
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#historia">Historia</a></li>
@@ -28,12 +29,14 @@
             <div class="hero-text">
                 <h1>Isla Eco</h1>
                 <p class="subtitle">El despertar de un náufrago</p>
-                <p>Tras un incidente catastrófico en alta mar, el Viajero despierta en un mundo dividido. Tu objetivo: recuperar las gemas de poder para restaurar el equilibrio.</p>
-                <button class="btn-primary" onclick="scrollToSection('descargar')">Comenzar Aventura</button>
+                <p>Tras un incidente catastrófico en alta mar, el Viajero despierta en un mundo dividido. Tu objetivo es recuperar las gemas para restaurar el equilibrio.</p>
+                <button class="btn-primary" onclick="scrollToSection('descargar')">
+                    <i class="fas fa-play"></i> Comenzar Aventura
+                </button>
             </div>
             <div class="hero-video">
                 <div class="video-wrapper">
-                    <video controls poster="img/thumb.jpg">
+                    <video controls>
                         <source src="video/trailer.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -45,14 +48,14 @@
         <div class="container">
             <div class="grid-2">
                 <div class="card">
-                    <span class="icon">🌊</span>
+                    <i class="fas fa-ship fa-3x icon-color"></i>
                     <h3>Incidente en Alta Mar</h3>
                     <p>Lo que comenzó como una travesía tranquila terminó en un naufragio misterioso, dejando al Viajero en las costas de una isla desconocida.</p>
                 </div>
                 <div class="card">
-                    <span class="icon">💎</span>
+                    <i class="fas fa-dharmachakra fa-3x icon-color"></i>
                     <h3>El Misterio de las Gemas</h3>
-                    <p>Para salvar este mundo, deberás reunir fragmentos perdidos y restaurar el Nexo de Energía antes de que el equilibrio se rompa para siempre.</p>
+                    <p>Para salvar este mundo, deberás reunir fragmentos perdidos y restaurar el Nexo de Energía antes de que el equilibrio se rompa.</p>
                 </div>
             </div>
         </div>
@@ -63,19 +66,19 @@
             <h2 class="title-center">Regiones y Trama Principal</h2>
             <div class="grid-2">
                 <div class="region-card west">
-                    <h3>Región Oeste</h3>
-                    <p>Un paisaje donde la tecnología antigua y la lógica surrealista dominan. Bajo la vigilancia de <strong>Kai</strong>, navegarás por estructuras metálicas flotantes para comprender el origen del desequilibrio.</p>
+                    <h3><i class="fas fa-microchip"></i> Región Oeste</h3>
+                    <p>Tecnología antigua y lógica surrealista. Bajo la vigilancia de <strong>Kai</strong>, explorarás estructuras metálicas flotantes.</p>
                     <div class="mission-box">
-                        <strong>Misiones (1-9):</strong>
-                        <p>Desde la estabilización del fuego con Flamius hasta los desafíos lógicos de Byte.</p>
+                        <strong>Misiones 1-9:</strong>
+                        <p>Estabiliza el fuego con Flamius y resuelve los acertijos de Byte.</p>
                     </div>
                 </div>
                 <div class="region-card east">
-                    <h3>Región Este</h3>
-                    <p>Un santuario místico de magia ancestral. Aquí reside <strong>Lysandra</strong>, quien guía a los viajeros a través de bosques susurrantes para restaurar la conexión con la esencia de la isla.</p>
+                    <h3><i class="fas fa-leaf"></i> Región Este</h3>
+                    <p>Santuario místico de magia ancestral. <strong>Lysandra</strong> te guiará por bosques susurrantes para sanar la isla.</p>
                     <div class="mission-box">
-                        <strong>Misiones (10-18):</strong>
-                        <p>Dominarás la Magia de Crecimiento con Smull y realizarás el rito del Árbol Antiguo.</p>
+                        <strong>Misiones 10-18:</strong>
+                        <p>Usa la magia de Smull y vuela con Arvell hacia el Árbol Antiguo.</p>
                     </div>
                 </div>
             </div>
@@ -86,13 +89,13 @@
         <div class="container">
             <h2 class="title-center">Habitantes de la Isla</h2>
             <div class="characters-grid">
-                <div class="char-item" data-id="Viajero"><span>👤</span><h4>El Viajero</h4><p>Protagonista</p></div>
-                <div class="char-item" data-id="Kai"><span>🌀</span><h4>Kai</h4><p>Guardián</p></div>
-                <div class="char-item" data-id="Flamius"><span>🔥</span><h4>Flamius</h4><p>Aliado</p></div>
-                <div class="char-item" data-id="Byte"><span>🤖</span><h4>Byte</h4><p>Lógica</p></div>
-                <div class="char-item" data-id="Lysandra"><span>✨</span><h4>Lysandra</h4><p>Guardiana</p></div>
-                <div class="char-item" data-id="Smull"><span>🦋</span><h4>Smull</h4><p>Espíritu</p></div>
-                <div class="char-item" data-id="Arvell"><span>🦜</span><h4>Arvell</h4><p>Vigía</p></div>
+                <div class="char-item" data-id="Viajero"><i class="fas fa-user-astronaut"></i><h4>El Viajero</h4></div>
+                <div class="char-item" data-id="Kai"><i class="fas fa-robot"></i><h4>Kai</h4></div>
+                <div class="char-item" data-id="Flamius"><i class="fas fa-fire"></i><h4>Flamius</h4></div>
+                <div class="char-item" data-id="Byte"><i class="fas fa-code"></i><h4>Byte</h4></div>
+                <div class="char-item" data-id="Lysandra"><i class="fas fa-wand-sparkles"></i><h4>Lysandra</h4></div>
+                <div class="char-item" data-id="Smull"><i class="fas fa-bug"></i><h4>Smull</h4></div>
+                <div class="char-item" data-id="Arvell"><i class="fas fa-dove"></i><h4>Arvell</h4></div>
             </div>
         </div>
     </section>
@@ -114,18 +117,19 @@
     <section id="descargar" class="section">
         <div class="container">
             <div class="download-grid">
-                <div class="carousel">
-                    <div class="carousel-track">
-                        <div class="slide">IMAGEN 1</div>
-                        <div class="slide">IMAGEN 2</div>
-                        <div class="slide">IMAGEN 3</div>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="track">
+                        <div class="slide"><img src="img/game1.jpg" alt="Screen 1"></div>
+                        <div class="slide"><img src="img/game2.jpg" alt="Screen 2"></div>
+                        <div class="slide"><img src="img/game3.jpg" alt="Screen 3"></div>
                     </div>
+                    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="download-info">
                     <h2>Descarga Isla Eco</h2>
-                    <p>Embárcate en la aventura completa.</p>
-                    <div class="req-empty"></div>
-                    <button class="btn-primary">Descargar Ahora</button>
+                    <p>Disponible para PC y Mac.</p>
+                    <button class="btn-primary"><i class="fas fa-download"></i> Descargar Ahora</button>
                 </div>
             </div>
         </div>
@@ -135,7 +139,8 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="modal-flex">
-                <div class="modal-art" id="modal-art"></div>
+                <div class="modal-art" id="modal-art">
+                    </div>
                 <div class="modal-text">
                     <h2 id="modal-name"></h2>
                     <p id="modal-role" class="tag"></p>
